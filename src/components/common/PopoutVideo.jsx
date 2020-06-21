@@ -1,0 +1,120 @@
+import React, { useState } from "react"
+import PropTypes from "prop-types";
+import Dialog from '@material-ui/core/Dialog';
+import PlayIcon from "@material-ui/icons/PlayCircleOutline"
+import thumbnail from "../../assets/images/video-thumbnail.jpg"
+
+import {Editable, EmbeddedIframeEditor} from "react-easy-editables";
+
+const VideoModal = ({ open, onClose, ...props}) => {
+
+  const { src, height, width, allowFullScreen, title } = props.content;
+  const ratio = (height / width) * 100
+
+  const styles = {
+    iframeContainer: {
+      position: "relative",
+      paddingBottom: `${ratio}%`,
+      height: 0,
+      overflow: "hidden",
+      width: "100%",
+      maxWidth: "100%",
+    },
+    iframe: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+    }
+  }
+
+  return(
+    <Dialog maxWidth="lg" open={open} onClose={onClose}>
+      <div className="popout-video">
+        <div className="embedded-iframe" style={styles.iframeContainer}>
+          <iframe
+            title="iframe"
+            src={ src }
+            style={styles.iframe}
+            frameBorder="0"
+            allowFullScreen={ true }
+            height={ height }
+            width={ width }
+            title={ title }
+          />
+        </div>
+      </div>
+    </Dialog>
+  )
+}
+
+const PopoutVideo = ({ className, ...props }) => {
+  const [open, setOpen] = useState(false);
+
+  const handleSave = newContent => {
+    props.onSave(newContent);
+  };
+
+  const { src, height, width, allowFullScreen, title } = props.content;
+  const ratio = (height / width) * 100
+
+  const styles = {
+    iframeContainer: {
+      position: "relative",
+      paddingBottom: `${ratio}%`,
+      height: 0,
+      overflow: "hidden",
+      width: "100%",
+      maxWidth: "100%",
+    },
+    iframe: {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+    }
+  }
+
+  return (
+    <Editable
+      Editor={EmbeddedIframeEditor}
+      handleSave={handleSave}
+      content={{ src: src }}
+      {...props}
+    >
+      <div>
+        <button onClick={() => setOpen(true)} className="popout-video-btn">
+          <PlayIcon />
+          <img src={props.thumbnail} />
+        </button>
+        <VideoModal open={open} onClose={() => setOpen(false)} {...props} />
+      </div>
+    </Editable>
+  );
+};
+
+PopoutVideo.propTypes = {
+  content: PropTypes.shape({
+    src: PropTypes.string,
+    height: PropTypes.string,
+    width: PropTypes.string,
+    allowFullScreen: PropTypes.bool,
+    title: PropTypes.string
+  }).isRequired,
+  onSave: PropTypes.func.isRequired,
+}
+
+PopoutVideo.defaultProps = {
+  content: {
+    src: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6518432679573090304?compact=1',
+    height: '30px',
+    width: '560px',
+    title: 'Video',
+  },
+  onSave: newContent => console.log('Implement a function to save changes!', newContent),
+  thumbnail: thumbnail,
+}
+
+export default PopoutVideo;

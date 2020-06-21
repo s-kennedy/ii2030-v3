@@ -1,0 +1,72 @@
+
+/* COLOURS */
+
+$orange: #DA900A;
+$orange-100: transparentize($orange, 0.9);
+$orange-500: transparentize($orange, 0.5);
+$orange-800: transparentize($orange, 0.2);
+
+
+$blue: #508fb8;
+$blue-100: transparentize($blue, 0.9);
+$light-blue: $blue-100;
+$blue-500: transparentize($blue, 0.5);
+$blue-800: transparentize($blue, 0.2);
+
+$dark-blue: #2F4858;
+$dark-blue-100: transparentize($dark-blue, 0.9);
+$dark-blue-500: transparentize($dark-blue, 0.5);
+$dark-blue-800: transparentize($dark-blue, 0.2);
+
+$red: #AB3911;
+$dark-red: $red;
+$red-100: transparentize($red, 0.9);
+$red-500: transparentize($red, 0.5);
+$red-800: transparentize($red, 0.2);
+
+
+$white: #FFFFFF;
+$off-white: $white;
+$black: #000000;
+$light-gray: #CCCCCC;
+$dark-gray: #404040;
+
+
+$yellow: #FCB239;
+$green: #005E3F;
+$purple: #6D5B97;
+
+$primary: $yellow;
+$secondary: $green;
+$highlight: $purple;
+$error: $orange;
+
+
+
+/* FONTS AND SIZES */
+
+$primary-font: 'Roboto', Helvetica, Arial, sans-serif;
+$title-font: 'Roboto Slab', 'Roboto', sans-serif;
+$numbers-font: 'Roboto Slab', 'Roboto', sans-serif;
+
+$base-size: 18px;
+$lg-size: 1.4em;
+$sm-size: 0.9em;
+
+$h1-size: 60px;
+$h2-size: ceil($h1-size * 0.80);
+$h3-size: ceil($h1-size * 0.60);
+
+$light: 100;
+$bold: 400;
+$extrabold: 500;
+
+$base-line-height: 1.5;
+
+/* PADDING AND MARGINS */
+
+$sm-spacing: 10px;
+$md-spacing: 20px;
+$lg-spacing: 40px;
+$xl-spacing: 100px;
+$navbar-height: 64px;

@@ -1,0 +1,21 @@
+/* RESPONSIVE FOR TABLETS */
+
+@media (max-width: 992px) {
+  .popout-video {
+    width: 80vw;
+    height: auto;
+  }
+}
+
+/* RESPONSIVE FOR MOBILE */
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none;
+  }
+
+  .popout-video {
+    width: 95vw;
+    height: auto;
+  }
+}

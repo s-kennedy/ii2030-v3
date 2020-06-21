@@ -1,0 +1,140 @@
+@media screen and (max-width: 48em) {
+  .pure-g {
+    letter-spacing: normal;
+  }
+
+  .oversize {
+    position: relative;
+  }
+
+  section {
+    padding-top: $md-spacing;
+  }
+
+  section#landing {
+    .image-container {
+      display: none;
+    }
+  }
+
+  section#overview {
+    header {
+      .headline {
+        .headline-container {
+          &.mobile {
+            display: block;
+            text-align: center;
+          }
+
+          &.desktop {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .background-container {
+      margin: $md-spacing 0;
+
+      .text {
+        margin-bottom: $sm-spacing;
+      }
+    }
+  }
+
+  section#agenda {
+    .image.oversize {
+      display: none;
+    }
+
+    .agenda-item {
+      max-width: 100vw;
+    }
+
+    .factory-agenda {
+      .schedule {
+        .schedule-grid {
+          .side-program {
+            .side-program-inner {
+              .background-container {
+                margin-left: 0 !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    padding: 0;
+    text-align: center;
+    .footer-left, .footer-right {
+      padding: $sm-spacing 0;
+    }
+  }
+
+  section#tracks {
+    .tracks {
+      .track {
+        width: 100%;
+      }
+    }
+  }
+
+  section#partners {
+    .partner-group {
+      h3 {
+        width: 100%;
+      }
+    }
+  }
+
+  section#track-description {
+    .w-question {
+      text-align: left;
+      padding-left: $sm-spacing;
+    }
+  }
+
+  .vert-spacing {
+    padding-top: $sm-spacing;
+    padding-bottom: $sm-spacing;
+  }
+
+  .horiz-spacing {
+    padding-left: $sm-spacing;
+    padding-right: $sm-spacing;
+  }
+
+  .vert-spacing-lg {
+    padding-top: $md-spacing;
+    padding-bottom: $md-spacing;
+  }
+
+  section#timeline {
+    .slick-dots {
+      li {
+        button {
+          &:before {
+            font-size: $base-size;
+            font-weight: $extrabold;
+          }
+        }
+      }
+    }
+  }
+  
+  section#cocreation_process {
+    .slick-dots {
+      li {
+        button {
+          &:before {
+            font-size: $base-size;
+            font-weight: $extrabold;
+          }
+        }
+      }
+    }
+  }
+}

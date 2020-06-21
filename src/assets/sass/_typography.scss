@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto:300,400,500');
+
+body {
+  font-family: $primary-font;
+  font-weight: $light;
+  color: $black;
+  font-size: $base-size;
+  overflow-x: hidden;
+  line-height: $base-line-height;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 400;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1;
+    color: $black;
+
+    &.heavy {
+      font-weight: 900;
+    }
+
+    &.oversize {
+      font-size: 160px;
+      font-weight: 900;
+    }
+  }
+
+  .subtitle {
+    font-size: 36px;
+  }
+
+  h1, h2 {
+    &.subtitle {
+      text-align: center;
+      margin-bottom: $lg-spacing;
+    }
+  }
+
+  h1 {
+    font-size: 96px;
+
+    &.secondary {
+      font-weight: 900;
+    }
+  }
+
+  h2 {
+    font-size: 64px;
+  }
+
+  h3 {
+    font-size: 36px;
+  }
+
+  h4 {
+    font-size: 24px;
+  }
+
+  p {
+    margin: 0.5em 0;
+  }
+
+  a:not(.btn) {
+    color: $black;
+    transition: all 0.25s ease;
+
+    &:hover {
+      color: $red;
+    }
+
+    &:focus {
+      color: $orange;
+      transform: skewX(-15deg) translateX(3px);
+    }
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8em;
+
+    svg {
+      margin-left: 10px;
+    }
+  }
+
+  .headline {
+    font-size: $lg-size;
+    text-align: center;
+  }
+
+  .bold {
+    font-weight: bold;
+  }
+
+  .small {
+    font-size: $sm-size
+  }
+
+  .underlined {
+    border-bottom: 2px solid $blue-100;
+    padding-bottom: $sm-spacing;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+}
