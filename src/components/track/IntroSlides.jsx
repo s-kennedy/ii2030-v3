@@ -1,7 +1,6 @@
 import React from 'react';
-import Slider from 'react-slick'
-import Title from "../../components/editables/Title";
-import Paragraph from "../../components/editables/Paragraph";
+
+import { EditableText, EditableParagraph } from "react-easy-editables"
 
 export default class IntroSlides extends React.Component {
   state = {
@@ -35,21 +34,24 @@ export default class IntroSlides extends React.Component {
       swipe: true
     }
 
+    const questions = Object.keys(this.props.slides)
+
     return(
       <div className="intro-slides-container">
         <Slider {...sliderSettings} infinite={false} ref={slider => (this.slider = slider)}>
           {
-            this.questions.map((question) => {
+            questions.map((question) => {
               const slide = this.props.slides[question];
-              if (!slide) return null;
 
               return(
                 <div className="slide" key={`intro-slide-${question}`}>
                   <div className="text horiz-spacing">
                     <div className="headline vert-spacing">
-                      <Title level="h2" content={slide["question"]} onSave={this.onSavePassthrough(question, "question")} />
+                      <h2>
+                        <EditableText content={slide["question"]} onSave={this.onSavePassthrough(question, "question")} />
+                      </h2>
                     </div>
-                    <Paragraph content={slide["answer"]} onSave={this.onSavePassthrough(question, "answer")} />
+                    <EditableParagraph content={slide["answer"]} onSave={this.onSavePassthrough(question, "answer")} />
                   </div>
                 </div>
               )

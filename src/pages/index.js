@@ -112,7 +112,7 @@ class HomePage extends React.Component {
               </Grid>
               <Grid item xs={12} md={7}>
                 <EditableParagraph content={content["overview-description"]} onSave={this.onSave('overview-description')} />
-                <EditableLink content={content["overview-link"]} onSave={this.onSave('overview-link')} />
+                <EditableLink classes="link" content={content["overview-link"]} onSave={this.onSave('overview-link')} />
               </Grid>
             </Grid>
           </div>

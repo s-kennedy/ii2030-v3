@@ -1,9 +1,7 @@
 import React from 'react';
 import Slider from 'react-slick'
 
-import Title from "../../components/editables/Title";
-import Paragraph from "../../components/editables/Paragraph";
-import Image from "../../components/editables/Image";
+import { EditableText, EditableParagraph, EditableImageUpload } from "react-easy-editables"
 
 export default class TourStops extends React.Component {
   state = {
@@ -40,11 +38,12 @@ export default class TourStops extends React.Component {
                     <div className="pure-u-1">
 
                       <div className="image">
-                        <Image content={ slide["image"] } onSave={this.onSavePassthrough(i, "image")} />
+                        <EditableImageUpload content={ slide["image"] } onSave={this.onSavePassthrough(i, "image")} />
                       </div>
-
-                      <Title level="h3" content={ slide["organization"] } onSave={this.onSavePassthrough(i, "organization")} />
-                      <Paragraph content={ slide["description"] } onSave={this.onSavePassthrough(i, "description")} />
+                      <h3>
+                        <EditableText content={ slide["organization"] } onSave={this.onSavePassthrough(i, "organization")} />
+                      </h3>
+                      <EditableParagraph content={ slide["description"] } onSave={this.onSavePassthrough(i, "description")} />
 
                     </div>
                   </div>

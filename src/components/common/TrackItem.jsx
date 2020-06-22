@@ -7,7 +7,6 @@ import AOS from 'aos';
 import {
   PlainTextEditor,
   RichTextEditor,
-  FileUploadEditor,
   LinkEditor,
   ImageUploadEditor,
   Editable

@@ -1,8 +1,5 @@
 
 section#track-landing {
-  padding-bottom: $lg-spacing;
-  padding-top: 0;
-
   @include background-pattern;
 
   .track-icon {
@@ -108,10 +105,6 @@ section#track-description {
 
 .quote {
   font-style: italic;
-}
-
-section#track-lead {
-  padding-top: 0;
 }
 
 section#tour-factory {

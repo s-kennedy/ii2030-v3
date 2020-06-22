@@ -10,7 +10,6 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
 import Layout from "../layouts/default.js";
@@ -101,7 +100,7 @@ class FrequentlyAskedQuestions extends React.Component {
 
     return (
       <Layout>
-        <main>
+        <div className="bg-circuit-blue">
           <Section id="faqs">
             <h2 className="mb-60">
               <EditableText
@@ -118,8 +117,8 @@ class FrequentlyAskedQuestions extends React.Component {
                   </h3>
                   {category.map((question, i) => (
                     <ExpansionPanel key={`category-${key}-question-${i}`}>
-                      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                        <h4>
+                      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />}>
+                        <h4 className="pt-10 pb-10">
                           <EditableText
                             content={question["question"]}
                             onSave={this.editFaq(question.position, "question")}
@@ -157,7 +156,7 @@ class FrequentlyAskedQuestions extends React.Component {
               );
             })}
           </Section>
-        </main>
+        </div>
       </Layout>
     );
   }

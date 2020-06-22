@@ -3,7 +3,7 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 300 300" style="enable-background:new 0 0 300 300;" xml:space="preserve">
 <style type="text/css">
-	.st0{opacity:0.1;fill:#AB3911;enable-background:new    ;}
+	.st0{fill:#FFFFFF;}
 </style>
-<polygon class="st0" points="160.3,280.9 288.9,167 181.6,7.5 12.8,225.3 "/>
+<circle class="st0" cx="149.3" cy="149.3" r="143.3"/>
 </svg>

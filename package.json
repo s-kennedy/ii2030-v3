@@ -1,6 +1,6 @@
 {
-  "name": "money-guide",
-  "description": "Money and the law online guide from National Association of Women and the Law (NAWL)",
+  "name": "ii2030-v3",
+  "description": "",
   "version": "1.0.0",
   "author": "Sharon Kennedy <sharon@nomadiclabs.com>",
   "engines": {
@@ -57,8 +57,8 @@
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "predeploy": "rm -rf .cache",
-    "deploy:staging": "GATSBY_ACTIVE_ENV=staging gatsby build && firebase use money-guide-staging && firebase deploy",
-    "deploy:production": "GATSBY_ACTIVE_ENV=production gatsby build && firebase use money-guide && firebase deploy"
+    "deploy:staging": "GATSBY_ACTIVE_ENV=staging gatsby build && firebase use ii2030-staging && firebase deploy",
+    "deploy:production": "GATSBY_ACTIVE_ENV=production gatsby build && firebase use endeva-ii2030 && firebase deploy"
   },
   "devDependencies": {
     "autoprefixer": "^9.7.5",

@@ -2,7 +2,6 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby"
 import Helmet from "react-helmet";
 import { connect } from "react-redux";
-import { filter } from 'lodash'
 import withRoot from '../utils/withRoot';
 import AOS from 'aos';
 

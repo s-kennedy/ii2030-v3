@@ -1,19 +1,15 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 import {
   PlainTextEditor,
-  RichTextEditor,
   ImageUploadEditor,
-  FileUploadEditor,
-  LinkEditor,
   Editable
 } from 'react-easy-editables';
 
 import triangle from "../../assets/images/shapes/triangle-orange.svg"
 import polygon from "../../assets/images/shapes/polygon-red.svg"
 
-import { uploadImage, uploadFile } from "../../firebase/operations"
+import { uploadImage } from "../../firebase/operations"
 
 const TestimonialEditor = ({ content, onContentChange }) => {
   const handleEditorChange = field => item => {

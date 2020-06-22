@@ -3,9 +3,7 @@ import { StaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby";
 import { sortBy } from 'lodash';
 
-import Toolbar from "@material-ui/core/Toolbar"
 import Button from "@material-ui/core/Button"
-import AppBar from "@material-ui/core/AppBar"
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Grid from '@material-ui/core/Grid';
@@ -28,7 +26,8 @@ const styles = {
     position: "fixed",
     width: "100%",
     borderBottom: "1px solid rgba(80, 143, 184, 0.2)",
-    zIndex: "99999"
+    zIndex: "99999",
+    justifyContent: "space-between"
   }
 }
 
@@ -152,7 +151,7 @@ class Navigation extends React.Component {
     const tracks2019 = tracks.filter(track => track.node.year === 2019)
 
     return (
-      <div position="fixed" style={styles.menu} id="main-menu">
+      <div style={styles.menu} id="main-menu">
           <Grid container justify="space-between">
             <Grid item style={styles.grow}>
               <div className="menu-left">

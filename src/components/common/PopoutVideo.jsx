@@ -8,7 +8,7 @@ import {Editable, EmbeddedIframeEditor} from "react-easy-editables";
 
 const VideoModal = ({ open, onClose, ...props}) => {
 
-  const { src, height, width, allowFullScreen, title } = props.content;
+  const { src, height, width, title } = props.content;
   const ratio = (height / width) * 100
 
   const styles = {
@@ -34,7 +34,6 @@ const VideoModal = ({ open, onClose, ...props}) => {
       <div className="popout-video">
         <div className="embedded-iframe" style={styles.iframeContainer}>
           <iframe
-            title="iframe"
             src={ src }
             style={styles.iframe}
             frameBorder="0"
@@ -56,26 +55,7 @@ const PopoutVideo = ({ className, ...props }) => {
     props.onSave(newContent);
   };
 
-  const { src, height, width, allowFullScreen, title } = props.content;
-  const ratio = (height / width) * 100
-
-  const styles = {
-    iframeContainer: {
-      position: "relative",
-      paddingBottom: `${ratio}%`,
-      height: 0,
-      overflow: "hidden",
-      width: "100%",
-      maxWidth: "100%",
-    },
-    iframe: {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-    }
-  }
+  const { src } = props.content;
 
   return (
     <Editable
@@ -87,7 +67,7 @@ const PopoutVideo = ({ className, ...props }) => {
       <div>
         <button onClick={() => setOpen(true)} className="popout-video-btn">
           <PlayIcon />
-          <img src={props.thumbnail} />
+          <img src={props.thumbnail} alt="video thumbnail" />
         </button>
         <VideoModal open={open} onClose={() => setOpen(false)} {...props} />
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import { connect } from "react-redux";
 import { EditableText, EditableParagraph, EditableLink } from "react-easy-editables"
 
@@ -11,14 +11,14 @@ import {
 } from "../redux/actions";
 
 import Grid from "@material-ui/core/Grid"
+import ArrowIcon from "@material-ui/icons/ArrowRightAlt"
 
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
-import TrackList from "../components/common/TrackList"
 import PopoutVideo from "../components/common/PopoutVideo"
 import ImageCarousel from "../components/common/ImageCarousel"
 
-import bgPolygonWhite from "../assets/images/shapes/polygon-white.svg"
+import bgPolygonRed from "../assets/images/shapes/polygon-lg-red.svg"
 import bgPolygonBlue from "../assets/images/shapes/polygon-lg-blue.svg"
 
 import bgImg1 from "../assets/images/shapes/header-triangle-orange.svg"
@@ -79,7 +79,13 @@ class HomePage extends React.Component {
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
+    const tracks = this.props.data.allTracks.edges.map(e => {
+      let node = e.node;
+      return node
+    })
 
+    const tracks2017 = tracks.filter(t => t.year === 2017)
+    const tracks2019 = tracks.filter(t => t.year === 2019)
 
     return (
       <Layout>
@@ -112,7 +118,7 @@ class HomePage extends React.Component {
           </div>
         </Section>
 
-        <Section id="2019" className="bg-light">
+        <Section id="2019" className="">
           <Grid container data-aos="fade-in">
             <Grid item xs={12} md={5}>
               <h2 className="mb-40"><EditableText content={content["2019-title"]} onSave={this.onSave('2019-title')} /></h2>
@@ -127,7 +133,7 @@ class HomePage extends React.Component {
             <Grid item xs={12}>
               <div className="image-slides">
                 <div className="bg-img">
-                  <img src={bgPolygonWhite} alt="" />
+                  <img src={bgPolygonRed} alt="" />
                 </div>
                 <ImageCarousel
                   content={content["photos-2019"]}
@@ -142,13 +148,53 @@ class HomePage extends React.Component {
 
           <Grid container justify="flex-end">
             <Grid item xs={12} md={7}>
-              <TrackList
-                content={content["track-list-2019"]}
-                onSave={this.onSave('track-list-2019')}
-                onAddItem={this.onAddItem('track-list-2019')}
-                onDeleteItem={this.onDeleteItem('track-list-2019')}
-                isEditingPage={this.props.isEditingPage}
-              />
+              {
+                tracks2019.map(track => {
+                  let content = {}
+                  try {
+                    content = JSON.parse(track.content)
+                  } catch(err) {
+                    console.log(err)
+                  }
+                  return(
+                    <div key={track.slug} className={`track-item mb-40 mt-40`} data-aos="fade-in">
+                      <Grid container spacing={4}>
+                        <Grid item xs={12} sm={3}>
+                          <div className="image-container">
+                            <div className="bg-circle"></div>
+                            <div className="icon">
+                            {
+                              content["icon-small"] &&
+                              <img
+                                className="image"
+                                src={content["icon-small"]["imageSrc"]}
+                                alt={content["icon-small"]["caption"]}
+                              />
+                            }
+                            </div>
+                          </div>
+                        </Grid>
+
+                        <Grid item xs={12} sm={9}>
+                          <div className="text">
+                            <h4 className="mb-20">
+                              { track.title }
+                            </h4>
+
+                            {
+                              content["topic"] &&
+                              <div className="description mb-20">
+                                { content["topic"]["text"] }
+                              </div>
+                            }
+                            <Link className="link" to={track.slug}>Visit the track <ArrowIcon /></Link>
+                          </div>
+                        </Grid>
+                      </Grid>
+                    </div>
+                  )
+                })
+              }
             </Grid>
           </Grid>
         </Section>
@@ -184,13 +230,53 @@ class HomePage extends React.Component {
 
           <Grid container justify="flex-end">
             <Grid item xs={12} md={7}>
-              <TrackList
-                content={content["track-list-2017"]}
-                onSave={this.onSave('track-list-2017')}
-                onAddItem={this.onAddItem('track-list-2017')}
-                onDeleteItem={this.onDeleteItem('track-list-2017')}
-                isEditingPage={this.props.isEditingPage}
-              />
+              {
+                tracks2017.map(track => {
+                  let content = {}
+                  try {
+                    content = JSON.parse(track.content)
+                  } catch(err) {
+                    console.log(err)
+                  }
+                  return(
+                    <div key={track.slug} className={`track-item mb-40 mt-40`} data-aos="fade-in">
+                      <Grid container spacing={4}>
+                        <Grid item xs={12} sm={3}>
+                          <div className="image-container">
+                            <div className="bg-circle"></div>
+                            <div className="icon">
+                            {
+                              content["icon-small"] &&
+                              <img
+                                className="image"
+                                src={content["icon-small"]["imageSrc"]}
+                                alt={content["icon-small"]["caption"]}
+                              />
+                            }
+                            </div>
+                          </div>
+                        </Grid>
+
+                        <Grid item xs={12} sm={9}>
+                          <div className="text">
+                            <h4 className="mb-20">
+                              { track.title }
+                            </h4>
+
+                            {
+                              content["topic"] &&
+                              <div className="description mb-20">
+                                { content["topic"]["text"] }
+                              </div>
+                            }
+                            <Link className="link" to={track.slug}>Visit the track <ArrowIcon /></Link>
+                          </div>
+                        </Grid>
+                      </Grid>
+                    </div>
+                  )
+                })
+              }
             </Grid>
           </Grid>
         </Section>
@@ -209,6 +295,20 @@ class HomePage extends React.Component {
           </Grid>
         </Section>
 
+        <Section id="partners" className="">
+          <div className="mb-60" data-aos="fade-in">
+            <Grid container>
+              <Grid item xs={12} md={5} >
+                <h2><EditableText content={content["partners-title"]} onSave={this.onSave('partners-title')} /></h2>
+              </Grid>
+              <Grid item xs={12} md={7}>
+                <EditableParagraph content={content["partners-description"]} onSave={this.onSave('partners-description')} />
+              </Grid>
+            </Grid>
+          </div>
+
+        </Section>
+
       </Layout>
     );
   }
@@ -224,13 +324,14 @@ export const query = graphql`
       title
       slug
     }
-    allTracks(filter: { year: { eq: 2019 }}) {
+    allTracks {
       edges {
         node {
           id
           title
           slug
           tech
+          year
           content
         }
       }

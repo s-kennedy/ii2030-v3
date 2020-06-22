@@ -743,9 +743,9 @@ section#participants {
 
     .bg-circle {
       position: absolute;
-      height: 200px;
-      width: 200px;
-      border-radius: 200px;
+      height: 150px;
+      width: 150px;
+      border-radius: 150px;
       background-color: $orange-100;
     }
 
@@ -762,8 +762,8 @@ section#participants {
       left: 0;
 
       img {
-        max-width: 180px;
-        max-height: 180px;
+        width: 160px;
+        height: auto;
       }
     }
   }

@@ -226,7 +226,7 @@ class HomePage extends React.Component {
               <EditableParagraph content={content["track-record-description"]} onSave={this.onSave('track-record-description')} />
             </Grid>
           </Grid>
-          <Grid container>
+          <Grid container spacing={6}>
             <Grid item xs={12} md={4} className="testimonial-container" data-aos="fade-in" data-aos-delay="50">
               <Testimonial content={content["track-record-1"]} onSave={this.onSave('track-record-1')} shape="polygon" />
             </Grid>
