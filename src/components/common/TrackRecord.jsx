@@ -2,7 +2,6 @@ import React from "react";
 
 import {
   PlainTextEditor,
-  RichTextEditor,
   ImageUploadEditor,
   Editable
 } from 'react-easy-editables';
@@ -12,7 +11,7 @@ import polygon from "../../assets/images/shapes/polygon-red.svg"
 
 import { uploadImage } from "../../firebase/operations"
 
-const TestimonialEditor = ({ content, onContentChange }) => {
+const TrackRecordEditor = ({ content, onContentChange }) => {
   const handleEditorChange = field => item => {
     onContentChange({
       ...content,
@@ -33,9 +32,15 @@ const TestimonialEditor = ({ content, onContentChange }) => {
         />
       </div>
 
-      <div className="quote">
+      <div className="text">
+        <h4 className="mb-20">
+          <PlainTextEditor
+            content={content["testimonial-item-title"]}
+            onContentChange={handleEditorChange("testimonial-item-title")}
+          />
+        </h4>
         <div className="description">
-          <RichTextEditor
+          <PlainTextEditor
             content={content["testimonial-item-description"]}
             onContentChange={handleEditorChange("testimonial-item-description")}
           />
@@ -45,7 +50,7 @@ const TestimonialEditor = ({ content, onContentChange }) => {
   )
 }
 
-const Testimonial = props => {
+const TrackRecord = props => {
 
   const content = props.content || {};
 
@@ -57,7 +62,7 @@ const Testimonial = props => {
 
   return (
     <Editable
-      Editor={TestimonialEditor}
+      Editor={TrackRecordEditor}
       handleSave={handleSave}
       content={content}
       {...props}
@@ -77,10 +82,17 @@ const Testimonial = props => {
           }
         </div>
 
-        <div className="quote">
+        <div className="text">
+          {
+            content["testimonial-item-title"] &&
+            <h4 className="mb-20">
+              { content["testimonial-item-title"]["text"] }
+            </h4>
+          }
           {
             content["testimonial-item-description"] &&
-            <div className="description" dangerouslySetInnerHTML={{__html: content["testimonial-item-description"]["text"]}}>
+            <div className="description">
+              {content["testimonial-item-description"]["text"]}
             </div>
           }
         </div>
@@ -89,7 +101,7 @@ const Testimonial = props => {
   );
 };
 
-Testimonial.defaultProps = {
+TrackRecord.defaultProps = {
   content: {
     "testimonial-item-image": { "imageSrc": "", "caption": "" },
     "testimonial-item-title": { "text": "Title" },
@@ -100,4 +112,4 @@ Testimonial.defaultProps = {
   shape: "triangle",
 }
 
-export default Testimonial;
+export default TrackRecord;

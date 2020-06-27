@@ -129,6 +129,10 @@ section {
   justify-content: center;
 }
 
+.fit-content {
+  width: fit-content;
+}
+
 .vert-spacing {
   /*padding-top: $md-spacing;*/
   padding-bottom: $md-spacing;
@@ -317,7 +321,6 @@ i.pause-btn, i.play-btn {
   justify-content: flex-end;
   align-items: flex-end;
   padding-right: 3%;
-  padding-top: 100px;
 }
 
 .popout-video {
@@ -328,8 +331,8 @@ i.pause-btn, i.play-btn {
 .popout-video-btn {
   padding: 0;
   margin: 0;
-  height: 140px;
-  width: 240px;
+  width: 100%;
+  max-width: 80vw;
   overflow: hidden;
   display: flex;
   justify-content: center;
