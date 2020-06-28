@@ -2,45 +2,51 @@ import React from "react";
 import { Link, StaticQuery, graphql } from "gatsby";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
+import Section from "../../components/common/Section";
 
 const Footer = props => {
+  const tracks = props.data.allTracks.edges.map(t => t.node)
 
   return (
-    <footer>
-      <Container maxWidth="lg">
-      <Grid container>
-        <Grid item xs={12} md={6}>
-          <p className="column-header">ii2030</p>
-          <p className="contact">For more information:</p>
-          <p className="contact">Email: <a href="mailto:ii2030@endeva.org">ii2030@endeva.org</a></p>
-          <p className="contact">LinkedIn: <a href="https://www.linkedin.com/company/endeva/">Endeva</a></p>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <p className="column-header">Site map</p>
-          <Grid container>
+    <footer className="mt-20 mb-20">
+      <Container maxWidth={"lg"}>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={5}>
+            <p className="column-header">ii2030</p>
+            <p className="contact">For more information:</p>
+            <p className="contact">Email: <a href="mailto:ii2030@endeva.org">ii2030@endeva.org</a></p>
+            <p className="contact">LinkedIn: <a href="https://www.linkedin.com/company/endeva/">Endeva</a></p>
+          </Grid>
+          <Grid item xs={12} md={7}>
+            <Grid container spacing={2}>
 
-            <Grid item xs={12} md={4}>
-              <p>Overview</p>
-              <ul>
-                <li><Link to={"/#overview"}>ii2030 Overview</Link></li>
-                <li><Link to={"/#timeline"}>Timeline</Link></li>
-                <li><Link to={"/#tracks"}>Tracks</Link></li>
-                <li><Link to={"/#agenda"}>Program</Link></li>
-                <li><Link to={"/#cocreation_process"}>Process</Link></li>
-                <li><Link to={"/#partners"}>Partners</Link></li>
-              </ul>
+              <Grid item xs={12} md={4}>
+                <p className="column-header">Pages</p>
+                <ul>
+                  <li><Link to={"/"}>ii2030 home</Link></li>
+                  <li><Link to={"/africa-for-the-future"}>#Africa4Future</Link></li>
+                  <li><Link to={"/past-events"}>past events</Link></li>
+                  <li><Link to={"/faq"}>faq</Link></li>
+                  <li><Link to={"/impressum"}>impressum</Link></li>
+                </ul>
+              </Grid>
+
+              <Grid item xs={12} md={4}>
+                <p className="column-header">#Africa4Future tracks</p>
+                <ul>
+                {
+                  tracks.map(track => <li key={track.slug}><Link to={track.slug}>{track.tech}</Link></li>)
+                }
+                </ul>
+              </Grid>
+
+              <Grid item xs={12} md={4}>
+                <Link to={"/"} className="btn blue mt-10">register now!</Link>
+              </Grid>
+
             </Grid>
-
-            <Grid item xs={12} md={4}>
-              <ul>
-                <li><Link to={"/faqs"}>FAQs</Link></li>
-                <li><Link to={"/impressum"}>Impressum</Link></li>
-              </ul>
-            </Grid>
-
           </Grid>
         </Grid>
-      </Grid>
       </Container>
     </footer>
   );
@@ -59,7 +65,7 @@ export default () => (
             }
           }
         }
-        allTracks(filter: { year: { eq: 2019 } }) {
+        allTracks(filter: { year: { eq: 2020 } }) {
           edges {
             node {
               id

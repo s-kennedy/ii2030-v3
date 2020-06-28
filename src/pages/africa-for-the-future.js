@@ -146,7 +146,7 @@ class HomePage extends React.Component {
 
         <Section id="journey" className="bg-light">
           <Grid container>
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               <h2><EditableText content={content["journey-title"]} onSave={this.onSave('journey-title')} /></h2>
               <div className="underline" />
             </Grid>
@@ -176,7 +176,7 @@ class HomePage extends React.Component {
 
         <Section id="track-list" className="">
           <Grid container>
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               <h2><EditableText content={content["tracklist-title"]} onSave={this.onSave('tracklist-title')} /></h2>
               <div className="underline" />
             </Grid>

@@ -120,7 +120,7 @@ class HomePage extends React.Component {
 
         <Section id="2019" className="">
           <Grid container data-aos="fade-in">
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               <h2><EditableText content={content["2019-title"]} onSave={this.onSave('2019-title')} /></h2>
               <div className="underline" />
             </Grid>
@@ -206,7 +206,7 @@ class HomePage extends React.Component {
 
         <Section id="2017" className="">
           <Grid container data-aos="fade-in">
-            <Grid item xs={5}>
+            <Grid item xs={12} md={5}>
               <h2><EditableText content={content["2017-title"]} onSave={this.onSave('2017-title')} /></h2>
               <div className="underline" />
             </Grid>

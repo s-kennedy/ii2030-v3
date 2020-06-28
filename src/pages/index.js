@@ -240,6 +240,12 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={5}>
                 <div className="horiz-center">
                   <div className="process-collage">
+                    <div className="step-title mr-20">
+                      <div className="horiz-center vert-center fit-content">
+                        <div className="number">consultation</div>
+                        <div className="bg-circle"></div>
+                      </div>
+                    </div>
                     <div className="robot-icon">
                       <img className="parallax-it" data-depth="0.2" src={headIcon} alt="friendly robot head" />
                     </div>
@@ -247,12 +253,6 @@ class HomePage extends React.Component {
                 </div>
               </Grid>
               <Grid item xs={12} md={7}>
-                <div className="step-title ml--80 mb--20">
-                  <div className="horiz-center vert-center fit-content">
-                    <div className="number">consultation</div>
-                    <div className="bg-circle"></div>
-                  </div>
-                </div>
                 <div className="step-description">
                   <ExpansionPanel square elevation={0} style={{ backgroundColor: 'transparent' }}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />}>
@@ -270,6 +270,12 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={5}>
                 <div className="horiz-center">
                   <div className="process-collage">
+                    <div className="step-title mr-20">
+                      <div className="horiz-center vert-center fit-content">
+                        <div className="number">co-creation</div>
+                        <div className="bg-circle"></div>
+                      </div>
+                    </div>
                     <div className="robot-icon">
                       <img className="parallax-it" data-depth="0.4" src={factoryIcon} alt="friendly factory" />
                     </div>
@@ -277,12 +283,6 @@ class HomePage extends React.Component {
                 </div>
               </Grid>
               <Grid item xs={12} md={7}>
-                <div className="step-title ml--80 mb--20">
-                  <div className="horiz-center vert-center fit-content">
-                    <div className="number">co-creation</div>
-                    <div className="bg-circle"></div>
-                  </div>
-                </div>
                 <div className="step-description">
                   <ExpansionPanel square elevation={0} style={{ backgroundColor: 'transparent' }}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />}>
@@ -300,6 +300,12 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={5}>
                 <div className="horiz-center">
                   <div className="process-collage">
+                    <div className="step-title mr-20">
+                      <div className="horiz-center vert-center fit-content">
+                        <div className="number">implementation</div>
+                        <div className="bg-circle"></div>
+                      </div>
+                    </div>
                     <div className="robot-icon">
                       <img className="parallax-it" data-depth="0.6" src={tourIcon} alt="friendly rocket" />
                     </div>
@@ -307,12 +313,6 @@ class HomePage extends React.Component {
                 </div>
               </Grid>
               <Grid item xs={12} md={7}>
-                <div className="step-title ml--80 mb--20">
-                  <div className="horiz-center vert-center fit-content">
-                    <div className="number">implementation</div>
-                    <div className="bg-circle"></div>
-                  </div>
-                </div>
                 <div className="step-description">
                   <ExpansionPanel square elevation={0} style={{ backgroundColor: 'transparent' }}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />}>

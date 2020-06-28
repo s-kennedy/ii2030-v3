@@ -689,6 +689,7 @@ section#participants {
     line-height: 1;
     transform: rotate(-15deg);
     color: $red;
+    white-space: nowrap;
   }
 }
 

@@ -216,6 +216,16 @@ i.pause-btn, i.play-btn {
   }
 }
 
+.slick-arrow {
+  &.slick-next {
+    right: 15px;
+  }
+
+  &.slick-prev {
+    left: 15px;
+  }
+}
+
 .cta {
   display: flex;
   justify-content: space-between;
@@ -383,6 +393,15 @@ i.pause-btn, i.play-btn {
 
   .selected {
     border-bottom: 4px solid $orange;
+  }
+
+}
+
+#menu-appbar {
+  a, button {
+    &:focus, &:hover {
+      color: $black !important;
+    }
   }
 }
 

@@ -8,7 +8,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Menu from '@material-ui/core/Menu';
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
+import MenuIcon from "@material-ui/icons/Menu";
 
 
 const styles = {
@@ -168,13 +174,37 @@ class OverviewDropdown extends React.Component {
 
 
 class Navigation extends React.Component {
+  state = {
+    anchorEl: null,
+    subAnchorEl: null,
+  }
+
+  handleMenu = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  handleSubMenu = event => {
+    this.setState({ subAnchorEl: event.currentTarget });
+  };
+
+  handleSubClose = () => {
+    this.setState({ subAnchorEl: null });
+  };
 
   render() {
     const tracks = this.props.data.allTracks.edges.map(t => t.node)
     const selected = this.props.location ? this.props.location.pathname : ""
+    const { anchorEl, subAnchorEl } = this.state;
+    const open = Boolean(anchorEl);
+    const submenuOpen = Boolean(subAnchorEl);
 
     return (
       <div style={styles.menu} id="main-menu">
+        <Hidden smDown>
           <Grid container justify="space-between" alignItems="center">
             <Grid item style={styles.grow}>
               <div className="menu-left">
@@ -189,6 +219,48 @@ class Navigation extends React.Component {
               <Link to="/" className="btn blue">register now!</Link>
             </Grid>
           </Grid>
+        </Hidden>
+
+        <Hidden mdUp>
+          <Grid container justify="space-between" alignItems="center">
+            <Grid item style={styles.grow}>
+              <Link to={'/'} className={`menu-heading ${selected === '/' ? 'selected' : ""}`}>ii2030</Link>
+            </Grid>
+            <Grid item>
+              <Button
+                aria-owns={open ? 'menu-appbar' : undefined}
+                aria-haspopup="true"
+                onClick={this.handleMenu}
+                color="inherit"
+              >
+                <>
+                  menu
+                  <MenuIcon style={{ marginLeft: '4px' }}/>
+                </>
+              </Button>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                getContentAnchorEl={null}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={open}
+                onClose={this.handleClose}
+              >
+                <MenuItem onClick={this.handleClose} component={Link} to={"/africa-for-the-future"}>#Africa4Future</MenuItem>
+                <MenuItem onClick={this.handleClose} component={Link} to={"/past-events"}>past events</MenuItem>
+                <MenuItem onClick={this.handleClose} component={Link} to={"/faq"}>faq</MenuItem>
+                <MenuItem onClick={this.handleClose} className="btn blue" component={Link} to={"/register"}>Register now!</MenuItem>
+              </Menu>
+            </Grid>
+          </Grid>
+        </Hidden>
       </div>
     );
   }
