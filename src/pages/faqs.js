@@ -100,7 +100,7 @@ class FrequentlyAskedQuestions extends React.Component {
 
     return (
       <Layout>
-        <div className="bg-circuit-blue">
+        <div className="">
           <Section id="faqs">
             <h2 className="mb-60">
               <EditableText

@@ -62,7 +62,7 @@ const Testimonial = props => {
       content={content}
       {...props}
     >
-      <div className={`testimonial`}>
+      <div className={`testimonial ${props.className ? props.className : ""}`}>
         <div className="image-container">
           <div className="img-bg">
             <img src={bgImg} alt="" />

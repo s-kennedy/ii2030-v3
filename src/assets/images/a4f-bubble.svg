@@ -1,43 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generator: Adobe Illustrator 23.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="1199.34px" height="627.874px" viewBox="0 0 1199.34 627.874" enable-background="new 0 0 1199.34 627.874"
-	 xml:space="preserve">
+	 viewBox="0 0 777.4 525.6" style="enable-background:new 0 0 777.4 525.6;" xml:space="preserve">
+<style type="text/css">
+	.st0{clip-path:url(#SVGID_2_);fill:#B84328;}
+	.st1{fill:#B84328;}
+	.st2{fill:#FFFFFF;}
+	.st3{font-family:'Roboto-Italic';}
+	.st4{font-size:288.5361px;}
+	.st5{font-size:168.2165px;}
+	.st6{letter-spacing:-4;}
+	.st7{font-family:'Roboto-Medium';}
+	.st8{font-size:52.9185px;}
+	.st9{font-size:52.9205px;}
+	.st10{font-size:52.9159px;}
+	.st11{font-size:52.9165px;}
+	.st12{font-size:52.9186px;}
+	.st13{font-size:52.9164px;}
+	.st14{font-size:52.9211px;}
+	.st15{font-size:52.9201px;}
+	.st16{font-size:52.9204px;}
+	.st17{font-size:52.9219px;}
+</style>
 <g>
-	<defs>
-		<rect id="SVGID_1_" width="1199.339" height="627.874"/>
-	</defs>
-	<clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_1_"  overflow="visible"/>
-	</clipPath>
-	<path clip-path="url(#SVGID_2_)" fill="#B84328" d="M554.284,567.034c-179.295,0-324.642-115.022-324.642-256.91
-		c0-141.888,145.347-256.911,324.642-256.911c179.295,0,324.641,115.023,324.641,256.911
-		C878.925,452.012,733.579,567.034,554.284,567.034"/>
+	<g>
+		<defs>
+			<rect id="SVGID_1_" x="-220.9" y="-46.8" width="1199.3" height="627.9"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+		</clipPath>
+		<path class="st0" d="M333.4,520.2c-179.3,0-324.6-115-324.6-256.9S154.1,6.4,333.4,6.4S658,121.5,658,263.3
+			S512.7,520.2,333.4,520.2"/>
+	</g>
 </g>
-<polygon fill="#B84328" points="723.307,488.92 993.532,499.843 820.6,380.073 "/>
-<text transform="matrix(1 0 0 1 277.4946 413.3115)" fill="#FFFFFF" font-family="'RobotoSlab-Regular'" font-size="288.5361">ii</text>
-<text transform="matrix(1 0 0 1 464.2427 311.6924)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'RobotoSlab-Regular'" font-size="168.2165">20</tspan><tspan x="188.833" y="0" fill="#FFFFFF" font-family="'RobotoSlab-Regular'" font-size="168.2165" letter-spacing="-5">3</tspan><tspan x="274.63" y="0" fill="#FFFFFF" font-family="'RobotoSlab-Regular'" font-size="168.2165">0</tspan></text>
-<text transform="matrix(0.799 0.6013 -0.6013 0.799 334.376 463.2275)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">#</text>
-<text transform="matrix(0.8663 0.4996 -0.4996 0.8663 361.4941 483.6162)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">A</text>
-<text transform="matrix(0.9097 0.4153 -0.4153 0.9097 393.6162 501.5879)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">f</text>
-<text transform="matrix(0.9334 0.3587 -0.3587 0.9334 412.1523 509.9902)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">r</text>
-<text transform="matrix(0.9533 0.3019 -0.3019 0.9533 431.0269 517.1758)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">i</text>
-<text transform="matrix(0.9696 0.2448 -0.2448 0.9696 445.3599 521.9775)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">c</text>
-<text transform="matrix(0.9873 0.1588 -0.1588 0.9873 473.7588 529.2334)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9186">a</text>
-<text transform="matrix(0.9966 0.0819 -0.0819 0.9966 503.5986 534.1016)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">4</text>
-<text transform="matrix(1 -0.0048 0.0048 1 535.1772 536.71)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">F</text>
-<text transform="matrix(0.9966 -0.0819 0.0819 0.9966 565.2842 536.6777)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">u</text>
-<text transform="matrix(0.9888 -0.1492 0.1492 0.9888 596.165 533.9854)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">t</text>
-<text transform="matrix(0.9764 -0.2162 0.2162 0.9764 615.1855 531.3584)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">u</text>
-<text transform="matrix(0.9592 -0.2829 0.2829 0.9592 645.4023 524.4521)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">r</text>
-<text transform="matrix(0.9334 -0.3587 0.3587 0.9334 664.3848 519.0889)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">e</text>
-<text transform="matrix(0.9097 -0.4153 0.4153 0.9097 692.291 508.1201)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185"> </text>
-<text transform="matrix(0.8768 -0.4809 0.4809 0.8768 705.8223 502.165)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">E</text>
-<text transform="matrix(0.819 -0.5738 0.5738 0.819 732.9854 487.1357)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">d</text>
-<text transform="matrix(0.7627 -0.6468 0.6468 0.7627 758.5088 468.7451)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">i</text>
-<text transform="matrix(0.7138 -0.7004 0.7004 0.7138 770.1064 459.0547)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">t</text>
-<text transform="matrix(0.6588 -0.7524 0.7524 0.6588 783.8154 445.624)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9186">i</text>
-<text transform="matrix(0.5751 -0.8181 0.8181 0.5751 794.2412 434.6084)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">o</text>
-<text transform="matrix(0.4532 -0.8914 0.8914 0.4532 812.4502 408.5889)" fill="#FFFFFF" font-family="'Roboto-Medium'" font-size="52.9185">n</text>
+<polygon class="st1" points="502.4,442.1 772.7,453.1 599.7,333.3 "/>
+<text transform="matrix(1 0 0 1 56.6173 366.5256)" class="st2 st3 st4">ii</text>
+<text transform="matrix(1 0 0 1 243.3654 264.9066)" class="st2 st3 st5">20</text>
+<text transform="matrix(1 0 0 1 432.1984 264.9066)" class="st2 st3 st5 st6">3</text>
+<text transform="matrix(1 0 0 1 517.9954 264.9066)" class="st2 st3 st5">0</text>
+<text transform="matrix(0.799 0.6013 -0.6013 0.799 113.4986 416.4417)" class="st2 st7 st8">#</text>
+<text transform="matrix(0.8663 0.4996 -0.4996 0.8663 140.6165 436.831)" class="st2 st7 st9">A</text>
+<text transform="matrix(0.9097 0.4153 -0.4153 0.9097 172.7389 454.8021)" class="st2 st7 st8">f</text>
+<text transform="matrix(0.9334 0.3587 -0.3587 0.9334 191.2754 463.2047)" class="st2 st7 st10">r</text>
+<text transform="matrix(0.9533 0.3019 -0.3019 0.9533 210.1503 470.3906)" class="st2 st7 st11">i</text>
+<text transform="matrix(0.9696 0.2448 -0.2448 0.9696 224.4825 475.1916)" class="st2 st7 st8">c</text>
+<text transform="matrix(0.9873 0.1588 -0.1588 0.9873 252.8815 482.4475)" class="st2 st7 st12">a</text>
+<text transform="matrix(0.9966 8.190332e-02 -8.190332e-02 0.9966 282.7211 487.3152)" class="st2 st7 st13">4</text>
+<text transform="matrix(1 -4.800000e-03 4.800000e-03 1 314.2999 489.9242)" class="st2 st7 st8">F</text>
+<text transform="matrix(0.9966 -8.190332e-02 8.190332e-02 0.9966 344.4064 489.8912)" class="st2 st7 st13">u</text>
+<text transform="matrix(0.9888 -0.1492 0.1492 0.9888 375.2877 487.1996)" class="st2 st7 st8">t</text>
+<text transform="matrix(0.9764 -0.2162 0.2162 0.9764 394.3088 484.5732)" class="st2 st7 st14">u</text>
+<text transform="matrix(0.9592 -0.2829 0.2829 0.9592 424.5242 477.6655)" class="st2 st7 st14">r</text>
+<text transform="matrix(0.9334 -0.3587 0.3587 0.9334 443.5075 472.3031)" class="st2 st7 st10">e</text>
+<text transform="matrix(0.9097 -0.4153 0.4153 0.9097 471.4139 461.3343)" class="st2 st7 st8"> </text>
+<text transform="matrix(0.8768 -0.4809 0.4809 0.8768 484.945 455.3794)" class="st2 st7 st8">E</text>
+<text transform="matrix(0.819 -0.5738 0.5738 0.819 512.1081 440.35)" class="st2 st7 st8">d</text>
+<text transform="matrix(0.7627 -0.6468 0.6468 0.7627 537.6313 421.959)" class="st2 st7 st15">i</text>
+<text transform="matrix(0.7138 -0.7004 0.7004 0.7138 549.228 412.2683)" class="st2 st7 st16">t</text>
+<text transform="matrix(0.6588 -0.7524 0.7524 0.6588 562.9387 398.8372)" class="st2 st7 st17">i</text>
+<text transform="matrix(0.5751 -0.8181 0.8181 0.5751 573.364 387.8226)" class="st2 st7 st8">o</text>
+<text transform="matrix(0.4532 -0.8914 0.8914 0.4532 591.5729 361.8028)" class="st2 st7 st8">n</text>
 </svg>

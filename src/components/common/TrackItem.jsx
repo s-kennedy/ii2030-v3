@@ -27,42 +27,35 @@ const TrackItemEditor = ({ content, onContentChange }) => {
 
   return(
     <div className={`track-item mb-40`}>
-      <Grid container spacing={4}>
-        <Grid item xs={12} sm={3}>
-          <div className="image-container">
-            <div className="img-bg" />
-            <ImageUploadEditor
-              content={content["track-item-image"]}
-              onContentChange={handleEditorChange("track-item-image")}
-              uploadImage={uploadImage}
-            />
-          </div>
-        </Grid>
+      <div className="image-container">
+        <div className="img-bg" />
+        <ImageUploadEditor
+          content={content["track-item-image"]}
+          onContentChange={handleEditorChange("track-item-image")}
+          uploadImage={uploadImage}
+        />
+      </div>
 
-        <Grid item xs={12} sm={9}>
-
-          <div className="text">
-            <h4 className="mb-20">
-              <PlainTextEditor
-                content={content["track-item-title"]}
-                onContentChange={handleEditorChange("track-item-title")}
-              />
-            </h4>
-            <div className="description">
-              <RichTextEditor
-                content={content["track-item-description"]}
-                onContentChange={handleEditorChange("track-item-description")}
-              />
-            </div>
-            <div className="link">
-              <LinkEditor
-                content={content["track-item-link"]}
-                onContentChange={handleEditorChange("track-item-link")}
-              />
-            </div>
-          </div>
-        </Grid>
-      </Grid>
+      <div className="text">
+        <h4 className="mb-20">
+          <PlainTextEditor
+            content={content["track-item-title"]}
+            onContentChange={handleEditorChange("track-item-title")}
+          />
+        </h4>
+        <div className="description">
+          <RichTextEditor
+            content={content["track-item-description"]}
+            onContentChange={handleEditorChange("track-item-description")}
+          />
+        </div>
+        <div className="link">
+          <LinkEditor
+            content={content["track-item-link"]}
+            onContentChange={handleEditorChange("track-item-link")}
+          />
+        </div>
+      </div>
     </div>
   )
 }
@@ -86,44 +79,38 @@ const TrackItem = props => {
       content={content}
       {...props}
     >
-      <div className={`track-item mb-40 mt-40`} data-aos="fade-in">
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={3}>
-            <div className="image-container">
-              <div className="bg-circle"></div>
-              <div className="icon">
-              {
-                content["track-item-image"] &&
-                <img
-                  className="image"
-                  src={content["track-item-image"]["imageSrc"]}
-                  alt={content["track-item-image"]["caption"]}
-                />
-              }
-              </div>
-            </div>
-          </Grid>
+      <div className={`mb-40 mt-40`} data-aos="fade-in">
+        <div className="image-container">
+          <div className="bg-circle"></div>
+          <div className="icon">
+          {
+            content["track-item-image"] &&
+            <img
+              className="image"
+              src={content["track-item-image"]["imageSrc"]}
+              alt={content["track-item-image"]["caption"]}
+            />
+          }
+          </div>
+        </div>
 
-          <Grid item xs={12} sm={9}>
-            <div className="text">
-              {
-                content["track-item-title"] &&
-                <h4 className="mb-20">
-                  { content["track-item-title"]["text"] }
-                </h4>
-              }
-              {
-                content["track-item-description"] &&
-                <div className="description mb-20" dangerouslySetInnerHTML={ {__html: content["track-item-description"]["text"]} }>
-                </div>
-              }
-              {
-                content["track-item-link"] &&
-                <Link className="link" to={content["track-item-link"]["link"]}>{content["track-item-link"]["anchor"]}<ArrowIcon /></Link>
-              }
+        <div className="text mt-20">
+          {
+            content["track-item-title"] &&
+            <h4 className="mb-20">
+              { content["track-item-title"]["text"] }
+            </h4>
+          }
+          {
+            content["track-item-description"] &&
+            <div className="description mb-20" dangerouslySetInnerHTML={ {__html: content["track-item-description"]["text"]} }>
             </div>
-          </Grid>
-        </Grid>
+          }
+          {
+            content["track-item-link"] &&
+            <Link className="link red" to={content["track-item-link"]["link"]}>{content["track-item-link"]["anchor"]}<ArrowIcon /></Link>
+          }
+        </div>
       </div>
     </Editable>
   );

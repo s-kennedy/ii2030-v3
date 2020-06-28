@@ -156,7 +156,7 @@ class Navigation extends React.Component {
             <Grid item style={styles.grow}>
               <div className="menu-left">
                 <Link to={'/'} className="menu-heading">ii2030</Link>
-                <Link to={'/about'} className="">about</Link>
+                <Link to={'/africa-for-the-future'} className="">#Africa4Future</Link>
                 <Link to={'/past-events'} className="">past events</Link>
                 <Link to={'/faqs'} className="">faq</Link>
               </div>

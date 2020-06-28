@@ -1,7 +1,9 @@
-import React from "react";
+import React, { createRef } from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
-import { EditableText, EditableParagraph, EditableLink } from "react-easy-editables"
+import Parallax from 'parallax-js'
+import { EditableText, EditableParagraph, EditableLink, EditableImageUpload } from "react-easy-editables"
+import { uploadImage } from "../firebase/operations"
 
 import {
   updatePage,
@@ -15,8 +17,9 @@ import Grid from "@material-ui/core/Grid"
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
 import TrackList from "../components/common/TrackList"
-import bgImg1 from "../assets/images/shapes/header-triangle-red.svg"
-import bgImg2 from "../assets/images/shapes/polygon-orange.svg"
+import TrackRecord from "../components/common/TrackRecord"
+import bgImg1 from "../assets/images/shapes/triangle-blue.svg"
+import bgImg2 from "../assets/images/shapes/header-triangle-orange.svg"
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -55,8 +58,13 @@ class HomePage extends React.Component {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content)
     };
+    this.parallaxRef = createRef()
 
     this.props.onLoadPageData(initialPageData);
+  }
+
+  componentDidMount() {
+    new Parallax(this.parallaxRef.current, { pointerEvents: true })
   }
 
   onSave = id => content => {
@@ -79,14 +87,13 @@ class HomePage extends React.Component {
         <Section id="header" data-aos="fade-in">
           <div className="content">
             <Grid container>
-              <Grid item xs={12} md={7}>
+              <Grid item xs={12} md={6}>
                 <h1><EditableText content={content["landing-title"]} onSave={this.onSave('landing-title')} /></h1>
               </Grid>
-            </Grid>
-
-            <Grid container justify="flex-end">
-              <Grid item xs={12} md={5}>
-                <h1 className="oversize"><EditableText content={content["landing-secondary-title"]} onSave={this.onSave('landing-secondary-title')} /></h1>
+              <Grid item xs={12} md={6} ref={this.parallaxRef}>
+                <div data-depth={"0.5"} className="mt-100 mb--100">
+                  <EditableImageUpload content={content["landing-image"]} onSave={this.onSave('landing-image')} uploadImage={uploadImage} />
+                </div>
               </Grid>
             </Grid>
 
@@ -104,40 +111,83 @@ class HomePage extends React.Component {
           </div>
         </Section>
 
-        <Section id="overview" className="bg-light bg-circuit-white">
-          <div className="mb-60" data-aos="fade-in">
+        <Section id="overview" className="bg-dark">
+          <div data-aos="fade-in">
             <Grid container>
               <Grid item xs={12} md={5} >
                 <h2><EditableText content={content["overview-title"]} onSave={this.onSave('overview-title')} /></h2>
+                <div className="underline" />
               </Grid>
+            </Grid>
+            <Grid container justify="flex-end">
               <Grid item xs={12} md={7}>
                 <EditableParagraph content={content["overview-description"]} onSave={this.onSave('overview-description')} />
-                <EditableLink classes="link" content={content["overview-link"]} onSave={this.onSave('overview-link')} />
+                <EditableLink content={content["overview-link"]} onSave={this.onSave('overview-link')} classes="btn white mt-20" />
               </Grid>
             </Grid>
           </div>
+        </Section>
 
-          <div className="mb-60" data-aos="fade-in">
+        <Section id="overview" >
+          <div className="" data-aos="fade-in">
             <Grid container>
               <Grid item xs={12} md={5} >
                 <h2><EditableText content={content["special-edition-title"]} onSave={this.onSave('special-edition-title')} /></h2>
+                <div className="underline" />
               </Grid>
+            </Grid>
+            <Grid container justify="flex-end">
               <Grid item xs={12} md={7}>
                 <EditableParagraph content={content["special-edition-description"]} onSave={this.onSave('special-edition-description')} />
               </Grid>
             </Grid>
           </div>
+        </Section>
+
+        <Section id="journey" className="bg-light">
+          <Grid container>
+            <Grid item xs={5}>
+              <h2><EditableText content={content["journey-title"]} onSave={this.onSave('journey-title')} /></h2>
+              <div className="underline" />
+            </Grid>
+          </Grid>
+          <Grid container justify="flex-end" className="mb-40">
+            <Grid item xs={12} md={7}>
+              <EditableParagraph content={content["journey-description"]} onSave={this.onSave('journey-description')} />
+            </Grid>
+          </Grid>
+
+          <Grid container spacing={6}>
+            <Grid item xs={12} md={3} className="journey-container mt-40" data-aos="fade-in" data-aos-delay="50">
+              <TrackRecord className="mt-100" content={content["journey-step-1"]} onSave={this.onSave('journey-step-1')} shape="arrow" />
+            </Grid>
+            <Grid item xs={12} md={3} className="journey-container mt-80" data-aos="fade-in" data-aos-delay="200">
+              <TrackRecord className="mt-70" content={content["journey-step-2"]} onSave={this.onSave('journey-step-2')} shape="arrow" />
+            </Grid>
+            <Grid item xs={12} md={3} className="journey-container mt-60" data-aos="fade-in" data-aos-delay="350">
+              <TrackRecord className="mt-40" content={content["journey-step-3"]} onSave={this.onSave('journey-step-3')} shape="arrow" />
+            </Grid>
+            <Grid item xs={12} md={3} className="journey-container" data-aos="fade-in" data-aos-delay="450">
+              <TrackRecord content={content["journey-step-4"]} onSave={this.onSave('journey-step-4')} shape="arrow" />
+            </Grid>
+          </Grid>
 
         </Section>
 
         <Section id="track-list" className="">
           <Grid container>
-            <Grid item xs={12}>
-              <h2 className="mb-40"><EditableText content={content["tracklist-title"]} onSave={this.onSave('tracklist-title')} /></h2>
+            <Grid item xs={5}>
+              <h2><EditableText content={content["tracklist-title"]} onSave={this.onSave('tracklist-title')} /></h2>
+              <div className="underline" />
+            </Grid>
+          </Grid>
+          <Grid container justify="flex-end">
+            <Grid item xs={12} md={7}>
+              <EditableParagraph content={content["tracklist-description"]} onSave={this.onSave('tracklist-description')} />
             </Grid>
           </Grid>
           <Grid container justify="center">
-            <Grid item xs={12} md={8}>
+            <Grid item xs={12}>
               <TrackList
                 content={content["track-list"]}
                 onSave={this.onSave('track-list')}
@@ -149,7 +199,7 @@ class HomePage extends React.Component {
           </Grid>
         </Section>
 
-        <Section id="cta" className="bg-light bg-circuit-white-right" data-aos="fade-in">
+        <Section id="cta" className="bg-dark" data-aos="fade-in">
           <Grid container>
             <Grid item xs={12}>
               <div className="cta">
@@ -157,7 +207,7 @@ class HomePage extends React.Component {
                   <EditableText content={content["cta-text"]} onSave={this.onSave('cta-text')} />
                 </h2>
                 <div className="line" />
-                <EditableLink classes="btn" content={content["cta-link"]} onSave={this.onSave('cta-link')} />
+                <EditableLink classes="btn white" content={content["cta-link"]} onSave={this.onSave('cta-link')} />
               </div>
             </Grid>
           </Grid>
@@ -168,7 +218,10 @@ class HomePage extends React.Component {
             <Grid container>
               <Grid item xs={12} md={5} >
                 <h2><EditableText content={content["partners-title"]} onSave={this.onSave('partners-title')} /></h2>
+                <div className="underline" />
               </Grid>
+            </Grid>
+            <Grid container justify="flex-end">
               <Grid item xs={12} md={7}>
                 <EditableParagraph content={content["partners-description"]} onSave={this.onSave('partners-description')} />
               </Grid>

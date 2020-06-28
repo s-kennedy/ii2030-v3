@@ -636,7 +636,7 @@ section#participants {
   justify-content: flex-end;
   /*align-items: center;*/
   height: 240px;
-  width: 90%;
+  width: 100%;
 
   .robot-icon {
     position: absolute;
@@ -670,7 +670,6 @@ section#participants {
 
 .step-title {
   position: relative;
-  padding: 20px;
   font-family: $title-font;
   z-index: 1;
 
@@ -715,43 +714,46 @@ section#participants {
     }
 
     .quote {
-      border-left: 6px solid $yellow;
+      border-left: 6px solid $orange;
       padding-left: 20px;
       font-style: italic;
     }
   }
 
-  &:nth-of-type(3n+1) {
-    .testimonial {
-      .image-container {
-        .img-bg img {
-          transform: rotate(0deg)
+  &.stagger {
+    &:nth-of-type(3n+1) {
+      .testimonial {
+        .image-container {
+          .img-bg img {
+            transform: rotate(0deg)
+          }
+        }
+      }
+    }
+
+    &:nth-of-type(3n+2) {
+      .testimonial {
+        margin-top: 60px;
+        .image-container {
+          .img-bg img {
+            transform: rotate(180deg)
+          }
+        }
+      }
+    }
+
+    &:nth-of-type(3n+3) {
+      .testimonial {
+        margin-top: 120px;
+        .image-container {
+          .img-bg img {
+            transform: rotate(245deg)
+          }
         }
       }
     }
   }
 
-  &:nth-of-type(3n+2) {
-    .testimonial {
-      margin-top: 60px;
-      .image-container {
-        .img-bg img {
-          transform: rotate(180deg)
-        }
-      }
-    }
-  }
-
-  &:nth-of-type(3n+3) {
-    .testimonial {
-      margin-top: 120px;
-      .image-container {
-        .img-bg img {
-          transform: rotate(245deg)
-        }
-      }
-    }
-  }
 }
 
 .track-item {
@@ -766,7 +768,8 @@ section#participants {
       height: 150px;
       width: 150px;
       border-radius: 150px;
-      background-color: $orange-100;
+      background-color: $red-100;
+      transition: all 0.25s ease;
     }
 
     .circuit {
@@ -777,7 +780,7 @@ section#participants {
     }
 
     .icon {
-      position: absolute;
+      transition: all 0.25s ease;
       bottom: 0;
       left: 0;
 
@@ -792,30 +795,74 @@ section#participants {
     .link {
       text-transform: uppercase;
       font-size: 0.8em;
+      transition: all 0.25s ease;
     }
   }
 
-  &:nth-of-type(3n+1) {
+  &:hover {
     .image-container {
       .bg-circle {
-        background-color: $red-100;
+        height: 200px;
+        width: 200px;
+        border-radius: 200px;
+        background-color: $red;
+      }
+
+      .icon {
+        img {
+          filter: brightness(100);
+        }
       }
     }
-  }
 
-  &:nth-of-type(3n+2) {
-    .image-container {
-      .bg-circle {
-        background-color: $blue-100;
-      }
+    a.link{
+      @include button;
     }
   }
+}
 
-  &:nth-of-type(3n+3) {
-    .image-container {
-      .bg-circle {
-        background-color: $orange-100;
+/*.collection {
+  .track-item {
+
+      &:nth-of-type(3n+1) {
+        margin-top: 0px;
       }
+
+      &:nth-of-type(3n+2) {
+        margin-top: 60px;
+      }
+
+      &:nth-of-type(3n+3) {
+        margin-top: 120px;
+      }
+
+  }
+}*/
+
+.journey-container {
+  .testimonial {
+    .image-container {
+      position: relative;
+
+      .img-bg {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+      }
+
+      img.image {
+        max-width: 100%;
+        min-height: 250px;
+        object-fit: cover;
+        padding: 40px;
+      }
+    }
+
+    .quote {
+      border-left: 6px solid $orange;
+      padding-left: 20px;
+      font-style: italic;
     }
   }
 

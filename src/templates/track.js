@@ -144,15 +144,15 @@ class TrackTemplate extends React.Component {
       <Layout className="track-page">
         <Section id="header" className="bg-light" data-aos="fade-in">
           <div className="content">
-            <Grid container spacing={6}>
-              <Grid item xs={12} md={6}>
+            <Grid container spacing={7}>
+              <Grid item xs={12} md={7}>
                 <h1 className="mb-40"><EditableText content={ { text: title } } onSave={this.onSaveTitle} /></h1>
-                <h2 className="subtitle">
+                <div className="subtitle">
                   <EditableText content={ content["topic"] } onSave={this.onSave('topic')} />
-                </h2>
+                </div>
               </Grid>
 
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={5}>
                 <div className="track-image">
                   <EditableImageUpload
                     classes="track-icon"
@@ -171,25 +171,30 @@ class TrackTemplate extends React.Component {
           </div>
         </Section>
 
+        <Section id="questions" className="">
           {
             questions.map(question => {
               const sectionContent = introSlides[question]
               return (
-                <Section className="question" key={question}>
-                  <Grid container spacing={6}>
+                <div className="question mb-20" key={question}>
+                  <Grid container>
                     <Grid item xs={12} md={5}>
-                      <h3>
+                      <div className="oversize">
                         <EditableText content={sectionContent["question"]} onSave={this.onSavePassthrough(question, "question")} />
-                      </h3>
+                      </div>
+                      <div className="underline" />
                     </Grid>
+                  </Grid>
+                  <Grid container justify="flex-end">
                     <Grid item xs={12} md={7}>
                       <EditableParagraph content={sectionContent["answer"]} onSave={this.onSavePassthrough(question, "answer")} />
                     </Grid>
                   </Grid>
-                </Section>
+                </div>
               )
             })
           }
+        </Section>
 
           { (trackLeads.length > 0) &&
             <Section id="track-lead" className="bg-light">

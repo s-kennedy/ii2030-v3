@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "@material-ui/core/Button"
+import Grid from "@material-ui/core/Grid"
 
 import TrackItem from "./TrackItem"
 
@@ -32,28 +33,27 @@ class TrackList extends React.Component {
     const itemsKeys = Object.keys(this.props.content);
 
     return (
-      <div className={`collection ${this.props.classes}`}>
-        {itemsKeys.map((key,index) => {
-          const content = this.props.content[key];
-          return(
-            <TrackItem
-              key={`track-item-${key}`}
-              index={index}
-              content={content}
-              onSave={this.onSaveItem(key)}
-              onDelete={this.onDeleteItem(key)}
-            />
-          )
-        })}
+      <Grid container spacing={4} className={`collection ${this.props.classes}`}>
+          {itemsKeys.map((key,index) => {
+            const content = this.props.content[key];
+            return(
+              <Grid item xs={12} md={4} key={`track-item-${key}`} className="track-item">
+                <TrackItem
+                  index={index}
+                  content={content}
+                  onSave={this.onSaveItem(key)}
+                  onDelete={this.onDeleteItem(key)}
+                />
+              </Grid>
+            )
+          })}
         {
           this.props.isEditingPage &&
-          <div className="row mt-4">
-            <div className="col-12">
-              <Button onClick={this.onAddItem}>Add item</Button>
-            </div>
-          </div>
+          <Grid item xs={12} md={4}>
+            <Button onClick={this.onAddItem}>Add item</Button>
+          </Grid>
         }
-      </div>
+      </Grid>
     );
   }
 }
