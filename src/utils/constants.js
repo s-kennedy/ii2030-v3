@@ -106,3 +106,11 @@ export const REFERENCE_URLS = {
   "definition-of-terms": true,
   "frequently-asked-questions": true
 }
+
+
+export const DEFAULT_COMPONENT_CONTENT = {
+  "partner-logos": {
+    "partner-image": { "imageSrc": "https://www.nomadiclabs.ca/img/logo-03.png", "title": "" },
+    "partner-link": { "link": "/", "anchor": "Link" }
+  },
+}

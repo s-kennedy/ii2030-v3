@@ -9,6 +9,8 @@ import AOS from 'aos';
 import {
   updatePage,
   loadPageData,
+  pushContentItem,
+  removeContentItem,
 } from "../redux/actions";
 
 import Grid from "@material-ui/core/Grid"
@@ -18,6 +20,8 @@ import Section from "../components/common/Section";
 import Testimonial from "../components/common/Testimonial"
 import TrackRecord from "../components/common/TrackRecord"
 import PopoutVideo from "../components/common/PopoutVideo"
+import PartnerLogo from "../components/common/PartnerLogo"
+import Collection from "../components/common/Collection";
 
 import headIcon from "../assets/images/head-icon-standardized.png"
 import tourIcon from "../assets/images/tour-icon-standardized.png"
@@ -27,6 +31,7 @@ import bgImg2 from "../assets/images/shapes/polygon-lg-blue.svg"
 import bgImg3 from "../assets/images/shapes/polygon-lg-vert.svg"
 import headerImg from "../assets/images/head.png"
 
+import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -41,6 +46,12 @@ const mapDispatchToProps = dispatch => {
     onLoadPageData: data => {
       dispatch(loadPageData(data));
     },
+    onPushContentItem: (location, data) => {
+      dispatch(pushContentItem(location, data))
+    },
+    onRemoveContentItem: (location, itemId) => {
+      dispatch(removeContentItem(location, itemId))
+    },
   };
 };
 
@@ -48,6 +59,7 @@ const mapStateToProps = state => {
   return {
     pageData: state.page.data,
     isLoggedIn: state.adminTools.isLoggedIn,
+    isEditingPage: state.adminTools.isEditingPage,
   };
 };
 
@@ -73,6 +85,14 @@ class HomePage extends React.Component {
   onSave = id => content => {
     this.props.onUpdatePageData(PAGE_ID, id, content);
   };
+
+  onAddItem = id => content => {
+    this.props.onPushContentItem(id, content);
+  }
+
+  onDeleteItem = id => itemId => {
+    this.props.onRemoveContentItem(id, itemId)
+  }
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
@@ -325,16 +345,50 @@ class HomePage extends React.Component {
         </Section>
 
         <Section id="partners" className="">
-          <div className="mb-60" data-aos="fade-in">
+          <div data-aos="fade-in">
             <Grid container>
               <Grid item xs={12} md={5} >
                 <h2><EditableText content={content["partners-title"]} onSave={this.onSave('partners-title')} /></h2>
               </Grid>
-              <Grid item xs={12} md={7}>
-                <EditableParagraph content={content["partners-description"]} onSave={this.onSave('partners-description')} />
+            </Grid>
+          </div>
+
+          <Grid container>
+            <Collection
+              items={content["partner-logos"]}
+              Component={PartnerLogo}
+              onSave={this.onSave('partner-logos')}
+              onAddItem={this.onAddItem('partner-logos')}
+              onDeleteItem={this.onDeleteItem('partner-logos')}
+              isEditingPage={this.props.isEditingPage}
+              defaultContent={DEFAULT_COMPONENT_CONTENT['partner-logos']}
+              classes="partner-logos"
+            />
+          </Grid>
+
+        </Section>
+
+        <Section id="past-participants" className="pt-0">
+          <div data-aos="fade-in">
+            <Grid container>
+              <Grid item xs={12} md={5} >
+                <h2><EditableText content={content["participants-title"]} onSave={this.onSave('participants-title')} /></h2>
               </Grid>
             </Grid>
           </div>
+
+          <Grid container>
+            <Collection
+              items={content["participants-logos"]}
+              Component={PartnerLogo}
+              onSave={this.onSave('participants-logos')}
+              onAddItem={this.onAddItem('participants-logos')}
+              onDeleteItem={this.onDeleteItem('participants-logos')}
+              isEditingPage={this.props.isEditingPage}
+              defaultContent={DEFAULT_COMPONENT_CONTENT['partner-logos']}
+              classes="partner-logos"
+            />
+          </Grid>
 
         </Section>
 

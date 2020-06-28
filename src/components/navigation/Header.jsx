@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { StaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby";
 import { sortBy } from 'lodash';
@@ -26,7 +26,7 @@ const styles = {
     position: "fixed",
     width: "100%",
     borderBottom: "1px solid rgba(80, 143, 184, 0.2)",
-    zIndex: "99999",
+    zIndex: "999",
     justifyContent: "space-between"
   }
 }
@@ -49,8 +49,9 @@ class TracksDropdown extends React.Component {
     const open = Boolean(anchorEl);
     const orderedTracks = sortBy(this.props.tracks, ['node.navigation.order', 'node.tech'])
     return(
-      <div>
-        <Button
+      <Fragment>
+        <a
+          style={{ display: 'inline-flex', alignItems: 'center' }}
           aria-owns={open ? 'menu-appbar' : undefined}
           aria-haspopup="true"
           onClick={this.handleMenu}
@@ -60,7 +61,7 @@ class TracksDropdown extends React.Component {
             { this.props.anchorText }
             <ExpandMoreIcon />
           </>
-        </Button>
+        </a>
         <Menu
           id="menu-appbar"
           anchorEl={anchorEl}
@@ -80,7 +81,7 @@ class TracksDropdown extends React.Component {
             orderedTracks.map(track => <MenuItem onClick={this.handleClose} key={track.node.slug} component={Link} to={track.node.slug} style={styles.menuItem}>{track.node.title}</MenuItem>)
           }
         </Menu>
-      </div>
+      </Fragment>
     )
   }
 }
@@ -158,6 +159,7 @@ class Navigation extends React.Component {
                 <Link to={'/'} className="menu-heading">ii2030</Link>
                 <Link to={'/africa-for-the-future'} className="">#Africa4Future</Link>
                 <Link to={'/past-events'} className="">past events</Link>
+                <TracksDropdown anchorText={"tracks"} tracks={tracks2017} />
                 <Link to={'/faqs'} className="">faq</Link>
               </div>
             </Grid>

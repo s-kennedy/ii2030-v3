@@ -162,6 +162,10 @@ section {
   padding-right: $lg-spacing;
 }
 
+.d-flex {
+  display: flex;
+}
+
 .btn {
   @include button
 }
