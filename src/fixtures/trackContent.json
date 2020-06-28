@@ -1,0 +1,45 @@
+{
+  "icon" : {
+    "imageSrc" : "https://firebasestorage.googleapis.com/v0/b/endeva-ii2030.appspot.com/o/images%2Fagri-bubble.svg?alt=media&token=624cc642-d524-4054-847e-295ea98f6635"
+  },
+  "icon-small" : {
+    "imageSrc" : "https://firebasestorage.googleapis.com/v0/b/endeva-ii2030.appspot.com/o/images%2Fagri-red.svg?alt=media&token=ae2c15f4-79fb-4e7d-b701-c37e02e6af81"
+  },
+  "intro-slides" : {
+    "how" : {
+      "answer" : {
+        "text" : ""
+      },
+      "question" : {
+        "text" : "How"
+      }
+    },
+    "what" : {
+      "answer" : {
+        "text" : ""
+      },
+      "question" : {
+        "text" : "What"
+      }
+    },
+    "who" : {
+      "answer" : {
+        "text" : ""
+      },
+      "question" : {
+        "text" : "Who"
+      }
+    },
+    "why" : {
+      "answer" : {
+        "text" : ""
+      },
+      "question" : {
+        "text" : "Why"
+      }
+    }
+  },
+  "topic" : {
+    "text" : "Topic question"
+  }
+}

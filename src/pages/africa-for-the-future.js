@@ -83,7 +83,7 @@ class HomePage extends React.Component {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
 
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <Section id="header" data-aos="fade-in">
           <div className="content">
             <Grid container>

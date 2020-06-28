@@ -15,6 +15,7 @@ import {
 
 import ArrowDropDown from "@material-ui/icons/ArrowDropDown";
 import MenuItem from "@material-ui/core/MenuItem";
+import ListItemText from "@material-ui/core/ListItemText";
 import Menu from "@material-ui/core/Menu";
 
 const styles = {
@@ -116,18 +117,7 @@ class AccountButton extends React.Component {
                   closeMenu();
                 }}
               >
-                {toggleText}
-              </MenuItem>
-            )}
-
-            {props.allowEditing && (
-              <MenuItem
-                onClick={() => {
-                  props.onToggleNewPageModal({ edit: true });
-                  closeMenu();
-                }}
-              >
-                Page configuration
+                <ListItemText>{toggleText}</ListItemText>
               </MenuItem>
             )}
 
@@ -138,29 +128,7 @@ class AccountButton extends React.Component {
                   closeMenu();
                 }}
               >
-                Add new page
-              </MenuItem>
-            )}
-
-            {props.allowEditing && props.allowDuplicate && (
-              <MenuItem
-                onClick={() => {
-                  props.onToggleNewPageModal({ duplicate: true });
-                  closeMenu();
-                }}
-              >
-                Duplicate page
-              </MenuItem>
-            )}
-
-            {props.allowEditing && props.allowDuplicate && (
-              <MenuItem
-                onClick={() => {
-                  props.onToggleNewPageModal({ translation: true });
-                  closeMenu();
-                }}
-              >
-                Translate page
+                <ListItemText>Add new track</ListItemText>
               </MenuItem>
             )}
 
@@ -172,7 +140,7 @@ class AccountButton extends React.Component {
                 component={Link}
                 to={'/admin'}
               >
-                Website configuration
+                <ListItemText>Website configuration</ListItemText>
               </MenuItem>
             )}
 
@@ -183,7 +151,7 @@ class AccountButton extends React.Component {
                   closeMenu();
                 }}
               >
-                Publish changes
+                <ListItemText>Publish changes</ListItemText>
               </MenuItem>
             )}
 
@@ -196,7 +164,7 @@ class AccountButton extends React.Component {
                   closeMenu();
                 }}
               >
-                Publish from staging
+                <ListItemText>Publish from staging</ListItemText>
               </MenuItem>
             )}
 
@@ -207,7 +175,7 @@ class AccountButton extends React.Component {
               }}
               divider
             >
-              Log out
+              <ListItemText>Log out</ListItemText>
             </MenuItem>
           </Menu>
         </div>

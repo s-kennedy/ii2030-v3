@@ -5,15 +5,21 @@ import { sortBy } from 'lodash';
 
 import Button from "@material-ui/core/Button"
 import MenuItem from '@material-ui/core/MenuItem';
+import ListItemText from '@material-ui/core/ListItemText';
 import Menu from '@material-ui/core/Menu';
 import Grid from '@material-ui/core/Grid';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 
 const styles = {
+  menuHeader: {
+    fontFamily: 'Roboto Slab',
+    fontWeight: 100,
+  },
   menuItem: {
     fontWeight: 100,
     fontSize: '16px',
+    paddingLeft: '40px',
   },
   grow: {
     flexGrow: 1,
@@ -21,7 +27,7 @@ const styles = {
   menu: {
     backgroundColor: "#fff",
     color: "rgba(0, 0, 0, 0.87)",
-    padding: "20px",
+    padding: "10px 20px",
     display: "flex",
     position: "fixed",
     width: "100%",
@@ -44,14 +50,23 @@ class TracksDropdown extends React.Component {
     this.setState({ anchorEl: null });
   };
 
+  orderTracks = tracks => {
+    return sortBy(tracks, ['node.navigation.order', 'node.tech'])
+  }
+
   render() {
     const { anchorEl } = this.state;
+    const { tracks } = this.props;
     const open = Boolean(anchorEl);
-    const orderedTracks = sortBy(this.props.tracks, ['node.navigation.order', 'node.tech'])
+    const tracks2017 = this.orderTracks(tracks.filter(t => t.year === 2017))
+    const tracks2019 = this.orderTracks(tracks.filter(t => t.year === 2019))
+    const tracks2020 = this.orderTracks(tracks.filter(t => t.year === 2020))
+
     return(
       <Fragment>
-        <a
-          style={{ display: 'inline-flex', alignItems: 'center' }}
+        <button
+          style={{ display: 'inline-flex', alignItems: 'center', background: 'none', border: 'none' }}
+          className="link nav-link"
           aria-owns={open ? 'menu-appbar' : undefined}
           aria-haspopup="true"
           onClick={this.handleMenu}
@@ -59,9 +74,9 @@ class TracksDropdown extends React.Component {
         >
           <>
             { this.props.anchorText }
-            <ExpandMoreIcon />
+            <ExpandMoreIcon style={{ marginLeft: '2px' }} />
           </>
-        </a>
+        </button>
         <Menu
           id="menu-appbar"
           anchorEl={anchorEl}
@@ -77,8 +92,17 @@ class TracksDropdown extends React.Component {
           open={open}
           onClose={this.handleClose}
         >
+          <MenuItem disabled={true} key={"2020-tracks"} style={styles.menuHeader}>2020 tracks</MenuItem>
           {
-            orderedTracks.map(track => <MenuItem onClick={this.handleClose} key={track.node.slug} component={Link} to={track.node.slug} style={styles.menuItem}>{track.node.title}</MenuItem>)
+            tracks2020 && tracks2020.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
+          }
+          <MenuItem disabled={true} key={"2019-tracks"} style={styles.menuHeader}>2019 tracks</MenuItem>
+          {
+            tracks2019 && tracks2019.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
+          }
+          <MenuItem disabled={true} key={"2017-tracks"} style={styles.menuHeader}>2017 tracks</MenuItem>
+          {
+            tracks2017 && tracks2017.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
           }
         </Menu>
       </Fragment>
@@ -143,24 +167,22 @@ class OverviewDropdown extends React.Component {
 }
 
 
-
 class Navigation extends React.Component {
 
   render() {
-    const tracks = this.props.data.allTracks.edges
-    const tracks2017 = tracks.filter(track => track.node.year === 2017)
-    const tracks2019 = tracks.filter(track => track.node.year === 2019)
+    const tracks = this.props.data.allTracks.edges.map(t => t.node)
+    const selected = this.props.location ? this.props.location.pathname : ""
 
     return (
       <div style={styles.menu} id="main-menu">
-          <Grid container justify="space-between">
+          <Grid container justify="space-between" alignItems="center">
             <Grid item style={styles.grow}>
               <div className="menu-left">
-                <Link to={'/'} className="menu-heading">ii2030</Link>
-                <Link to={'/africa-for-the-future'} className="">#Africa4Future</Link>
-                <Link to={'/past-events'} className="">past events</Link>
-                <TracksDropdown anchorText={"tracks"} tracks={tracks2017} />
-                <Link to={'/faqs'} className="">faq</Link>
+                <Link to={'/'} className={`menu-heading ${selected === '/' ? 'selected' : ""}`}>ii2030</Link>
+                <Link to={'/africa-for-the-future'} className={`${selected === '/africa-for-the-future' ? 'selected' : ""}`}>#Africa4Future</Link>
+                <Link to={'/past-events'} className={`${selected === '/past-events' ? 'selected' : ""}`}>past events</Link>
+                <TracksDropdown anchorText={"tracks"} tracks={tracks} />
+                <Link to={'/faqs'} className={`${selected === '/faqs' ? 'selected' : ""}`}>faq</Link>
               </div>
             </Grid>
             <Grid item>
@@ -172,7 +194,7 @@ class Navigation extends React.Component {
   }
 }
 
-export default () => (
+export default (props) => (
   <StaticQuery
     query={graphql`
       query {
@@ -202,7 +224,7 @@ export default () => (
       }
     `}
     render={data => (
-      <Navigation data={data} />
+      <Navigation {...props} data={data} />
     )}
   />
 )

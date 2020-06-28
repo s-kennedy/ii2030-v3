@@ -47,7 +47,8 @@ const mapStateToProps = state => {
 };
 
 class TrackTemplate extends React.Component {
-  componentDidMount() {
+  constructor(props) {
+    super(props);
     const initialPageData = {
       ...this.props.data.tracks,
       content: JSON.parse(this.props.data.tracks.content)
@@ -121,16 +122,17 @@ class TrackTemplate extends React.Component {
     this.props.onUpdateTrackContent(id, "track-leads", arr)
   };
 
-  onSavePassthrough = (key, fieldId) => content => {
+  onSaveQuestion = (introSlides, key, fieldId) => content => {
     const slides = {
-      ...this.props.slides,
+      ...introSlides,
       [key]: {
-        ...this.props.slides[key],
+        ...introSlides[key],
         [fieldId]: content
       }
     }
 
-    this.onSave(slides)
+    const { id } = this.props.data.tracks;
+    this.props.onUpdateTrackContent(id, 'intro-slides', slides);
   }
 
   render() {
@@ -141,12 +143,14 @@ class TrackTemplate extends React.Component {
     const questions = Object.keys(introSlides)
 
     return (
-      <Layout className="track-page">
+      <Layout className="track-page" location={this.props.location}>
         <Section id="header" className="bg-light" data-aos="fade-in">
           <div className="content">
             <Grid container spacing={7}>
               <Grid item xs={12} md={7}>
-                <h1 className="mb-40"><EditableText content={ { text: title } } onSave={this.onSaveTitle} /></h1>
+                <h1 className="mb-40">
+                  <EditableText content={{ text: title }} onSave={this.onSaveTitle} />
+                </h1>
                 <div className="subtitle">
                   <EditableText content={ content["topic"] } onSave={this.onSave('topic')} />
                 </div>
@@ -180,14 +184,14 @@ class TrackTemplate extends React.Component {
                   <Grid container>
                     <Grid item xs={12} md={5}>
                       <div className="oversize">
-                        <EditableText content={sectionContent["question"]} onSave={this.onSavePassthrough(question, "question")} />
+                        <EditableText content={sectionContent["question"]} onSave={this.onSaveQuestion(introSlides, question, "question")} />
                       </div>
                       <div className="underline" />
                     </Grid>
                   </Grid>
                   <Grid container justify="flex-end">
                     <Grid item xs={12} md={7}>
-                      <EditableParagraph content={sectionContent["answer"]} onSave={this.onSavePassthrough(question, "answer")} />
+                      <EditableParagraph content={sectionContent["answer"]} onSave={this.onSaveQuestion(introSlides, question, "answer")} />
                     </Grid>
                   </Grid>
                 </div>
@@ -196,7 +200,7 @@ class TrackTemplate extends React.Component {
           }
         </Section>
 
-          { (trackLeads.length > 0) &&
+          { (trackLeads.length > 0 || this.props.isEditingPage) &&
             <Section id="track-lead" className="bg-light">
               <Grid container>
                 <Grid item xs={12} md={5}>
@@ -232,13 +236,13 @@ class TrackTemplate extends React.Component {
                             <div className="quote">
                               <EditableParagraph content={lead["track-lead-quote"]} onSave={this.editTrackLead(index, "track-lead-quote")} />
                             </div>
+                            {
+                              this.props.isEditingPage &&
+                              <div className="">
+                                <Button onClick={this.deleteTrackLead(index)}>Delete implementation partner</Button>
+                              </div>
+                            }
                           </div>
-                          {
-                            this.props.isEditingPage &&
-                            <div className="text vert-spacing horiz-spacing">
-                              <Button onClick={this.deleteTrackLead(index)}>Delete implementation partner</Button>
-                            </div>
-                          }
                         </Grid>
                       </Grid>
                     </div>

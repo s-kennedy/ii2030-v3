@@ -99,7 +99,7 @@ class FrequentlyAskedQuestions extends React.Component {
     });
 
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <div className="">
           <Section id="faqs">
             <h2 className="mb-60">
@@ -112,7 +112,7 @@ class FrequentlyAskedQuestions extends React.Component {
             {map(categories, (category, key) => {
               return (
                 <div key={`category-${key}`}>
-                  <h3 className="mt-40 mb-20">
+                  <h3 className="mt-40 mb-20 lowercase">
                     {key}
                   </h3>
                   {category.map((question, i) => (

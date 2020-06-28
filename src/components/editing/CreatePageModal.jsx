@@ -1,14 +1,8 @@
 import React from "react";
 import slugify from "slugify";
-import { find } from 'lodash';
 
 import { connect } from "react-redux";
-import {
-  toggleNewPageModal,
-  savePage,
-  updateFirebaseData,
-  fetchPages,
-} from "../../redux/actions";
+import { toggleNewPageModal, createTrack } from "../../redux/actions";
 
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -16,52 +10,37 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
+import Input from "@material-ui/core/Input";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 
-import { PAGE_TYPES, LANGUAGE_OPTIONS, CATEGORY_OPTIONS } from "../../utils/constants";
-
-import defaultContentJSON from "../../fixtures/pageContent.json";
+import defaultContentJSON from "../../fixtures/trackContent.json";
 
 const mapStateToProps = state => {
   return {
     showNewPageModal: state.adminTools.showNewPageModal,
-    options: state.adminTools.options || {},
-    page: state.page.data,
-    categories: state.categories.categories,
-    topics: state.topics.topics,
     pages: state.pages.pages,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onToggleNewPageModal: () => {
+    toggleNewPageModal: () => {
       dispatch(toggleNewPageModal());
     },
-    updateFirebaseData: (data, callback) => {
-      dispatch(updateFirebaseData(data, callback))
-    },
-    savePage: (pageData, pageId) => {
-      dispatch(savePage(pageData, pageId));
-    },
-    fetchPages: () => {
-      dispatch(fetchPages())
-    },
+    createTrack: trackData => {
+      dispatch(createTrack(trackData));
+    }
   };
 };
 
 const emptyPage = {
-    title: "",
-    description: "",
-    category: CATEGORY_OPTIONS[0].value,
-    lang: LANGUAGE_OPTIONS[0].value,
-    type: PAGE_TYPES[0].value,
-    content: defaultContentJSON,
-    template: PAGE_TYPES[0].value.template,
-  }
+  title: "",
+  tech: "",
+  order: 0,
+  year: 2020,
+}
 
 class CreatePageModal extends React.Component {
   constructor(props) {
@@ -84,27 +63,10 @@ class CreatePageModal extends React.Component {
         ...this.props.page
       } })
     }
-
-    if (!prevProps.showNewPageModal && this.props.showNewPageModal) {
-      this.props.fetchPages()
-      if (this.props.options.duplicate || this.props.options.translation) {
-        const newPage = {
-          ...this.props.page,
-          title: `${this.props.page.title} (copy)`,
-          translations: null,
-          next: null,
-        }
-        this.setState({ page: newPage, errors: {} })
-      }
-    }
   }
 
   _updatePage(field, value) {
     this.setState({
-      errors: {
-        ...this.state.errors,
-        [field]: null
-      },
       page: {
         ...this.state.page,
         [field]: value
@@ -116,107 +78,44 @@ class CreatePageModal extends React.Component {
     return !Boolean(this.props.pages[slug])
   }
 
-  newPage = () => {
-    const pageId = slugify(this.state.page.title, {
-      lower: true,
-      remove: /[$*_+~.,()'"!\-:@%^&?=]/g
-    })
-
-    if (!this.isUniqueSlug(pageId)) {
-      return this.setState({
-        errors: {
-          ...this.state.errors,
-          title: "The page title must be unique."
-        }
-      })
-    }
-
-    const prevPage = find(this.props.pages, (page => page.category === this.state.page.category && page.lang === this.state.page.lang && !page.next));
-
-    console.log("PREV PAGE for duplication or new page", prevPage)
-
-    let pageData = {
-      ...this.state.page,
-      id: pageId,
-      slug: `/${this.state.page.lang}/${pageId}`,
-      next: null,
-    };
-
-    this.props.savePage(pageData, pageId);
-
-    if (this.state.page.category !== CATEGORY_OPTIONS[1].value && prevPage) { // don't add next page for uncategorized pages
-      this.props.updateFirebaseData({
-        [`pages/${prevPage.id}/next`]: pageId,
-      })
-    }
-  }
-
-  editPage = () => {
-    this.props.savePage(this.state.page, this.props.page.id);
-  }
-
-  translatePage = () => {
-    const pageId = slugify(this.state.page.title, {
-      lower: true,
-      remove: /[$*_+~.,()'"!\-:@%^&?=]/g
-    })
-
-    if (!this.isUniqueSlug(pageId)) {
-      return this.setState({
-        errors: {
-          ...this.state.errors,
-          title: "The page title must be unique."
-        }
-      })
-    }
-
-    const prevPage = find(this.props.pages, (page => page.category === this.state.page.category && page.lang === this.state.page.lang && !page.next));
-
-    console.log("PREV PAGE for translation", prevPage)
-
-    let pageData = {
-      ...this.state.page,
-      id: pageId,
-      slug: `/${this.state.page.lang}/${pageId}`,
-      next: null,
-      translations: {
-        ...this.props.page.translations,
-        [this.props.page.lang]: {
-          id: this.props.page.id,
-          slug: this.props.page.slug
-        }
-      }
-    };
-
-    this.props.savePage(pageData, pageId);
-
-    if (this.state.page.category !== CATEGORY_OPTIONS[1].value && prevPage) { // don't add next page for uncategorized pages
-      this.props.updateFirebaseData({
-        [`pages/${prevPage.id}/next`]: pageId,
-      })
-    }
-
-    this.props.updateFirebaseData({
-      [`pages/${this.props.page.id}/translations`]: {
-        ...this.props.page.translations,
-        [this.state.page.lang]: {
-          id: pageId,
-          slug: pageData.slug,
-        }
-      },
-    })
-  }
-
   _onSubmit() {
-    if (this.props.options.edit) {
-      return this.editPage()
+    if (!this.state.page.title) {
+      return this.setState({
+        errors: {
+          ...this.state.errors,
+          title: "The page must have a title"
+        }
+      })
     }
 
-    if (this.props.options.translation) {
-      return this.translatePage()
+    const pageId = slugify(this.state.page.title, {
+      lower: true,
+      remove: /[$*_+~.,()'"!\-:@%^&?=]/g
+    })
+
+    if (!this.isUniqueSlug(pageId)) {
+      return this.setState({
+        errors: {
+          ...this.state.errors,
+          title: "The page title must be unique."
+        }
+      })
     }
 
-    return this.newPage()
+    const trackData = {
+      title: this.state.page.title,
+      tech: this.state.page.tech,
+      slug: `/tracks/${this.state.page.year}/${pageId}`,
+      year: this.state.page.year,
+      page_type: "track",
+      template: "track.js",
+      navigation: {
+        order: parseInt(this.state.page.order),
+        displayTitle: this.state.page.title,
+      },
+      content: defaultContentJSON
+    };
+    this.props.createTrack(trackData);
   }
 
   render() {
@@ -224,21 +123,19 @@ class CreatePageModal extends React.Component {
 
     return (
       <Dialog open={open} aria-labelledby="create-page-dialogue">
-        <DialogTitle id="create-page-dialogue">
-          {"Module configuration"}
-        </DialogTitle>
-
+        <DialogTitle id="create-page-dialogue">Add new track</DialogTitle>
 
         <DialogContent>
           <FormControl fullWidth margin="normal">
             <TextField
               className="form-control"
               type="text"
+              label={"Track title"}
+              value={this.state.page.title}
+              onChange={e => this.updatePage("title", e.target.value)}
+              required
               error={Boolean(this.state.errors.title)}
               helperText={this.state.errors.title}
-              label={"Page title"}
-              value={this.state.page.title}
-              onChange={e => this.updatePage("title", e.currentTarget.value)}
             />
           </FormControl>
 
@@ -246,66 +143,37 @@ class CreatePageModal extends React.Component {
             <TextField
               className="form-control"
               type="text"
-              label={"Short description"}
-              value={this.state.page.description}
-              onChange={e => this.updatePage("description", e.currentTarget.value)}
+              label={"Track technology"}
+              value={this.state.page.tech}
+              onChange={e => this.updatePage("tech", e.target.value)}
+              error={Boolean(this.state.errors.tech)}
+              helperText={this.state.errors.tech}
             />
           </FormControl>
 
-          {
-            !this.props.options.edit &&
-            <FormControl fullWidth margin="normal">
-              <InputLabel htmlFor="menu-group">Language</InputLabel>
-              <Select
-                value={this.state.page.lang}
-                onChange={selected =>
-                  this.updatePage("lang", selected.target.value)
-                }
-                inputProps={{
-                  name: "menu-group",
-                  id: "menu-group"
-                }}
-              >
-                {LANGUAGE_OPTIONS.map(option => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          }
-
-          {
-            this.props.options.new &&
-            <FormControl fullWidth margin="normal">
-              <InputLabel htmlFor="menu-group">Category</InputLabel>
-              <Select
-                value={this.state.page.category}
-                onChange={selected =>
-                  this.updatePage("category", selected.target.value)
-                }
-                inputProps={{
-                  name: "menu-group",
-                  id: "menu-group"
-                }}
-              >
-                {CATEGORY_OPTIONS.map(option => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          }
+          <FormControl fullWidth margin="normal">
+            <Select
+              value={this.state.page.year}
+              onChange={e => this.updatePage("year", e.target.value)}
+              input={<Input name="year" id="year" />}
+              name="year"
+              error={Boolean(this.state.errors.year)}
+              helperText={this.state.errors.year}
+            >
+              <MenuItem value={2020}>2020</MenuItem>
+              <MenuItem value={2019}>2019</MenuItem>
+              <MenuItem value={2017}>2017</MenuItem>
+            </Select>
+          </FormControl>
 
         </DialogContent>
 
         <DialogActions>
-          <Button color="secondary" onClick={this.props.onToggleNewPageModal}>
+          <Button color="default" onClick={this.props.toggleNewPageModal}>
             Close
           </Button>
-          <Button color="default" onClick={this.onSubmit}>
-            { (this.props.options.new || this.props.options.duplicate) ? "Create page" : "Save" }
+          <Button color="primary" onClick={this.onSubmit}>
+            Create Track
           </Button>
         </DialogActions>
       </Dialog>
@@ -313,11 +181,8 @@ class CreatePageModal extends React.Component {
   }
 }
 
-
 CreatePageModal.defaultProps = {
   page: emptyPage
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(
-  CreatePageModal
-);
+export default connect(mapStateToProps, mapDispatchToProps)(CreatePageModal);

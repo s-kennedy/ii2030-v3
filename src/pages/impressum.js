@@ -51,9 +51,9 @@ class Impressum extends React.Component {
 
         <main>
           <Section id="basic-page">
-            <header className="text-center">
+            <h1 className="mb-40">
               <EditableText content={ content["impressum-title"] } onSave={this.saveHandler('impressum-title')} />
-            </header>
+            </h1>
             <div>
               <EditableParagraph content={ content["impressum-body"] } onSave={this.saveHandler('impressum-body')} />
             </div>

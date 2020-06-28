@@ -801,4 +801,76 @@ export function closeTagSelectorModal() {
   return { type: 'CLOSE_TAG_SELECTOR_MODAL' }
 }
 
+// TRACKS ------------------------
 
+
+export function createTrack(trackData) {
+  return dispatch => {
+    const db = firebase.database();
+    db
+      .ref("tracks")
+      .push(trackData)
+      .then(snap => {
+        dispatch(toggleNewPageModal());
+        dispatch(
+          showNotification(
+            "Your page has been saved. Publish your changes to view and edit your new page.",
+            "success"
+          )
+        );
+      });
+  };
+}
+
+
+export function saveTrackContent(trackId, contentId, content) {
+  return dispatch => {
+    const db = firebase.database();
+
+    db.ref(`tracks/${trackId}/content/${contentId}/`).set(content, error => {
+      if (error) {
+        return dispatch(
+          showNotification(
+            `There was an error saving your changes: ${error}`,
+            "success"
+          )
+        );
+      }
+
+      dispatch(updatePageData(contentId, content));
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    });
+  };
+}
+
+export function saveTrackData(trackId, field, content) {
+  return dispatch => {
+    const db = firebase.database();
+
+    const data = {
+      [field]: content
+    };
+
+    db.ref(`tracks/${trackId}`).update(data).then(res => {
+      dispatch(updatePageField(field, content));
+      dispatch(
+        showNotification(
+          "Your changes have been saved. Publish your changes to make them public.",
+          "success"
+        )
+      );
+    }).catch(err => {
+      dispatch(
+        showNotification(
+          `There was an error saving your changes: ${err}`,
+            "danger"
+        )
+      );
+    })
+  };
+}

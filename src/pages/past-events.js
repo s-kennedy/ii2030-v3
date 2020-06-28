@@ -88,7 +88,7 @@ class HomePage extends React.Component {
     const tracks2019 = tracks.filter(t => t.year === 2019)
 
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <Section id="header" data-aos="fade-in">
 
           <div className="content">

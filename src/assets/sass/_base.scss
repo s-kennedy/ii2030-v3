@@ -374,10 +374,15 @@ i.pause-btn, i.play-btn {
 
 #main-menu {
   .menu-left {
-    a {
+    a, button {
       margin-right: 20px;
+      padding-bottom: 5px;
       text-decoration: none;
     }
+  }
+
+  .selected {
+    border-bottom: 4px solid $orange;
   }
 }
 

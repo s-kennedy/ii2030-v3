@@ -14,6 +14,11 @@ import {
 } from "../redux/actions";
 
 import Grid from "@material-ui/core/Grid"
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
@@ -78,7 +83,7 @@ class HomePage extends React.Component {
 
   componentDidMount() {
     new Parallax(this.parallaxRef.current, { pointerEvents: true })
-    new Parallax(this.parallaxRefSteps.current, { selector: '.parallax-it'})
+    new Parallax(this.parallaxRefSteps.current, { selector: '.parallax-it', pointerEvents: true })
     AOS.init({ delay: 50, duration: 400 })
   }
 
@@ -98,7 +103,7 @@ class HomePage extends React.Component {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
 
     return (
-      <Layout>
+      <Layout location={this.props.location}>
         <Section id="header" data-aos="fade-in">
           <div className="content">
             <Grid container>
@@ -242,15 +247,21 @@ class HomePage extends React.Component {
                 </div>
               </Grid>
               <Grid item xs={12} md={7}>
-                <div className="step-title ml--80">
+                <div className="step-title ml--80 mb--20">
                   <div className="horiz-center vert-center fit-content">
                     <div className="number">consultation</div>
                     <div className="bg-circle"></div>
                   </div>
                 </div>
                 <div className="step-description">
-                  <div className="oversize"><EditableText content={content["step1-title"]} onSave={this.onSave('step1-title')} /></div>
-                  <EditableParagraph content={content["step1-description"]} onSave={this.onSave('step1-description')} />
+                  <ExpansionPanel square elevation={0} style={{ backgroundColor: 'transparent' }}>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />}>
+                      <div className="oversize"><EditableText content={content["step1-title"]} onSave={this.onSave('step1-title')} /></div>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <EditableParagraph content={content["step1-description"]} onSave={this.onSave('step1-description')} />
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
                 </div>
               </Grid>
             </Grid>
@@ -266,15 +277,21 @@ class HomePage extends React.Component {
                 </div>
               </Grid>
               <Grid item xs={12} md={7}>
-                <div className="step-title ml--80">
+                <div className="step-title ml--80 mb--20">
                   <div className="horiz-center vert-center fit-content">
                     <div className="number">co-creation</div>
                     <div className="bg-circle"></div>
                   </div>
                 </div>
                 <div className="step-description">
-                  <div className="oversize"><EditableText content={content["step2-title"]} onSave={this.onSave('step2-title')} /></div>
-                  <EditableParagraph content={content["step2-description"]} onSave={this.onSave('step2-description')} />
+                  <ExpansionPanel square elevation={0} style={{ backgroundColor: 'transparent' }}>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />}>
+                      <div className="oversize"><EditableText content={content["step2-title"]} onSave={this.onSave('step2-title')} /></div>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <EditableParagraph content={content["step2-description"]} onSave={this.onSave('step2-description')} />
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
                 </div>
               </Grid>
             </Grid>
@@ -290,15 +307,21 @@ class HomePage extends React.Component {
                 </div>
               </Grid>
               <Grid item xs={12} md={7}>
-                <div className="step-title ml--80">
+                <div className="step-title ml--80 mb--20">
                   <div className="horiz-center vert-center fit-content">
                     <div className="number">implementation</div>
                     <div className="bg-circle"></div>
                   </div>
                 </div>
                 <div className="step-description">
-                  <div className="oversize"><EditableText content={content["step3-title"]} onSave={this.onSave('step3-title')} /></div>
-                  <EditableParagraph content={content["step3-description"]} onSave={this.onSave('step3-description')} />
+                  <ExpansionPanel square elevation={0} style={{ backgroundColor: 'transparent' }}>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />}>
+                      <div className="oversize"><EditableText content={content["step3-title"]} onSave={this.onSave('step3-title')} /></div>
+                    </ExpansionPanelSummary>
+                    <ExpansionPanelDetails>
+                      <EditableParagraph content={content["step3-description"]} onSave={this.onSave('step3-description')} />
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
                 </div>
               </Grid>
             </Grid>

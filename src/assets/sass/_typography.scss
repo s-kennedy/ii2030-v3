@@ -63,6 +63,16 @@ body {
     }
   }
 
+  .track-page {
+    h1 {
+      font-size: 80px;
+    }
+
+    .subtitle {
+      font-size: 30px;
+    }
+  }
+
   h2 {
     font-size: 64px;
     /*color: $orange;*/
@@ -85,7 +95,7 @@ body {
     letter-spacing: 1px;
   }
 
-  a:not(.btn) {
+  a:not(.btn), button:not(.btn) {
     color: $black;
     transition: all 0.25s ease;
     font-family: $title-font;
@@ -100,7 +110,11 @@ body {
     }
   }
 
-  a.link {
+  .lowercase {
+    text-transform: lowercase;
+  }
+
+  .link {
     display: inline-flex;
     align-items: center;
     text-decoration: none;
@@ -112,6 +126,11 @@ body {
 
     svg {
       margin-left: 10px;
+    }
+
+    &.nav-link {
+      text-transform: none;
+      font-size: 1em;
     }
   }
 
