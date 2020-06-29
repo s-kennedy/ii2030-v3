@@ -157,7 +157,7 @@ class HomePage extends React.Component {
             </Grid>
           </Grid>
 
-          <Grid container spacing={6}>
+          <Grid container>
             <Grid item xs={12} md={3} className="journey-container mt-40" data-aos="fade-in" data-aos-delay="50">
               <TrackRecord className="mt-100" content={content["journey-step-1"]} onSave={this.onSave('journey-step-1')} shape="arrow" />
             </Grid>

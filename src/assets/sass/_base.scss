@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -8,6 +10,7 @@ html {
 
 main {
   padding-top: $navbar-height;
+  overflow: hidden;
 }
 
 section {
@@ -219,10 +222,16 @@ i.pause-btn, i.play-btn {
 .slick-arrow {
   &.slick-next {
     right: 15px;
+    &:before {
+      color: $dark-blue;
+    }
   }
 
   &.slick-prev {
     left: 15px;
+    &:before {
+      color: $dark-blue;
+    }
   }
 }
 
@@ -242,7 +251,7 @@ i.pause-btn, i.play-btn {
 
   .line {
     height: 4px;
-    width: 100%;
+    width: calc(100% - 20px);
     background-color: $orange;
     flex: 1 1 auto;
     margin: 0 40px;

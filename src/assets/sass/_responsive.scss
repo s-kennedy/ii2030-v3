@@ -20,6 +20,8 @@
     section {
       padding-top: 40px;
       padding-bottom: 40px;
+      padding-left: 20px;
+      padding-right: 20px;
     }
 
     .track-page {
@@ -64,16 +66,25 @@
     }
 
     #header {
+      overflow: hidden;
+
       .popout-video-btn {
         margin-top: 40px;
         margin-bottom: 20px;
         max-width: 60vw;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .header-image, .header-video {
         margin-top: 10px;
         margin-bottom: 10px;
       }
+
+    }
+
+    .img-bg {
+      overflow: hidden;
     }
 
     .testimonial-container.stagger .testimonial {

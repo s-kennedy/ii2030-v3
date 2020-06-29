@@ -204,7 +204,7 @@ class HomePage extends React.Component {
               <h2 className="mb-40"><EditableText content={content["testimonials-title"]} onSave={this.onSave('testimonials-title')} /></h2>
             </Grid>
           </Grid>
-          <Grid container spacing={6}>
+          <Grid container>
             <Grid item xs={12} md={4} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="50">
               <Testimonial content={content["testimonial1"]} onSave={this.onSave('testimonial1')} quote={true} />
             </Grid>
@@ -339,7 +339,7 @@ class HomePage extends React.Component {
               <EditableParagraph content={content["track-record-description"]} onSave={this.onSave('track-record-description')} />
             </Grid>
           </Grid>
-          <Grid container spacing={6}>
+          <Grid container>
             <Grid item xs={12} md={4} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="50">
               <TrackRecord content={content["track-record-1"]} onSave={this.onSave('track-record-1')} shape="polygon" />
             </Grid>

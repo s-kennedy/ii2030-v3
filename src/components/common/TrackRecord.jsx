@@ -24,7 +24,7 @@ const TrackRecordEditor = ({ content, onContentChange }) => {
   }
 
   return(
-    <div className={`testimonial`}>
+    <div className={`testimonial p-10`}>
       <div className="image-container">
         <div className="img-bg" />
         <ImageUploadEditor
@@ -78,7 +78,7 @@ const TrackRecord = props => {
       content={content}
       {...props}
     >
-      <div className={`testimonial ${props.className ? props.className : ""}`}>
+      <div className={`testimonial p-10 ${props.className ? props.className : ""}`}>
         <div className="image-container">
           <div className="img-bg">
             <img src={bgImg()} alt="" />
