@@ -17,7 +17,6 @@ import Grid from "@material-ui/core/Grid"
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
-import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import Layout from "../layouts/default.js";
@@ -34,7 +33,7 @@ import factoryIcon from "../assets/images/factory-icon-standardized.png"
 import bgImg1 from "../assets/images/shapes/header-triangle-red.svg"
 import bgImg2 from "../assets/images/shapes/polygon-lg-blue.svg"
 import bgImg3 from "../assets/images/shapes/polygon-lg-vert.svg"
-import headerImg from "../assets/images/head.png"
+import endevaLogo from "../assets/images/logos/endeva.png"
 
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
@@ -368,15 +367,22 @@ class HomePage extends React.Component {
         </Section>
 
         <Section id="partners" className="">
-          <div data-aos="fade-in">
-            <Grid container>
-              <Grid item xs={12} md={5} >
-                <h2><EditableText content={content["partners-title"]} onSave={this.onSave('partners-title')} /></h2>
-              </Grid>
+          <Grid container data-aos="fade-in">
+            <Grid item xs={12} md={5} >
+              <h2 className="mb-20"><EditableText content={content["partners-title"]} onSave={this.onSave('partners-title')} /></h2>
             </Grid>
-          </div>
+          </Grid>
 
-          <Grid container>
+          <Grid container data-aos="fade-in" justify="center">
+            <Grid item xs={12} md={5} >
+              <div className="endeva-line">An <a href="http://www.endeva.org/" target="_blank" rel="noopener noreferrer"><img id="endeva-logo" src={endevaLogo} alt="Endeva logo" /></a> initiative</div>
+              <div className="underline centered"></div>
+            </Grid>
+          </Grid>
+
+          <Grid container data-aos="fade-in">
+            <Grid item xs={12}>
+            </Grid>
             <Collection
               items={content["partner-logos"]}
               Component={PartnerLogo}
@@ -392,15 +398,13 @@ class HomePage extends React.Component {
         </Section>
 
         <Section id="past-participants" className="pt-0">
-          <div data-aos="fade-in">
-            <Grid container>
-              <Grid item xs={12} md={5} >
-                <h2><EditableText content={content["participants-title"]} onSave={this.onSave('participants-title')} /></h2>
-              </Grid>
+          <Grid container data-aos="fade-in">
+            <Grid item xs={12} md={5} >
+              <h2 className="mb-20"><EditableText content={content["participants-title"]} onSave={this.onSave('participants-title')} /></h2>
             </Grid>
-          </div>
+          </Grid>
 
-          <Grid container>
+          <Grid container data-aos="fade-in">
             <Collection
               items={content["participants-logos"]}
               Component={PartnerLogo}

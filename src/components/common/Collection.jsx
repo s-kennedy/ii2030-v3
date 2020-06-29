@@ -42,6 +42,7 @@ class EditableCollection extends React.Component {
               content={content}
               onSave={this.onSaveItem(key)}
               onDelete={this.onDeleteItem(key)}
+              {...rest}
             />
           )
         })}

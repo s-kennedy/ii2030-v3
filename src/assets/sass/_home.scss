@@ -855,7 +855,22 @@ section#participants {
   flex-wrap: wrap;
 
   .logo-container {
-    flex: 0 1 12.5%;
+    flex: 0 1 14.2857%;
     padding: 10px;
   }
+}
+
+.endeva-line {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  margin-bottom: 15px;
+}
+
+#endeva-logo {
+  width: 200px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: -6px;
 }

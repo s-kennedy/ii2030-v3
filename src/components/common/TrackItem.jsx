@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Link } from "gatsby"
-import Grid from "@material-ui/core/Grid"
 import ArrowIcon from "@material-ui/icons/ArrowRightAlt"
 import AOS from 'aos';
 

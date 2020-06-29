@@ -2,13 +2,12 @@ import React from "react";
 import { Link, StaticQuery, graphql } from "gatsby";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import Section from "../../components/common/Section";
 
 const Footer = props => {
   const tracks = props.data.allTracks.edges.map(t => t.node)
 
   return (
-    <footer className="mt-20 mb-20">
+    <footer className="pt-20 pb-20">
       <Container maxWidth={"lg"}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={5}>

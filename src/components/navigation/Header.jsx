@@ -5,15 +5,10 @@ import { sortBy } from 'lodash';
 
 import Button from "@material-ui/core/Button"
 import MenuItem from '@material-ui/core/MenuItem';
-import ListItemText from '@material-ui/core/ListItemText';
 import Menu from '@material-ui/core/Menu';
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Collapse from '@material-ui/core/Collapse';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import MenuIcon from "@material-ui/icons/Menu";
 
 
@@ -116,67 +111,10 @@ class TracksDropdown extends React.Component {
   }
 }
 
-class OverviewDropdown extends React.Component {
-  state = {
-    anchorEl: null
-  }
-
-  handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
-  render() {
-    const { anchorEl } = this.state;
-    const open = Boolean(anchorEl);
-    return(
-      <div>
-        <Button
-          aria-owns={open ? 'menu-appbar' : undefined}
-          aria-haspopup="true"
-          onClick={this.handleMenu}
-          color="inherit"
-        >
-          <>
-            Overview
-            <ExpandMoreIcon />
-          </>
-        </Button>
-        <Menu
-          id="menu-appbar"
-          anchorEl={anchorEl}
-          getContentAnchorEl={null}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'left',
-          }}
-          open={open}
-          onClose={this.handleClose}
-        >
-          <MenuItem onClick={this.handleClose} style={styles.menuItem} component={Link} to={"/#overview"}>ii2030 Overview</MenuItem>
-          <MenuItem onClick={this.handleClose} style={styles.menuItem} component={Link} to={"/#testimonials"}>Testimonials</MenuItem>
-          <MenuItem onClick={this.handleClose} style={styles.menuItem} component={Link} to={"/#tracks"}>Tracks</MenuItem>
-          <MenuItem onClick={this.handleClose} style={styles.menuItem} component={Link} to={"/#cocreation_process"}>Process</MenuItem>
-          <MenuItem onClick={this.handleClose} style={styles.menuItem} component={Link} to={"/#agenda"}>Program</MenuItem>
-          <MenuItem onClick={this.handleClose} style={styles.menuItem} component={Link} to={"/#partners"}>Partners</MenuItem>
-        </Menu>
-      </div>
-    )
-  }
-}
-
 
 class Navigation extends React.Component {
   state = {
     anchorEl: null,
-    subAnchorEl: null,
   }
 
   handleMenu = event => {
@@ -185,22 +123,13 @@ class Navigation extends React.Component {
 
   handleClose = () => {
     this.setState({ anchorEl: null });
-  };
-
-  handleSubMenu = event => {
-    this.setState({ subAnchorEl: event.currentTarget });
-  };
-
-  handleSubClose = () => {
-    this.setState({ subAnchorEl: null });
   };
 
   render() {
     const tracks = this.props.data.allTracks.edges.map(t => t.node)
     const selected = this.props.location ? this.props.location.pathname : ""
-    const { anchorEl, subAnchorEl } = this.state;
+    const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
-    const submenuOpen = Boolean(subAnchorEl);
 
     return (
       <div style={styles.menu} id="main-menu">
