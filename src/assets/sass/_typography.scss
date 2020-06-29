@@ -29,6 +29,11 @@ body {
     font-size: 1.75em;
   }
 
+  .red-text {
+    color: $red;
+    font-weight: 900;
+  }
+
   .underline {
     border-top: 4px solid $orange;
     border-right: 4px solid $orange;

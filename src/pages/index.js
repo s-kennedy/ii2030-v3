@@ -107,8 +107,11 @@ class HomePage extends React.Component {
           <div className="content">
             <Grid container>
               <Grid item xs={12} md={6}>
-                <h1><EditableText content={content["landing-title"]} onSave={this.onSave('landing-title')} /></h1>
-                <h1><EditableText content={content["landing-secondary-title"]} onSave={this.onSave('landing-secondary-title')} /></h1>
+                <h1>
+                  <span className="red-text">i</span>nclusive<br/>
+                  <span className="red-text">i</span>nnovation<br/>
+                  <span className="red-text">2030</span>
+                </h1>
               </Grid>
               <Grid item xs={12} md={6} ref={this.parallaxRef}>
                 <div data-depth={"0.5"} className="header-image">
