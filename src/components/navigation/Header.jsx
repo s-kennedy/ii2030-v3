@@ -182,6 +182,7 @@ class Navigation extends React.Component {
                 open={open}
                 onClose={this.handleClose}
               >
+                <MenuItem onClick={this.handleClose} component={Link} to={"/"}>home</MenuItem>
                 <MenuItem onClick={this.handleClose} component={Link} to={"/africa-for-the-future"}>#Africa4Future</MenuItem>
                 <MenuItem onClick={this.handleClose} component={Link} to={"/past-events"}>past events</MenuItem>
                 <MenuItem onClick={this.handleClose} component={Link} to={"/faq"}>faq</MenuItem>

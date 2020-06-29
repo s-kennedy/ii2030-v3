@@ -111,7 +111,7 @@ class HomePage extends React.Component {
                 <h1><EditableText content={content["landing-secondary-title"]} onSave={this.onSave('landing-secondary-title')} /></h1>
               </Grid>
               <Grid item xs={12} md={6} ref={this.parallaxRef}>
-                <div data-depth={"0.5"} className="mt-20 mb--100">
+                <div data-depth={"0.5"} className="header-image">
                   <EditableImageUpload content={content["landing-image"]} onSave={this.onSave('landing-image')} uploadImage={uploadImage} />
                 </div>
               </Grid>

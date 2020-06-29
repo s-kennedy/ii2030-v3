@@ -103,7 +103,7 @@ class HomePage extends React.Component {
                 <h1><EditableText content={content["landing-title"]} onSave={this.onSave('landing-title')} /></h1>
               </Grid>
               <Grid item xs={12} md={5} ref={this.parallaxRef}>
-                <div data-depth={"0.5"} className="mt-60 mb--60">
+                <div data-depth={"0.5"} className="header-video">
                   <PopoutVideo content={content["landing-video"]} onSave={this.onSave('landing-video')} />
                 </div>
               </Grid>

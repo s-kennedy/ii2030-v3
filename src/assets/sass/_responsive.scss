@@ -38,6 +38,11 @@
         right: unset;
         left: -9px;;
       }
+
+      &:before {
+        left: unset;
+        right: -10px;;
+      }
     }
 
     .cta {
@@ -79,9 +84,18 @@
         margin-bottom: 20px;
         max-width: 60vw;
       }
+
+      .header-image, .header-video {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
     }
 
     .testimonial-container.stagger .testimonial {
+      margin-top: 0 !important;
+    }
+
+    .journey-container .testimonial {
       margin-top: 0 !important;
     }
 
