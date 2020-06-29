@@ -12,18 +12,18 @@ const firebaseConfig = require(`./config/firebase-config.${process.env.GATSBY_FI
 
 module.exports = {
   siteMetadata: {
-    title: `Money and the Law Guide`,
+    title: `Inclusive Innovation 2030`,
   },
   pathPrefix: `/`,
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "React CMS starter",
-        short_name: "React CMS starter",
+        name: "Inclusive Innovation 2030",
+        short_name: "ii2030",
         start_url: "/",
-        background_color: "#000",
-        theme_color: "#FCB239", // yellow
+        background_color: "#FFFFFF",
+        theme_color: "#2F4858", // dark blue
         display: "minimal-ui",
         icon: "static/icon.png" // This path is relative to the root of the site.
       },
