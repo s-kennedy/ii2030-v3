@@ -1,7 +1,8 @@
-import React from "react";
+import React, { createRef } from "react";
 import { graphql, Link } from "gatsby";
 import { connect } from "react-redux";
 import { EditableText, EditableParagraph, EditableLink } from "react-easy-editables"
+import Parallax from 'parallax-js'
 
 import {
   updatePage,
@@ -12,6 +13,7 @@ import {
 
 import Grid from "@material-ui/core/Grid"
 import ArrowIcon from "@material-ui/icons/ArrowRightAlt"
+
 
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
@@ -61,8 +63,12 @@ class HomePage extends React.Component {
       ...this.props.data.pages,
       content: JSON.parse(this.props.data.pages.content)
     };
-
+    this.parallaxRef = createRef()
     this.props.onLoadPageData(initialPageData);
+  }
+
+  componentDidMount() {
+    new Parallax(this.parallaxRef.current, { pointerEvents: true })
   }
 
   onSave = id => content => {
@@ -96,11 +102,10 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={7}>
                 <h1><EditableText content={content["landing-title"]} onSave={this.onSave('landing-title')} /></h1>
               </Grid>
-            </Grid>
-
-            <Grid container justify="flex-end">
-              <Grid item xs={12} md={5}>
-                <PopoutVideo content={content["landing-video"]} onSave={this.onSave('landing-video')} />
+              <Grid item xs={12} md={5} ref={this.parallaxRef}>
+                <div data-depth={"0.5"} className="mt-60 mb--60">
+                  <PopoutVideo content={content["landing-video"]} onSave={this.onSave('landing-video')} />
+                </div>
               </Grid>
             </Grid>
 
