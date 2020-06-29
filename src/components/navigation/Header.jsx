@@ -141,7 +141,7 @@ class Navigation extends React.Component {
                 <Link to={'/africa-for-the-future'} className={`${selected === '/africa-for-the-future' ? 'selected' : ""}`}>#Africa4Future</Link>
                 <Link to={'/past-events'} className={`${selected === '/past-events' ? 'selected' : ""}`}>past events</Link>
                 <TracksDropdown anchorText={"tracks"} tracks={tracks} />
-                <Link to={'/faqs'} className={`${selected === '/faqs' ? 'selected' : ""}`}>faq</Link>
+                <Link to={'/faq'} className={`${selected === '/faq' ? 'selected' : ""}`}>faq</Link>
               </div>
             </Grid>
             <Grid item>
