@@ -135,18 +135,6 @@ class AccountButton extends React.Component {
             {props.allowEditing && (
               <MenuItem
                 onClick={() => {
-                  closeMenu();
-                }}
-                component={Link}
-                to={'/admin'}
-              >
-                <ListItemText>Website configuration</ListItemText>
-              </MenuItem>
-            )}
-
-            {props.allowEditing && (
-              <MenuItem
-                onClick={() => {
                   props.deploy();
                   closeMenu();
                 }}
