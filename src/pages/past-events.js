@@ -20,11 +20,12 @@ import Section from "../components/common/Section";
 import PopoutVideo from "../components/common/PopoutVideo"
 import ImageCarousel from "../components/common/ImageCarousel"
 
-import bgPolygonRed from "../assets/images/shapes/polygon-lg-red.svg"
+import bgPolygonRed from "../assets/images/shapes/polygon-lg-white.svg"
 import bgPolygonBlue from "../assets/images/shapes/polygon-lg-blue.svg"
 
 import bgImg1 from "../assets/images/shapes/header-triangle-orange.svg"
 import bgImg2 from "../assets/images/shapes/polygon-lg-blue.svg"
+import thumbnail from "../assets/images/thumbnail2017.jpg"
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -94,17 +95,21 @@ class HomePage extends React.Component {
     const tracks2019 = tracks.filter(t => t.year === 2019)
 
     return (
-      <Layout location={this.props.location}>
+      <Layout location={this.props.location} className="past-events-page">
         <Section id="header" data-aos="fade-in">
-
           <div className="content">
             <Grid container>
               <Grid item xs={12} md={7}>
                 <h1><EditableText content={content["landing-title"]} onSave={this.onSave('landing-title')} /></h1>
               </Grid>
               <Grid item xs={12} md={5} ref={this.parallaxRef}>
-                <div data-depth={"0.5"} className="header-video">
-                  <PopoutVideo content={content["landing-video"]} onSave={this.onSave('landing-video')} />
+                <div data-depth={"0.5"} className="header-video mt--60 mb--100">
+                  <PopoutVideo
+                    content={content["landing-video"]}
+                    onSave={this.onSave('landing-video')}
+                    bgImg={null}
+                    thumbnail={thumbnail}
+                  />
                 </div>
               </Grid>
             </Grid>
@@ -119,11 +124,10 @@ class HomePage extends React.Component {
           </div>
           <div className="background">
             <img src={bgImg1} alt="" className="rotateme" />
-            <img src={bgImg2} alt="" className="rotateme-reverse" />
           </div>
         </Section>
 
-        <Section id="2019" className="">
+        <Section id="tracks2019" className="bg-light">
           <Grid container data-aos="fade-in">
             <Grid item xs={12} md={5}>
               <h2><EditableText content={content["2019-title"]} onSave={this.onSave('2019-title')} /></h2>
@@ -156,7 +160,7 @@ class HomePage extends React.Component {
             </Grid>
           </Grid>
 
-          <Grid container justify="flex-end">
+          <Grid container justify="center">
             <Grid item xs={12} md={7}>
               {
                 tracks2019.map(track => {
@@ -167,7 +171,7 @@ class HomePage extends React.Component {
                     console.log(err)
                   }
                   return(
-                    <div key={track.slug} className={`track-item mb-40 mt-40`} data-aos="fade-in">
+                    <div key={track.slug} className={`track-item mb-60 mt-60`} data-aos="fade-in">
                       <Grid container spacing={4}>
                         <Grid item xs={12} sm={3}>
                           <div className="image-container">
@@ -243,7 +247,7 @@ class HomePage extends React.Component {
           </Grid>
 
 
-          <Grid container justify="flex-end">
+          <Grid container justify="center">
             <Grid item xs={12} md={7}>
               {
                 tracks2017.map(track => {
@@ -254,7 +258,7 @@ class HomePage extends React.Component {
                     console.log(err)
                   }
                   return(
-                    <div key={track.slug} className={`track-item mb-40 mt-40`} data-aos="fade-in">
+                    <div key={track.slug} className={`track-item mb-60 mt-60`} data-aos="fade-in">
                       <Grid container spacing={4}>
                         <Grid item xs={12} sm={3}>
                           <div className="image-container">

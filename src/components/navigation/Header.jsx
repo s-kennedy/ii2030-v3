@@ -93,15 +93,15 @@ class TracksDropdown extends React.Component {
           open={open}
           onClose={this.handleClose}
         >
-          <MenuItem disabled={true} key={"2020-tracks"} style={styles.menuHeader}>2020 tracks</MenuItem>
+          <MenuItem disabled={true} key={"2020-tracks"} style={styles.menuHeader}>2020 Tracks</MenuItem>
           {
             tracks2020 && tracks2020.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
           }
-          <MenuItem disabled={true} key={"2019-tracks"} style={styles.menuHeader}>2019 tracks</MenuItem>
+          <MenuItem disabled={true} key={"2019-tracks"} style={styles.menuHeader}>2019 Tracks</MenuItem>
           {
             tracks2019 && tracks2019.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
           }
-          <MenuItem disabled={true} key={"2017-tracks"} style={styles.menuHeader}>2017 tracks</MenuItem>
+          <MenuItem disabled={true} key={"2017-tracks"} style={styles.menuHeader}>2017 Tracks</MenuItem>
           {
             tracks2017 && tracks2017.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
           }
@@ -139,13 +139,13 @@ class Navigation extends React.Component {
               <div className="menu-left">
                 <Link to={'/'} className={`menu-heading ${selected === '/' ? 'selected' : ""}`}>ii2030</Link>
                 <Link to={'/africa-for-the-future'} className={`${selected === '/africa-for-the-future' ? 'selected' : ""}`}>#Africa4Future</Link>
-                <Link to={'/past-events'} className={`${selected === '/past-events' ? 'selected' : ""}`}>past events</Link>
-                <TracksDropdown anchorText={"tracks"} tracks={tracks} />
-                <Link to={'/faq'} className={`${selected === '/faq' ? 'selected' : ""}`}>faq</Link>
+                <Link to={'/past-events'} className={`${selected === '/past-events' ? 'selected' : ""}`}>Past Editions</Link>
+                <TracksDropdown anchorText={"Tracks"} tracks={tracks} />
+                <Link to={'/faq'} className={`${selected === '/faq' ? 'selected' : ""}`}>FAQ</Link>
               </div>
             </Grid>
             <Grid item>
-              <Link to="/" className="btn blue">register now!</Link>
+              <Link to="/" className="btn blue">Apply now!</Link>
             </Grid>
           </Grid>
         </Hidden>
@@ -182,11 +182,11 @@ class Navigation extends React.Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <MenuItem onClick={this.handleClose} component={Link} to={"/"}>home</MenuItem>
+                <MenuItem onClick={this.handleClose} component={Link} to={"/"}>Home</MenuItem>
                 <MenuItem onClick={this.handleClose} component={Link} to={"/africa-for-the-future"}>#Africa4Future</MenuItem>
-                <MenuItem onClick={this.handleClose} component={Link} to={"/past-events"}>past events</MenuItem>
-                <MenuItem onClick={this.handleClose} component={Link} to={"/faq"}>faq</MenuItem>
-                <MenuItem onClick={this.handleClose} className="btn blue" component={Link} to={"/register"}>Register now!</MenuItem>
+                <MenuItem onClick={this.handleClose} component={Link} to={"/past-events"}>Past Editions</MenuItem>
+                <MenuItem onClick={this.handleClose} component={Link} to={"/faq"}>FAQ</MenuItem>
+                <MenuItem onClick={this.handleClose} className="btn blue" component={Link} to={"/register"}>Apply now!</MenuItem>
               </Menu>
             </Grid>
           </Grid>

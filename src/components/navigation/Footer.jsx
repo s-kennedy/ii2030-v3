@@ -14,7 +14,6 @@ const Footer = props => {
             <p className="column-header">ii2030</p>
             <p className="contact">For more information:</p>
             <p className="contact">Email: <a href="mailto:ii2030@endeva.org">ii2030@endeva.org</a></p>
-            <p className="contact">LinkedIn: <a href="https://www.linkedin.com/company/endeva/">Endeva</a></p>
           </Grid>
           <Grid item xs={12} md={7}>
             <Grid container spacing={2}>
@@ -22,25 +21,25 @@ const Footer = props => {
               <Grid item xs={12} md={4}>
                 <p className="column-header">Pages</p>
                 <ul>
-                  <li><Link to={"/"}>ii2030 home</Link></li>
+                  <li><Link to={"/"}>ii2030 Home</Link></li>
                   <li><Link to={"/africa-for-the-future"}>#Africa4Future</Link></li>
-                  <li><Link to={"/past-events"}>past events</Link></li>
-                  <li><Link to={"/faq"}>faq</Link></li>
-                  <li><Link to={"/impressum"}>impressum</Link></li>
+                  <li><Link to={"/past-events"}>Past Editions</Link></li>
+                  <li><Link to={"/faq"}>FAQ</Link></li>
+                  <li><Link to={"/impressum"}>Impressum</Link></li>
                 </ul>
               </Grid>
 
               <Grid item xs={12} md={4}>
-                <p className="column-header">#Africa4Future tracks</p>
+                <p className="column-header">#Africa4Future Tracks</p>
                 <ul>
                 {
-                  tracks.map(track => <li key={track.slug}><Link to={track.slug}>{track.tech}</Link></li>)
+                  tracks.map(track => <li key={track.slug}><Link to={track.slug} className="titlecase">{track.tech}</Link></li>)
                 }
                 </ul>
               </Grid>
 
               <Grid item xs={12} md={4}>
-                <Link to={"/"} className="btn blue mt-10">register now!</Link>
+                <Link to={"/"} className="btn blue mt-10">Apply now!</Link>
               </Grid>
 
             </Grid>

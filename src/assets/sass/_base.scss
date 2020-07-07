@@ -26,8 +26,17 @@ section {
   color: $white;
 }
 
+.bg-highlight {
+  background-color: $orange;
+  color: $white;
+}
+
 .bg-pattern {
   @include background-pattern;
+}
+
+.bg-circuit {
+  background-image: url("../images/shapes/circuit-board-blue.svg");
 }
 
 @for $i from -10 through 10 {
@@ -169,6 +178,10 @@ section {
   display: flex;
 }
 
+.p-absolute {
+  position: absolute;
+}
+
 .btn {
   @include button
 }
@@ -221,14 +234,14 @@ i.pause-btn, i.play-btn {
 
 .slick-arrow {
   &.slick-next {
-    right: 15px;
+    right: 0;
     &:before {
       color: $dark-blue;
     }
   }
 
   &.slick-prev {
-    left: 15px;
+    left: 0;
     &:before {
       color: $dark-blue;
     }
@@ -250,7 +263,7 @@ i.pause-btn, i.play-btn {
   }
 
   .line {
-    height: 4px;
+    height: 2px;
     width: calc(100% - 20px);
     background-color: $orange;
     flex: 1 1 auto;
@@ -260,23 +273,23 @@ i.pause-btn, i.play-btn {
     &:before {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: -4px;
       left: -10px;
-      height: 14px;
-      width: 14px;
-      border-radius: 14px;
-      border: 4px solid $orange;
+      height: 10px;
+      width: 10px;
+      border-radius: 10px;
+      border: 2px solid $orange;
     }
 
     &:after {
       content: '';
       position: absolute;
-      bottom: -5px;
-      right: -12px;
-      height: 14px;
-      width: 14px;
-      border-radius: 14px;
-      border: 4px solid $orange;
+      bottom: -4px;
+      right: -10px;
+      height: 10px;
+      width: 10px;
+      border-radius: 10px;
+      border: 2px solid $orange;
     }
   }
 }
@@ -337,8 +350,6 @@ i.pause-btn, i.play-btn {
   }
 
   .header-video {
-    margin-top: 60px;
-    margin-bottom: -60px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -354,7 +365,6 @@ i.pause-btn, i.play-btn {
   height: 100%;
   justify-content: flex-start;
   align-items: flex-end;
-  padding-right: 3%;
 }
 
 .popout-video {
@@ -485,4 +495,60 @@ i.pause-btn, i.play-btn {
     }
   }
 
+}
+
+.tag {
+  padding: 4px 8px;
+  border-radius: 14px;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.video-collage {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .bg-img {
+    width: 100%;
+
+    &.p-absolute {
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .popout-video-btn {
+    width: 70%;
+    position: absolute;
+  }
+}
+
+#partners-2020 {
+  .partner-logos {
+    width: 100%;
+    .logo-container {
+      flex: 0 1 16.6667%;
+    }
+  }
+}
+
+.past-events-page {
+  #tracks2019 {
+    .bg-circle {
+      background-color: transparentize($white, 0.2);
+    }
+
+    .icon {
+      z-index: 1;
+    }
+
+    .track-item:hover .image-container .bg-circle {
+      background-color: $red;
+    }
+  }
 }

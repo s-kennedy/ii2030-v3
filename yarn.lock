@@ -12142,10 +12142,10 @@ react-dom@^16.8.0:
     prop-types "^15.6.2"
     scheduler "^0.18.0"
 
-react-easy-editables@^0.8.6:
-  version "0.8.6"
-  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.8.6.tgz#a2d1d9bcc827baf9aa8bf90a4b402d1660a4ac6d"
-  integrity sha512-8xy8L9CNxKs19r4lM+/3l96PWtgDp6V7wNc7+B9gVdX8FmHNow1rdsZLo1m8d5SXl3Hy7MpQgtViinQ4Njw/sw==
+react-easy-editables@^0.8.8:
+  version "0.8.8"
+  resolved "https://registry.yarnpkg.com/react-easy-editables/-/react-easy-editables-0.8.8.tgz#a6eaa5f0280e5bac5354c7aa77b9925bbcc80295"
+  integrity sha512-PsQHHZ4kkAoYXS9XMtUGBgkTKhiN390n0YV7d8MkVtkXzt2plYi2+EzB/xOPLBrtpNbDYSBkmR9ZhvLc0PDO9w==
   dependencies:
     react-gsheets-timeline "^0.5.4"
     react-image-lightbox "^5.1.0"

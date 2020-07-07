@@ -1,8 +1,8 @@
 import React, { createRef } from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
-import { EditableText, EditableParagraph, EditableLink, EditableImageUpload } from "react-easy-editables"
-import { uploadImage } from "../firebase/operations"
+import { EditableText, EditableParagraph, EditableLink, EditableImageUpload, EditableFileUpload } from "react-easy-editables"
+import { uploadImage, uploadFile } from "../firebase/operations"
 import Parallax from 'parallax-js'
 import AOS from 'aos';
 
@@ -33,6 +33,7 @@ import factoryIcon from "../assets/images/factory-icon-standardized.png"
 import bgImg1 from "../assets/images/shapes/header-triangle-red.svg"
 import bgImg2 from "../assets/images/shapes/polygon-lg-blue.svg"
 import bgImg3 from "../assets/images/shapes/polygon-lg-vert.svg"
+import bgImg4 from "../assets/images/shapes/header-triangle-light-blue.svg"
 import endevaLogo from "../assets/images/logos/endeva.png"
 
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
@@ -134,6 +135,14 @@ class HomePage extends React.Component {
           </div>
         </Section>
 
+        <Section id="highlight" className="bg-highlight pt-10 pb-10" data-aos="fade-up" data-aos-delay="1000">
+          <Grid container justify="center">
+            <Grid item>
+              <EditableLink content={content["apply-now-text"]} onSave={this.onSave('apply-now-text')} />
+            </Grid>
+          </Grid>
+        </Section>
+
         <Section id="overview" className="bg-dark">
           <div className="" data-aos="fade-in">
             <Grid container>
@@ -145,7 +154,11 @@ class HomePage extends React.Component {
             <Grid container justify="flex-end">
               <Grid item xs={12} md={5}>
                 <div className="video" data-depth="0.5">
-                  <PopoutVideo content={content["landing-video"]} onSave={this.onSave('landing-video')} />
+                  <PopoutVideo
+                    content={content["landing-video"]}
+                    onSave={this.onSave('landing-video')}
+                    bgImg={bgImg4}
+                  />
                 </div>
               </Grid>
               <Grid item xs={12} md={7}>
@@ -205,6 +218,7 @@ class HomePage extends React.Component {
           <Grid container>
             <Grid item xs={12}>
               <h2 className="mb-40"><EditableText content={content["testimonials-title"]} onSave={this.onSave('testimonials-title')} /></h2>
+              <EditableParagraph content={content["testimonials-description"]} onSave={this.onSave('testimonials-description')} />
             </Grid>
           </Grid>
           <Grid container>
@@ -235,19 +249,13 @@ class HomePage extends React.Component {
 
           <div className="process-steps mt-20" ref={this.parallaxRefSteps}>
             <div className="background">
-            <img className="parallax-it" data-depth="0.8" src={bgImg3} alt="" />
+            <img className="rotateme-reverse" data-depth="0.8" src={bgImg3} alt="" />
             </div>
 
-            <Grid container alignItems="center" data-aos="fade-in">
+            <Grid container alignItems="center" data-aos="fade-in" data-aos-delay={250}>
               <Grid item xs={12} md={5}>
                 <div className="horiz-center">
                   <div className="process-collage">
-                    <div className="step-title mr-20">
-                      <div className="horiz-center vert-center fit-content">
-                        <div className="number">consultation</div>
-                        <div className="bg-circle"></div>
-                      </div>
-                    </div>
                     <div className="robot-icon">
                       <img className="parallax-it" data-depth="0.2" src={headIcon} alt="friendly robot head" />
                     </div>
@@ -258,7 +266,12 @@ class HomePage extends React.Component {
                 <div className="step-description">
                   <ExpansionPanel square elevation={0} style={{ backgroundColor: 'transparent' }}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />}>
-                      <div className="oversize"><EditableText content={content["step1-title"]} onSave={this.onSave('step1-title')} /></div>
+                      <div>
+                        <span className="tag bg-highlight">consultation</span>
+                        <div className="oversize mt-10">
+                          <EditableText content={content["step1-title"]} onSave={this.onSave('step1-title')} />
+                        </div>
+                      </div>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                       <EditableParagraph content={content["step1-description"]} onSave={this.onSave('step1-description')} />
@@ -268,16 +281,10 @@ class HomePage extends React.Component {
               </Grid>
             </Grid>
 
-            <Grid container alignItems="center" data-aos="fade-in">
+            <Grid container alignItems="center" data-aos="fade-in" data-aos-delay={200}>
               <Grid item xs={12} md={5}>
                 <div className="horiz-center">
                   <div className="process-collage">
-                    <div className="step-title mr-20">
-                      <div className="horiz-center vert-center fit-content">
-                        <div className="number">co-creation</div>
-                        <div className="bg-circle"></div>
-                      </div>
-                    </div>
                     <div className="robot-icon">
                       <img className="parallax-it" data-depth="0.4" src={factoryIcon} alt="friendly factory" />
                     </div>
@@ -288,7 +295,12 @@ class HomePage extends React.Component {
                 <div className="step-description">
                   <ExpansionPanel square elevation={0} style={{ backgroundColor: 'transparent' }}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />}>
-                      <div className="oversize"><EditableText content={content["step2-title"]} onSave={this.onSave('step2-title')} /></div>
+                      <div>
+                        <span className="tag bg-highlight">co-creation</span>
+                        <div className="oversize mt-10">
+                          <EditableText content={content["step2-title"]} onSave={this.onSave('step2-title')} />
+                        </div>
+                      </div>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                       <EditableParagraph content={content["step2-description"]} onSave={this.onSave('step2-description')} />
@@ -298,16 +310,10 @@ class HomePage extends React.Component {
               </Grid>
             </Grid>
 
-            <Grid container alignItems="center" data-aos="fade-in">
+            <Grid container alignItems="center" data-aos="fade-in" data-aos-delay={200}>
               <Grid item xs={12} md={5}>
                 <div className="horiz-center">
                   <div className="process-collage">
-                    <div className="step-title mr-20">
-                      <div className="horiz-center vert-center fit-content">
-                        <div className="number">implementation</div>
-                        <div className="bg-circle"></div>
-                      </div>
-                    </div>
                     <div className="robot-icon">
                       <img className="parallax-it" data-depth="0.6" src={tourIcon} alt="friendly rocket" />
                     </div>
@@ -318,7 +324,12 @@ class HomePage extends React.Component {
                 <div className="step-description">
                   <ExpansionPanel square elevation={0} style={{ backgroundColor: 'transparent' }}>
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />}>
-                      <div className="oversize"><EditableText content={content["step3-title"]} onSave={this.onSave('step3-title')} /></div>
+                      <div>
+                        <span className="tag bg-highlight">implementation</span>
+                        <div className="oversize mt-10">
+                          <EditableText content={content["step3-title"]} onSave={this.onSave('step3-title')} />
+                        </div>
+                      </div>
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails>
                       <EditableParagraph content={content["step3-description"]} onSave={this.onSave('step3-description')} />
@@ -330,7 +341,7 @@ class HomePage extends React.Component {
           </div>
         </Section>
 
-        <Section id="track-record" className="">
+        <Section id="results" className="">
           <Grid container>
             <Grid item xs={12} md={5} >
               <h2><EditableText content={content["track-record-title"]} onSave={this.onSave('track-record-title')} /></h2>
@@ -342,17 +353,41 @@ class HomePage extends React.Component {
               <EditableParagraph content={content["track-record-description"]} onSave={this.onSave('track-record-description')} />
             </Grid>
           </Grid>
-          <Grid container>
-            <Grid item xs={12} md={4} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="50">
-              <TrackRecord content={content["track-record-1"]} onSave={this.onSave('track-record-1')} shape="polygon" />
+
+          <div className="mt-40 mb-40 primary" data-aos="fade-in">
+            <Grid container justify="space-around" alignItems="center">
+              <Grid item xs={12} md={5}>
+                <div className="video">
+                  <PopoutVideo
+                    content={content["case1-video"]}
+                    onSave={this.onSave('case1-video')}
+                  />
+                </div>
+              </Grid>
+              <Grid item xs={12} md={5}>
+                <h3 className="mb-20"><EditableText content={content["case1-title"]} onSave={this.onSave('case1-title')} /></h3>
+                <EditableParagraph content={content["case1-description"]} onSave={this.onSave('case1-description')} />
+                <EditableFileUpload
+                  content={content["case1-file"]}
+                  onSave={this.onSave('case1-file')}
+                  uploadFile={uploadFile}
+                  maxSize={1024 * 1024 * 5}
+                  linkText="Download the report"
+                  classes="btn"
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={4} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="200">
+          </div>
+
+          <Grid container justify="space-around">
+            <Grid item xs={12} md={5} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="50">
               <TrackRecord content={content["track-record-2"]} onSave={this.onSave('track-record-2')} shape="polygon" />
             </Grid>
-            <Grid item xs={12} md={4} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="450">
+            <Grid item xs={12} md={5} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="200">
               <TrackRecord content={content["track-record-3"]} onSave={this.onSave('track-record-3')} shape="polygon" />
             </Grid>
           </Grid>
+
         </Section>
 
         <Section id="cta" className="bg-dark" data-aos="fade-in">
@@ -372,7 +407,7 @@ class HomePage extends React.Component {
         <Section id="partners" className="">
           <Grid container data-aos="fade-in">
             <Grid item xs={12} md={5} >
-              <h2 className="mb-20"><EditableText content={content["partners-title"]} onSave={this.onSave('partners-title')} /></h2>
+              <h2 className="mb-20 mt-20"><EditableText content={content["partners-title"]} onSave={this.onSave('partners-title')} /></h2>
             </Grid>
           </Grid>
 
@@ -392,28 +427,6 @@ class HomePage extends React.Component {
               onSave={this.onSave('partner-logos')}
               onAddItem={this.onAddItem('partner-logos')}
               onDeleteItem={this.onDeleteItem('partner-logos')}
-              isEditingPage={this.props.isEditingPage}
-              defaultContent={DEFAULT_COMPONENT_CONTENT['partner-logos']}
-              classes="partner-logos"
-            />
-          </Grid>
-
-        </Section>
-
-        <Section id="past-participants" className="pt-0">
-          <Grid container data-aos="fade-in">
-            <Grid item xs={12} md={5} >
-              <h2 className="mb-20"><EditableText content={content["participants-title"]} onSave={this.onSave('participants-title')} /></h2>
-            </Grid>
-          </Grid>
-
-          <Grid container data-aos="fade-in">
-            <Collection
-              items={content["participants-logos"]}
-              Component={PartnerLogo}
-              onSave={this.onSave('participants-logos')}
-              onAddItem={this.onAddItem('participants-logos')}
-              onDeleteItem={this.onDeleteItem('participants-logos')}
               isEditingPage={this.props.isEditingPage}
               defaultContent={DEFAULT_COMPONENT_CONTENT['partner-logos']}
               classes="partner-logos"

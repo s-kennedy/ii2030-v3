@@ -70,6 +70,7 @@ class ImageCarousel extends React.Component {
       slidesToScroll: 1,
       prevArrow: <PrevArrow />,
       nextArrow: <NextArrow />,
+      autoplay: !this.props.isEditingPage,
       responsive: [
         {
           breakpoint: 1024,
@@ -91,13 +92,13 @@ class ImageCarousel extends React.Component {
                 const content = this.props.content[key];
 
                 return(
-                  <div className="p-40" key={key}>
+                  <div className="p-30" key={key}>
                     <EditableLightboxImageUpload
                       onSave={this.onSaveItem(key)}
                       onDelete={this.onDeleteItem(key)}
                       classes={"slider-height-sm"}
                       uploadImage={uploadImage}
-                      showCaption={false}
+                      showCaption={true}
                       editCaption={true}
                       content={content}
                     />

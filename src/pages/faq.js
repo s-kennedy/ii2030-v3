@@ -86,7 +86,6 @@ class FrequentlyAskedQuestions extends React.Component {
     const categories = {
       "General Information": [],
       "Registration": [],
-      "Tickets": [],
       "Partnerships & Sponsorship": []
     };
 
@@ -112,7 +111,7 @@ class FrequentlyAskedQuestions extends React.Component {
             {map(categories, (category, key) => {
               return (
                 <div key={`category-${key}`}>
-                  <h3 className="mt-40 mb-20 lowercase">
+                  <h3 className="mt-40 mb-20">
                     {key}
                   </h3>
                   {category.map((question, i) => (

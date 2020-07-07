@@ -183,9 +183,9 @@ class TrackTemplate extends React.Component {
                 <div className="question mb-20" key={question}>
                   <Grid container>
                     <Grid item xs={12} md={5}>
-                      <div className="oversize">
+                      <h3 className="">
                         <EditableText content={sectionContent["question"]} onSave={this.onSaveQuestion(introSlides, question, "question")} />
-                      </div>
+                      </h3>
                       <div className="underline" />
                     </Grid>
                   </Grid>
