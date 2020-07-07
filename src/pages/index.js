@@ -35,6 +35,7 @@ import bgImg2 from "../assets/images/shapes/polygon-lg-blue.svg"
 import bgImg3 from "../assets/images/shapes/polygon-lg-vert.svg"
 import bgImg4 from "../assets/images/shapes/header-triangle-light-blue.svg"
 import endevaLogo from "../assets/images/logos/endeva.png"
+import ddgThumbnail from "../assets/images/ddgThumbnail.jpg"
 
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
@@ -361,6 +362,7 @@ class HomePage extends React.Component {
                   <PopoutVideo
                     content={content["case1-video"]}
                     onSave={this.onSave('case1-video')}
+                    thumbnail={ddgThumbnail}
                   />
                 </div>
               </Grid>
