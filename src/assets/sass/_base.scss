@@ -37,6 +37,9 @@ section {
 
 .bg-circuit {
   background-image: url("../images/shapes/circuit-board-blue.svg");
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: bottom -21% left -23%;
 }
 
 @for $i from -10 through 10 {
@@ -537,6 +540,14 @@ i.pause-btn, i.play-btn {
   }
 }
 
+.home-page {
+  #overview {
+    .video-collage .bg-img.p-absolute {
+      bottom: -20px;
+    }
+  }
+}
+
 .past-events-page {
   #tracks2019 {
     .bg-circle {
@@ -549,6 +560,29 @@ i.pause-btn, i.play-btn {
 
     .track-item:hover .image-container .bg-circle {
       background-color: $red;
+    }
+  }
+
+  #header {
+    .video-collage .bg-img.p-absolute {
+      bottom: 20px;
+    }
+  }
+}
+
+.collage {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .bg-img {
+    width: 100%;
+
+    &.p-absolute {
+      bottom: 0;
+      left: 0;
     }
   }
 }

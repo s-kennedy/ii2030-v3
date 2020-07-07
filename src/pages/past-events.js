@@ -172,7 +172,7 @@ class HomePage extends React.Component {
                   }
                   return(
                     <div key={track.slug} className={`track-item mb-60 mt-60`} data-aos="fade-in">
-                      <Grid container spacing={4}>
+                      <Grid container spacing={6}>
                         <Grid item xs={12} sm={3}>
                           <div className="image-container">
                             <div className="bg-circle"></div>
@@ -259,7 +259,7 @@ class HomePage extends React.Component {
                   }
                   return(
                     <div key={track.slug} className={`track-item mb-60 mt-60`} data-aos="fade-in">
-                      <Grid container spacing={4}>
+                      <Grid container spacing={6}>
                         <Grid item xs={12} sm={3}>
                           <div className="image-container">
                             <div className="bg-circle"></div>

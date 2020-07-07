@@ -892,14 +892,12 @@ section#participants {
 
 #results {
   .primary {
-    border-bottom: 1px solid $dark-blue-500;
-    border-top: 1px solid $dark-blue-500;
+    border-bottom: 1px solid $dark-blue-100;
     padding-bottom: 40px;
-    padding-top: 40px;
   }
 
   .secondary {
-    border-right: 1px solid $dark-blue-500;
+    border-right: 1px solid $dark-blue-100;
   }
 
   .testimonial-container {

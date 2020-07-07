@@ -20,11 +20,15 @@ import TrackList from "../components/common/TrackList"
 import TrackRecord from "../components/common/TrackRecord"
 import PartnerLogo from "../components/common/PartnerLogo"
 import Collection from "../components/common/Collection";
+import PopoutVideo from "../components/common/PopoutVideo"
 
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import bgImg1 from "../assets/images/shapes/triangle-blue.svg"
 import bgImg2 from "../assets/images/shapes/header-triangle-orange.svg"
+import bgImg4 from "../assets/images/shapes/header-triangle-light-blue.svg"
+import robot from "../assets/images/head.png"
+import circuitBoard from "../assets/images/shapes/circuit-board-blue.svg"
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -64,12 +68,14 @@ class HomePage extends React.Component {
       content: JSON.parse(this.props.data.pages.content)
     };
     this.parallaxRef = createRef()
+    this.parallaxRefRobot = createRef()
 
     this.props.onLoadPageData(initialPageData);
   }
 
   componentDidMount() {
     new Parallax(this.parallaxRef.current, { pointerEvents: true })
+    new Parallax(this.parallaxRefRobot.current)
   }
 
   onSave = id => content => {
@@ -96,7 +102,7 @@ class HomePage extends React.Component {
                 <h1><EditableText content={content["landing-title"]} onSave={this.onSave('landing-title')} /></h1>
               </Grid>
               <Grid item xs={12} md={6} ref={this.parallaxRef}>
-                <div data-depth={"0.5"} className="header-image">
+                <div data-depth={"0.5"} className="header-image p-40">
                   <EditableImageUpload content={content["landing-image"]} onSave={this.onSave('landing-image')} uploadImage={uploadImage} />
                 </div>
               </Grid>
@@ -117,15 +123,21 @@ class HomePage extends React.Component {
         </Section>
 
         <Section id="overview" className="bg-dark">
-          <div data-aos="fade-in">
+          <div className="" data-aos="fade-in">
             <Grid container>
               <Grid item xs={12} md={5} >
                 <h2><EditableText content={content["overview-title"]} onSave={this.onSave('overview-title')} /></h2>
                 <div className="underline" />
               </Grid>
             </Grid>
-            <Grid container justify="flex-end">
-              <Grid item xs={12} md={7}>
+            <Grid container justify="space-around" alignItems="center" className="mt-20 mb-40">
+              <Grid item xs={12} md={5}>
+                <div className="collage" ref={this.parallaxRefRobot}>
+                  <img data-depth={"0.2"} src={robot} alt="" className="bg-img p-absolute" style={{ height: '260px', width: 'auto', zIndex: 1, marginTop: '-20px' }} />
+                  <img data-depth={"0.5"} src={circuitBoard} alt="" className="bg-img" style={{ marginBottom: '-50px' }} />
+                </div>
+              </Grid>
+              <Grid item xs={12} md={5}>
                 <EditableParagraph content={content["overview-description"]} onSave={this.onSave('overview-description')} />
                 <EditableLink content={content["overview-link"]} onSave={this.onSave('overview-link')} classes="btn white mt-20" />
               </Grid>

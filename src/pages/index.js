@@ -103,7 +103,7 @@ class HomePage extends React.Component {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
 
     return (
-      <Layout location={this.props.location}>
+      <Layout location={this.props.location} className="home-page">
         <Section id="header" data-aos="fade-in">
           <div className="content">
             <Grid container>
@@ -151,7 +151,7 @@ class HomePage extends React.Component {
                 <div className="underline" />
               </Grid>
             </Grid>
-            <Grid container justify="flex-end">
+            <Grid container justify="space-around" alignItems="center" className="mt-50 mb-30">
               <Grid item xs={12} md={5}>
                 <div className="video" data-depth="0.5">
                   <PopoutVideo
@@ -161,7 +161,7 @@ class HomePage extends React.Component {
                   />
                 </div>
               </Grid>
-              <Grid item xs={12} md={7}>
+              <Grid item xs={12} md={5}>
                 <EditableParagraph content={content["overview-description"]} onSave={this.onSave('overview-description')} />
                 <EditableLink content={content["overview-link"]} onSave={this.onSave('overview-link')} classes="btn white mt-20" />
               </Grid>
