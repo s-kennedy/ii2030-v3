@@ -94,7 +94,7 @@ PopoutVideo.propTypes = {
 PopoutVideo.defaultProps = {
   content: {
     src: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6518432679573090304?compact=1',
-    height: '30px',
+    height: '300px',
     width: '560px',
     title: 'Video',
   },

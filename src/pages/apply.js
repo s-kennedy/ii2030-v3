@@ -109,7 +109,7 @@ class HomePage extends React.Component {
               title="Webinar Application Form"
               src="https://airtable.com/embed/shrOhT60muF57KGJb?backgroundColor=purple"
               frameBorder="0"
-              onMousewheel=""
+              onWheel={()=>false}
               width="100%"
               height="1745"
               style={{ background: "transparent", border: "none" }}>

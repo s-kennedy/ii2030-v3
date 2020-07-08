@@ -189,7 +189,7 @@ class TrackTemplate extends React.Component {
                   <div className="underline">
                     <div className={`shape red`} />
                   </div>
-                  <div className="ml-80">
+                  <div className="indented">
                     <EditableParagraph content={introSlides["how"]["answer"]} onSave={this.onSaveQuestion(introSlides, "how", "answer")} />
                   </div>
                 </Grid>
@@ -238,7 +238,7 @@ class TrackTemplate extends React.Component {
                   <div className="underline">
                     <div className={`shape gray`} />
                   </div>
-                  <div className="ml-80">
+                  <div className="indented">
                     <EditableParagraph content={introSlides["what"]["answer"]} onSave={this.onSaveQuestion(introSlides, "what", "answer")} />
                   </div>
                 </Grid>
@@ -289,7 +289,7 @@ class TrackTemplate extends React.Component {
                   <div className="underline">
                     <div className={`shape orange`} />
                   </div>
-                  <div className="ml-80">
+                  <div className="indented">
                     <EditableParagraph content={introSlides["who"]["answer"]} onSave={this.onSaveQuestion(introSlides, "who", "answer")} />
                   </div>
                 </Grid>
@@ -309,7 +309,7 @@ class TrackTemplate extends React.Component {
                   <div className="underline">
                     <div className={`shape blue`} />
                   </div>
-                  <div className="ml-80">
+                  <div className="indented">
                     <EditableParagraph content={introSlides["why"]["answer"]} onSave={this.onSaveQuestion(introSlides, "why", "answer")} />
                   </div>
                 </Grid>

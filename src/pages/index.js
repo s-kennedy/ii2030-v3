@@ -159,7 +159,7 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={5}>
                 <h2><EditableText content={content["overview-title"]} onSave={this.onSave('overview-title')} /></h2>
                 <div className="underline"><div className="shape" /></div>
-                <div className="ml-80">
+                <div className="indented">
                   <EditableParagraph content={content["overview-description"]} onSave={this.onSave('overview-description')} />
                   <EditableLink content={content["overview-link"]} onSave={this.onSave('overview-link')} classes="btn white mt-20" />
                 </div>
@@ -174,7 +174,7 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={7}>
                 <h2><EditableText content={content["challenge-title"]} onSave={this.onSave('challenge-title')} /></h2>
                 <div className="underline"><div className="shape orange" /></div>
-                <div className="ml-80">
+                <div className="indented">
                   <EditableParagraph content={content["challenge-description"]} onSave={this.onSave('challenge-description')} />
                 </div>
               </Grid>
@@ -186,7 +186,7 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={7}>
                 <h2><EditableText content={content["solution-title"]} onSave={this.onSave('solution-title')} /></h2>
                 <div className="underline"><div className="shape gray" /></div>
-                <div className="ml-80">
+                <div className="indented">
                   <EditableParagraph content={content["solution-description"]} onSave={this.onSave('solution-description')} />
                 </div>
               </Grid>
@@ -198,7 +198,7 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={7}>
                 <h2><EditableText content={content["join-title"]} onSave={this.onSave('join-title')} /></h2>
                 <div className="underline"><div className="shape red" /></div>
-                <div className="ml-80">
+                <div className="indented">
                   <EditableParagraph content={content["join-description"]} onSave={this.onSave('join-description')} />
                   <EditableLink content={content["join-link"]} onSave={this.onSave('join-link')} classes="btn mt-20" />
                 </div>
@@ -231,8 +231,8 @@ class HomePage extends React.Component {
           <Grid container>
             <Grid item xs={12} md={7} >
               <h2><EditableText content={content["process-title"]} onSave={this.onSave('process-title')} /></h2>
-              <div className="underline"><div className="shape red" /></div>
-              <div className="ml-80">
+              <div className="underline"><div className="shape blue" /></div>
+              <div className="indented">
                 <EditableParagraph content={content["process-description"]} onSave={this.onSave('process-description')} />
               </div>
             </Grid>
@@ -337,7 +337,7 @@ class HomePage extends React.Component {
             <Grid item xs={12} md={7} >
               <h2><EditableText content={content["track-record-title"]} onSave={this.onSave('track-record-title')} /></h2>
               <div className="underline"><div className="shape" /></div>
-              <div className="ml-80">
+              <div className="indented">
                 <EditableParagraph content={content["track-record-description"]} onSave={this.onSave('track-record-description')} />
               </div>
             </Grid>
