@@ -12,7 +12,6 @@ import Button from "@material-ui/core/Button";
 
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
-import ImageCarousel from "../components/common/ImageCarousel"
 import { EditableText, EditableParagraph, EditableImageUpload } from "react-easy-editables"
 import { uploadImage } from "../firebase/operations"
 
@@ -20,6 +19,8 @@ import bgImg1 from "../assets/images/shapes/polygon-lg-white.svg"
 import bgImg2 from "../assets/images/shapes/triangle-orange.svg"
 import bgImg3 from "../assets/images/shapes/circuit-board-white.svg"
 import bgImg4 from "../assets/images/shapes/polygon-red.svg"
+import defaultImage1 from "../assets/images/head.png"
+import defaultImage2 from "../assets/images/tour.png"
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -141,9 +142,6 @@ class TrackTemplate extends React.Component {
     const content = this.props.pageData ? this.props.pageData.content : {};
     const introSlides = content["intro-slides"] || [];
     const trackLeads = content["track-leads"] || [];
-    const questions = Object.keys(introSlides)
-    const colorClasses = ["orange", "gray", "red", "blue"]
-    const justifications = ["flex-start", "flex-end", "center"]
 
     return (
       <Layout className="track-page" location={this.props.location}>
@@ -182,7 +180,7 @@ class TrackTemplate extends React.Component {
           {
             introSlides["how"] &&
             <div className="question pb-40 pt-40">
-              <Grid container justify="space-between" alignItems="center" spacing={6}>
+              <Grid container justify="space-between" alignItems="stretch">
 
                 <Grid item xs={12} md={5}>
                   <h3>
@@ -196,15 +194,34 @@ class TrackTemplate extends React.Component {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} md={7}>
-                  <div className="img">
-                    <EditableImageUpload
+                <Grid item xs={12} md={7} style={{ position: "relative", minHeight: "260px" }}>
+                  <EditableImageUpload
                       classes="track-icon"
-                      content={ content["track-img-1"] }
+                      content={ content["track-img-1"] ? content["track-img-1"] : { imageSrc: defaultImage1, title: "Image placeholder" } }
                       onSave={this.onSave('track-img-1')}
                       uploadImage={uploadImage}
+                      styles={{
+                        container: {
+                          height: "100%",
+                          width: "100%",
+                          display: "flex",
+                          justify: "center",
+                          alignItems: "center",
+                          position: "absolute",
+                          top: 0,
+                          right: 0,
+                          bottom: 0,
+                          left: 0,
+                          paddingLeft: "20px",
+                          paddingRight: "20px",
+                        },
+                        image: {
+                          objectFit: "contain",
+                          height: "100%",
+                          width: "100%"
+                        }
+                      }}
                     />
-                  </div>
                 </Grid>
               </Grid>
             </div>
@@ -232,16 +249,37 @@ class TrackTemplate extends React.Component {
           {
             introSlides["who"] &&
             <div className="question pb-40 pt-40">
-              <Grid container justify="space-between" alignItems="center" spacing={6}>
-                <Grid item xs={12} md={7}>
-                  <div className="img">
+              <Grid container justify="space-between" alignItems="stretch">
+                <Grid item xs={12} md={7} style={{ position: "relative", minHeight: "260px" }}>
+
                     <EditableImageUpload
                       classes="track-icon"
-                      content={ content["track-img-2"] }
+                      content={ content["track-img-2"] ? content["track-img-2"] : { imageSrc: defaultImage2, title: "Image placeholder" } }
                       onSave={this.onSave('track-img-2')}
                       uploadImage={uploadImage}
+                      styles={{
+                        container: {
+                          height: "100%",
+                          width: "100%",
+                          display: "flex",
+                          justify: "center",
+                          alignItems: "center",
+                          position: "absolute",
+                          top: 0,
+                          right: 0,
+                          bottom: 0,
+                          left: 0,
+                          paddingLeft: "20px",
+                          paddingRight: "20px",
+                        },
+                        image: {
+                          objectFit: "contain",
+                          height: "100%",
+                          width: "100%",
+                        }
+                      }}
                     />
-                  </div>
+
                 </Grid>
 
                 <Grid item xs={12} md={5}>

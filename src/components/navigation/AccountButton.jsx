@@ -1,5 +1,5 @@
 import React from "react";
-import { push, Link } from "gatsby";
+import { push } from "gatsby";
 import firebase, { stagingFirebase } from "../../firebase/init";
 import { connect } from "react-redux";
 import Button from "@material-ui/core/Button"

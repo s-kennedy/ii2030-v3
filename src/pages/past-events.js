@@ -24,7 +24,7 @@ import bgPolygonRed from "../assets/images/shapes/polygon-lg-white.svg"
 import bgPolygonBlue from "../assets/images/shapes/polygon-lg-blue.svg"
 
 import bgImg1 from "../assets/images/shapes/header-triangle-orange.svg"
-import bgImg2 from "../assets/images/shapes/polygon-lg-blue.svg"
+// import bgImg2 from "../assets/images/shapes/polygon-lg-blue.svg"
 import thumbnail from "../assets/images/thumbnail2017.jpg"
 
 import "slick-carousel/slick/slick.css";

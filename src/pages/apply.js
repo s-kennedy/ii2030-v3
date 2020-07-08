@@ -2,7 +2,7 @@ import React, { createRef } from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
 import Parallax from 'parallax-js'
-import { EditableText, EditableParagraph, EditableLink, EditableImageUpload } from "react-easy-editables"
+import { EditableText, EditableImageUpload } from "react-easy-editables"
 import { uploadImage } from "../firebase/operations"
 
 import {
@@ -16,24 +16,14 @@ import Grid from "@material-ui/core/Grid"
 
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
-import TrackList from "../components/common/TrackList"
-import TrackRecord from "../components/common/TrackRecord"
-import PartnerLogo from "../components/common/PartnerLogo"
-import Collection from "../components/common/Collection";
-import PopoutVideo from "../components/common/PopoutVideo"
-
-import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import bgImg1 from "../assets/images/shapes/triangle-blue.svg"
 import bgImg2 from "../assets/images/shapes/header-triangle-orange.svg"
-import bgImg4 from "../assets/images/shapes/header-triangle-light-blue.svg"
-import robot from "../assets/images/head.png"
-import circuitBoard from "../assets/images/shapes/circuit-board-blue.svg"
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const PAGE_ID = "home"
+const PAGE_ID = "apply"
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -116,6 +106,7 @@ class HomePage extends React.Component {
           <div className="" data-aos="fade-in">
             <iframe
               className="airtable-embed"
+              title="Webinar Application Form"
               src="https://airtable.com/embed/shrOhT60muF57KGJb?backgroundColor=purple"
               frameBorder="0"
               onMousewheel=""

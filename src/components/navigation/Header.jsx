@@ -145,7 +145,7 @@ class Navigation extends React.Component {
               </div>
             </Grid>
             <Grid item>
-              <Link to="/" className="btn blue">Apply now!</Link>
+              <Link to="/apply" className="btn blue">Apply now!</Link>
             </Grid>
           </Grid>
         </Hidden>
@@ -186,7 +186,7 @@ class Navigation extends React.Component {
                 <MenuItem onClick={this.handleClose} component={Link} to={"/africa-for-the-future"}>#Africa4Future</MenuItem>
                 <MenuItem onClick={this.handleClose} component={Link} to={"/past-events"}>Past Editions</MenuItem>
                 <MenuItem onClick={this.handleClose} component={Link} to={"/faq"}>FAQ</MenuItem>
-                <MenuItem onClick={this.handleClose} className="btn blue" component={Link} to={"/register"}>Apply now!</MenuItem>
+                <MenuItem onClick={this.handleClose} className="btn blue" component={Link} to={"/apply"}>Apply now!</MenuItem>
               </Menu>
             </Grid>
           </Grid>

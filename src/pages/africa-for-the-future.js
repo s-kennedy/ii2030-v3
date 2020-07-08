@@ -20,13 +20,11 @@ import TrackList from "../components/common/TrackList"
 import TrackRecord from "../components/common/TrackRecord"
 import PartnerLogo from "../components/common/PartnerLogo"
 import Collection from "../components/common/Collection";
-import PopoutVideo from "../components/common/PopoutVideo"
 
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import bgImg1 from "../assets/images/shapes/triangle-blue.svg"
 import bgImg2 from "../assets/images/shapes/header-triangle-orange.svg"
-import bgImg4 from "../assets/images/shapes/header-triangle-light-blue.svg"
 import robot from "../assets/images/head.png"
 import circuitBoard from "../assets/images/shapes/circuit-board-blue.svg"
 
