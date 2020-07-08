@@ -344,7 +344,7 @@ class TrackTemplate extends React.Component {
                               className="pure-img"
                               onSave={this.editTrackLead(index, "track-lead-image")}
                               uploadImage={uploadImage}
-                              styles={{ image: { borderRadius: "50%", height: "260px", width: "260px", left: "calc(50% - 130px)", top: "calc(50% - 130px)"  }}}
+                              styles={{ image: { borderRadius: "50%", height: "260px", width: "260px", left: "calc(50% - 130px)", top: "calc(50% - 130px)", boxShadow: "4px 4px 20px 0px rgba(64, 64, 64, 0.75)"  }}}
                             />
                           </div>
                         </Grid>
