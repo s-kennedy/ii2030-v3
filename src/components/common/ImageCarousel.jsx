@@ -66,7 +66,7 @@ class ImageCarousel extends React.Component {
     var settings = {
       infinite: true,
       speed: 500,
-      slidesToShow: Object.keys(this.props.content).length < 3 ? 1 : 3,
+      slidesToShow: this.props.slidesToShow ? this.props.slidesToShow : Object.keys(this.props.content).length < 3 ? 1 : 3,
       slidesToScroll: 1,
       prevArrow: <PrevArrow />,
       nextArrow: <NextArrow />,

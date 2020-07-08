@@ -12,6 +12,7 @@ import Button from "@material-ui/core/Button";
 
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
+import ImageCarousel from "../components/common/ImageCarousel"
 import { EditableText, EditableParagraph, EditableImageUpload } from "react-easy-editables"
 import { uploadImage } from "../firebase/operations"
 
@@ -141,12 +142,14 @@ class TrackTemplate extends React.Component {
     const introSlides = content["intro-slides"] || [];
     const trackLeads = content["track-leads"] || [];
     const questions = Object.keys(introSlides)
+    const colorClasses = ["orange", "gray", "red", "blue"]
+    const justifications = ["flex-start", "flex-end", "center"]
 
     return (
       <Layout className="track-page" location={this.props.location}>
         <Section id="header" className="bg-light" data-aos="fade-in">
           <div className="content">
-            <Grid container spacing={7}>
+            <Grid container spacing={6}>
               <Grid item xs={12} md={7}>
                 <h1 className="mb-40">
                   <EditableText content={{ text: title }} onSave={this.onSaveTitle} />
@@ -177,27 +180,106 @@ class TrackTemplate extends React.Component {
 
         <Section id="questions" className="">
           {
-            questions.map(question => {
-              const sectionContent = introSlides[question]
-              return (
-                <div className="question mb-20" key={question}>
-                  <Grid container>
-                    <Grid item xs={12} md={5}>
-                      <h3 className="">
-                        <EditableText content={sectionContent["question"]} onSave={this.onSaveQuestion(introSlides, question, "question")} />
-                      </h3>
-                      <div className="underline" />
-                    </Grid>
-                  </Grid>
-                  <Grid container justify="flex-end">
-                    <Grid item xs={12} md={7}>
-                      <EditableParagraph content={sectionContent["answer"]} onSave={this.onSaveQuestion(introSlides, question, "answer")} />
-                    </Grid>
-                  </Grid>
-                </div>
-              )
-            })
+            introSlides["how"] &&
+            <div className="question pb-40 pt-40">
+              <Grid container justify="space-between" alignItems="center" spacing={6}>
+
+                <Grid item xs={12} md={5}>
+                  <h3>
+                    <EditableText content={introSlides["how"]["question"]} onSave={this.onSaveQuestion(introSlides, "how", "question")} />
+                  </h3>
+                  <div className="underline">
+                    <div className={`shape red`} />
+                  </div>
+                  <div className="ml-80">
+                    <EditableParagraph content={introSlides["how"]["answer"]} onSave={this.onSaveQuestion(introSlides, "how", "answer")} />
+                  </div>
+                </Grid>
+
+                <Grid item xs={12} md={7}>
+                  <div className="img">
+                    <EditableImageUpload
+                      classes="track-icon"
+                      content={ content["track-img-1"] }
+                      onSave={this.onSave('track-img-1')}
+                      uploadImage={uploadImage}
+                    />
+                  </div>
+                </Grid>
+              </Grid>
+            </div>
           }
+
+          {
+            introSlides["what"] &&
+            <div className="question pb-40 pt-40">
+              <Grid container justify="center">
+                <Grid item xs={12} md={7}>
+                  <h3>
+                    <EditableText content={introSlides["what"]["question"]} onSave={this.onSaveQuestion(introSlides, "what", "question")} />
+                  </h3>
+                  <div className="underline">
+                    <div className={`shape gray`} />
+                  </div>
+                  <div className="ml-80">
+                    <EditableParagraph content={introSlides["what"]["answer"]} onSave={this.onSaveQuestion(introSlides, "what", "answer")} />
+                  </div>
+                </Grid>
+              </Grid>
+            </div>
+          }
+
+          {
+            introSlides["who"] &&
+            <div className="question pb-40 pt-40">
+              <Grid container justify="space-between" alignItems="center" spacing={6}>
+                <Grid item xs={12} md={7}>
+                  <div className="img">
+                    <EditableImageUpload
+                      classes="track-icon"
+                      content={ content["track-img-2"] }
+                      onSave={this.onSave('track-img-2')}
+                      uploadImage={uploadImage}
+                    />
+                  </div>
+                </Grid>
+
+                <Grid item xs={12} md={5}>
+                  <h3>
+                    <EditableText content={introSlides["who"]["question"]} onSave={this.onSaveQuestion(introSlides, "who", "question")} />
+                  </h3>
+                  <div className="underline">
+                    <div className={`shape orange`} />
+                  </div>
+                  <div className="ml-80">
+                    <EditableParagraph content={introSlides["who"]["answer"]} onSave={this.onSaveQuestion(introSlides, "who", "answer")} />
+                  </div>
+                </Grid>
+              </Grid>
+            </div>
+          }
+
+          {
+            introSlides["why"] &&
+            <div className="question pb-40 pt-40">
+              <Grid container justify="center">
+
+                <Grid item xs={12} md={7}>
+                  <h3>
+                    <EditableText content={introSlides["why"]["question"]} onSave={this.onSaveQuestion(introSlides, "why", "question")} />
+                  </h3>
+                  <div className="underline">
+                    <div className={`shape blue`} />
+                  </div>
+                  <div className="ml-80">
+                    <EditableParagraph content={introSlides["why"]["answer"]} onSave={this.onSaveQuestion(introSlides, "why", "answer")} />
+                  </div>
+                </Grid>
+
+              </Grid>
+            </div>
+          }
+
         </Section>
 
           { (trackLeads.length > 0 || this.props.isEditingPage) &&

@@ -146,12 +146,6 @@ class HomePage extends React.Component {
 
         <Section id="overview" className="bg-dark">
           <div className="" data-aos="fade-in">
-            <Grid container>
-              <Grid item xs={12} md={5} >
-                <h2><EditableText content={content["overview-title"]} onSave={this.onSave('overview-title')} /></h2>
-                <div className="underline" />
-              </Grid>
-            </Grid>
             <Grid container justify="space-around" alignItems="center" className="mt-50 mb-30">
               <Grid item xs={12} md={5}>
                 <div className="video" data-depth="0.5">
@@ -163,8 +157,12 @@ class HomePage extends React.Component {
                 </div>
               </Grid>
               <Grid item xs={12} md={5}>
-                <EditableParagraph content={content["overview-description"]} onSave={this.onSave('overview-description')} />
-                <EditableLink content={content["overview-link"]} onSave={this.onSave('overview-link')} classes="btn white mt-20" />
+                <h2><EditableText content={content["overview-title"]} onSave={this.onSave('overview-title')} /></h2>
+                <div className="underline"><div className="shape" /></div>
+                <div className="ml-80">
+                  <EditableParagraph content={content["overview-description"]} onSave={this.onSave('overview-description')} />
+                  <EditableLink content={content["overview-link"]} onSave={this.onSave('overview-link')} classes="btn white mt-20" />
+                </div>
               </Grid>
             </Grid>
           </div>
@@ -173,43 +171,37 @@ class HomePage extends React.Component {
         <Section id="overview" className="bg-light">
           <div className="mb-20" data-aos="fade-in">
             <Grid container>
-              <Grid item xs={12} md={5} >
+              <Grid item xs={12} md={7}>
                 <h2><EditableText content={content["challenge-title"]} onSave={this.onSave('challenge-title')} /></h2>
-                <div className="underline" />
-              </Grid>
-            </Grid>
-            <Grid container justify="flex-end">
-              <Grid item xs={12} md={7}>
-                <EditableParagraph content={content["challenge-description"]} onSave={this.onSave('challenge-description')} />
+                <div className="underline"><div className="shape orange" /></div>
+                <div className="ml-80">
+                  <EditableParagraph content={content["challenge-description"]} onSave={this.onSave('challenge-description')} />
+                </div>
               </Grid>
             </Grid>
           </div>
 
           <div className="mb-20" data-aos="fade-in">
-            <Grid container>
-              <Grid item xs={12} md={5} >
+            <Grid container justify="center">
+              <Grid item xs={12} md={7}>
                 <h2><EditableText content={content["solution-title"]} onSave={this.onSave('solution-title')} /></h2>
-                <div className="underline" />
-              </Grid>
-            </Grid>
-            <Grid container justify="flex-end">
-              <Grid item xs={12} md={7}>
-                <EditableParagraph content={content["solution-description"]} onSave={this.onSave('solution-description')} />
+                <div className="underline"><div className="shape gray" /></div>
+                <div className="ml-80">
+                  <EditableParagraph content={content["solution-description"]} onSave={this.onSave('solution-description')} />
+                </div>
               </Grid>
             </Grid>
           </div>
 
-          <div className="mb-20" data-aos="fade-in">
-            <Grid container>
-              <Grid item xs={12} md={5} >
-                <h2><EditableText content={content["join-title"]} onSave={this.onSave('join-title')} /></h2>
-                <div className="underline" />
-              </Grid>
-            </Grid>
+          <div className="mb-20 mt-40" data-aos="fade-in">
             <Grid container justify="flex-end">
               <Grid item xs={12} md={7}>
-                <EditableParagraph content={content["join-description"]} onSave={this.onSave('join-description')} />
-                <EditableLink content={content["join-link"]} onSave={this.onSave('join-link')} classes="btn mt-20" />
+                <h2><EditableText content={content["join-title"]} onSave={this.onSave('join-title')} /></h2>
+                <div className="underline"><div className="shape red" /></div>
+                <div className="ml-80">
+                  <EditableParagraph content={content["join-description"]} onSave={this.onSave('join-description')} />
+                  <EditableLink content={content["join-link"]} onSave={this.onSave('join-link')} classes="btn mt-20" />
+                </div>
               </Grid>
             </Grid>
           </div>
@@ -237,14 +229,12 @@ class HomePage extends React.Component {
 
         <Section id="process" className="bg-light">
           <Grid container>
-            <Grid item xs={12} md={5} >
+            <Grid item xs={12} md={7} >
               <h2><EditableText content={content["process-title"]} onSave={this.onSave('process-title')} /></h2>
-              <div className="underline" />
-            </Grid>
-          </Grid>
-          <Grid container justify="flex-end">
-            <Grid item xs={12} md={7}>
-              <EditableParagraph content={content["process-description"]} onSave={this.onSave('process-description')} />
+              <div className="underline"><div className="shape red" /></div>
+              <div className="ml-80">
+                <EditableParagraph content={content["process-description"]} onSave={this.onSave('process-description')} />
+              </div>
             </Grid>
           </Grid>
 
@@ -344,14 +334,12 @@ class HomePage extends React.Component {
 
         <Section id="results" className="">
           <Grid container>
-            <Grid item xs={12} md={5} >
+            <Grid item xs={12} md={7} >
               <h2><EditableText content={content["track-record-title"]} onSave={this.onSave('track-record-title')} /></h2>
-              <div className="underline" />
-            </Grid>
-          </Grid>
-          <Grid container justify="flex-end">
-            <Grid item xs={12} md={7}>
-              <EditableParagraph content={content["track-record-description"]} onSave={this.onSave('track-record-description')} />
+              <div className="underline"><div className="shape" /></div>
+              <div className="ml-80">
+                <EditableParagraph content={content["track-record-description"]} onSave={this.onSave('track-record-description')} />
+              </div>
             </Grid>
           </Grid>
 
