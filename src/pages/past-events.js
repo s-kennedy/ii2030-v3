@@ -123,7 +123,7 @@ class HomePage extends React.Component {
             </Grid>
           </div>
           <div className="background">
-            <img src={bgImg1} alt="" className="rotateme" />
+            <img src={bgImg1} alt="" className="rotateme" style={{ width: "70%", left: "15%"}} />
           </div>
         </Section>
 
