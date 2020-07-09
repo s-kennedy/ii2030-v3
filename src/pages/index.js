@@ -136,7 +136,7 @@ class HomePage extends React.Component {
           </div>
         </Section>
 
-        <Section id="highlight" className="bg-highlight pt-10 pb-10" data-aos="fade-up" data-aos-delay="500">
+        <Section id="highlight" className="bg-highlight pt-10 pb-10" data-aos="fade-up">
           <Grid container justify="center">
             <Grid item>
               <EditableLink content={content["apply-now-text"]} onSave={this.onSave('apply-now-text')} />
