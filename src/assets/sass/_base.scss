@@ -444,6 +444,10 @@ i.pause-btn, i.play-btn {
       color: $black !important;
     }
   }
+
+  .MuiMenu-paper {
+    width: 100%;
+  }
 }
 
 .track-page {
@@ -640,4 +644,8 @@ i.pause-btn, i.play-btn {
 
 .text-italic {
   font-style: italic;
+}
+
+.text-small {
+  font-size: 0.9em;
 }

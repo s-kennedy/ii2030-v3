@@ -6,9 +6,12 @@ import { sortBy } from 'lodash';
 import Button from "@material-ui/core/Button"
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import List from "@material-ui/core/List";
+import Collapse from "@material-ui/core/Collapse";
 import Grid from '@material-ui/core/Grid';
 import Hidden from '@material-ui/core/Hidden';
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import MenuIcon from "@material-ui/icons/Menu";
 
 
@@ -21,6 +24,7 @@ const styles = {
     fontWeight: 100,
     fontSize: '16px',
     paddingLeft: '40px',
+    whiteSpace: 'normal',
   },
   grow: {
     flexGrow: 1,
@@ -34,8 +38,10 @@ const styles = {
     width: "100%",
     borderBottom: "1px solid rgba(80, 143, 184, 0.2)",
     zIndex: "999",
-    justifyContent: "space-between"
-  }
+    justifyContent: "space-between",
+    width: '100%'
+  },
+  mobileMenu: { width: '95vw' }
 }
 
 class TracksDropdown extends React.Component {
@@ -75,7 +81,7 @@ class TracksDropdown extends React.Component {
         >
           <>
             { this.props.anchorText }
-            <ExpandMoreIcon style={{ marginLeft: '2px' }} />
+            { open ? <ExpandLessIcon style={{ marginLeft: '2px' }} /> : <ExpandMoreIcon style={{ marginLeft: '2px' }} />}
           </>
         </button>
         <Menu
@@ -115,6 +121,7 @@ class TracksDropdown extends React.Component {
 class Navigation extends React.Component {
   state = {
     anchorEl: null,
+    openTracks: false,
   }
 
   handleMenu = event => {
@@ -125,11 +132,23 @@ class Navigation extends React.Component {
     this.setState({ anchorEl: null });
   };
 
+  handleOpenTracks = () => {
+    this.setState({ openTracks: !this.state.openTracks })
+  }
+
+  orderTracks = tracks => {
+    return sortBy(tracks, ['node.navigation.order', 'node.tech'])
+  }
+
   render() {
     const tracks = this.props.data.allTracks.edges.map(t => t.node)
     const selected = this.props.location ? this.props.location.pathname : ""
-    const { anchorEl } = this.state;
+    const { anchorEl, openTracks } = this.state;
     const open = Boolean(anchorEl);
+
+    const tracks2017 = this.orderTracks(tracks.filter(t => t.year === 2017))
+    const tracks2019 = this.orderTracks(tracks.filter(t => t.year === 2019))
+    const tracks2020 = this.orderTracks(tracks.filter(t => t.year === 2020))
 
     return (
       <div style={styles.menu} id="main-menu">
@@ -169,6 +188,7 @@ class Navigation extends React.Component {
               </Button>
               <Menu
                 id="menu-appbar"
+                MenuListProps={{ style: {width: "100%", flexGrow: "1"} }}
                 anchorEl={anchorEl}
                 getContentAnchorEl={null}
                 anchorOrigin={{
@@ -185,6 +205,26 @@ class Navigation extends React.Component {
                 <MenuItem onClick={this.handleClose} component={Link} to={"/"}>Home</MenuItem>
                 <MenuItem onClick={this.handleClose} component={Link} to={"/africa-for-the-future"}>#Africa4Future</MenuItem>
                 <MenuItem onClick={this.handleClose} component={Link} to={"/past-events"}>Past Editions</MenuItem>
+                <MenuItem button onClick={this.handleOpenTracks} style={{ display: "flex", justifyContent: "space-between" }} className="link nav-link">
+                  Tracks
+                  {openTracks ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+                </MenuItem>
+                <Collapse in={openTracks} timeout="auto" unmountOnExit>
+                  <List component="div" disablePadding>
+                    <MenuItem disabled={true} key={"2020-tracks"} style={styles.menuHeader}>2020 Tracks</MenuItem>
+                    {
+                      tracks2020 && tracks2020.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
+                    }
+                    <MenuItem disabled={true} key={"2019-tracks"} style={styles.menuHeader}>2019 Tracks</MenuItem>
+                    {
+                      tracks2019 && tracks2019.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
+                    }
+                    <MenuItem disabled={true} key={"2017-tracks"} style={styles.menuHeader}>2017 Tracks</MenuItem>
+                    {
+                      tracks2017 && tracks2017.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
+                    }
+                  </List>
+                </Collapse>
                 <MenuItem onClick={this.handleClose} component={Link} to={"/faq"}>FAQ</MenuItem>
                 <MenuItem onClick={this.handleClose} className="btn blue" component={Link} to={"/apply"}>Apply now!</MenuItem>
               </Menu>
