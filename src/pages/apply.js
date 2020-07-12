@@ -95,27 +95,23 @@ class HomePage extends React.Component {
                 </div>
               </Grid>
             </Grid>
-          </div>
-          <div className="background">
-            <img src={bgImg1} alt="" className="rotateme" />
-            <img src={bgImg2} alt="" className="rotateme-reverse" />
+            <div className="background">
+              <img src={bgImg1} alt="" className="rotateme" />
+              <img src={bgImg2} alt="" className="rotateme-reverse" />
+            </div>
           </div>
         </Section>
 
-
-          <div className="" data-aos="fade-in">
-            <iframe
-              className="airtable-embed"
-              title="Webinar Application Form"
-              src="https://airtable.com/embed/shrOhT60muF57KGJb?backgroundColor=purple"
-              frameBorder="0"
-              onWheel={()=>false}
-              width="100%"
-              height="1745"
-              style={{ background: "transparent", border: "none" }}>
-            </iframe>
-          </div>
-
+        <iframe
+          className="airtable-embed"
+          title="Webinar Application Form"
+          src="https://airtable.com/embed/shrOhT60muF57KGJb?backgroundColor=purple"
+          frameBorder="0"
+          onWheel={()=>false}
+          width="100%"
+          height="1745"
+          style={{ background: "transparent", border: "none" }}>
+        </iframe>
 
       </Layout>
     );

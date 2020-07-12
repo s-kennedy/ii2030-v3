@@ -360,6 +360,7 @@ i.pause-btn, i.play-btn {
   .content {
     padding: 60px 0;
     z-index: 1;
+    position: relative;
   }
 }
 
@@ -398,13 +399,6 @@ i.pause-btn, i.play-btn {
     object-fit: cover;
     height: 100%;
     width: 100%;
-    transition: all 0.4s ease;
-  }
-
-  &:hover, &:focus {
-    img {
-      transform: scale(1.2);
-    }
   }
 }
 
@@ -515,6 +509,7 @@ i.pause-btn, i.play-btn {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.4s ease;
 
   .bg-img {
     width: 100%;
@@ -523,11 +518,59 @@ i.pause-btn, i.play-btn {
       bottom: 0;
       left: 0;
     }
+
+    &.grow {
+      transform: scale(0);
+      transition: all 0.5s ease;
+    }
   }
 
   .popout-video-btn {
     width: 70%;
     position: absolute;
+  }
+
+  &:hover {
+    .bg-img.grow {
+      transform: scale(1);
+    }
+  }
+}
+
+.circuit-collage {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+  margin-bottom: -40px;
+
+  .bg-img {
+    width: 100%;
+
+    &.p-absolute {
+      bottom: 0;
+      left: 0;
+    }
+
+    &.grow {
+      transform: scale(0);
+      transition: all 0.5s ease;
+    }
+  }
+
+  .main-image {
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  &:hover {
+    .bg-img.grow {
+      transform: scale(1);
+    }
   }
 }
 
@@ -541,15 +584,6 @@ i.pause-btn, i.play-btn {
 }
 
 .home-page {
-  #header {
-    .background{
-      img {
-        width: 75%;
-        left: 10%;
-      }
-    }
-  }
-
   #overview {
     .video-collage .bg-img.p-absolute {
       bottom: -20px;
@@ -598,4 +632,12 @@ i.pause-btn, i.play-btn {
 
 .image-carousel {
   width: 100%;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.text-italic {
+  font-style: italic;
 }

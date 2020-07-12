@@ -12,6 +12,7 @@ import Button from "@material-ui/core/Button";
 
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
+import PopoutVideo from "../components/common/PopoutVideo"
 import { EditableText, EditableParagraph, EditableImageUpload } from "react-easy-editables"
 import { uploadImage } from "../firebase/operations"
 
@@ -142,6 +143,7 @@ class TrackTemplate extends React.Component {
     const content = this.props.pageData ? this.props.pageData.content : {};
     const introSlides = content["intro-slides"] || [];
     const trackLeads = content["track-leads"] || [];
+    const year = this.props.pageData ? this.props.pageData.year : null;
 
     return (
       <Layout className="track-page" location={this.props.location}>
@@ -201,24 +203,11 @@ class TrackTemplate extends React.Component {
                       onSave={this.onSave('track-img-1')}
                       uploadImage={uploadImage}
                       styles={{
-                        container: {
-                          height: "100%",
-                          width: "100%",
-                          display: "flex",
-                          justify: "center",
-                          alignItems: "center",
-                          position: "absolute",
-                          top: 0,
-                          right: 0,
-                          bottom: 0,
-                          left: 0,
-                          paddingLeft: "20px",
-                          paddingRight: "20px",
-                        },
                         image: {
                           objectFit: "contain",
                           height: "100%",
-                          width: "100%"
+                          width: "100%",
+                          maxHeight: "450px"
                         }
                       }}
                     />
@@ -314,6 +303,19 @@ class TrackTemplate extends React.Component {
                   </div>
                 </Grid>
 
+              {
+                (year === 2020) &&
+                <Grid item xs={12} md={5}>
+                  <div className="video">
+                    <PopoutVideo
+                      content={content["track-video"]}
+                      onSave={this.onSave('track-video')}
+                      bgImg={bgImg2}
+                    />
+                  </div>
+                </Grid>
+              }
+
               </Grid>
             </div>
           }
@@ -391,6 +393,7 @@ export const query = graphql`
       slug
       template
       page_type
+      year
       navigation {
         order
         displayTitle

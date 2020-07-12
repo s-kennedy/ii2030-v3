@@ -69,7 +69,7 @@ const PopoutVideo = ({ className, ...props }) => {
     >
       <div className="video-collage">
         <img src={bgImg} alt="" className="bg-img rotateme-reverse" />
-        <img src={circuitBoard} alt="" className="bg-img p-absolute" />
+        <img src={circuitBoard} alt="" className="bg-img p-absolute grow" />
         <button onClick={() => setOpen(true)} className="popout-video-btn">
           <PlayIcon />
           <img src={props.thumbnail} alt="video thumbnail" />
@@ -94,8 +94,8 @@ PopoutVideo.propTypes = {
 PopoutVideo.defaultProps = {
   content: {
     src: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6518432679573090304?compact=1',
-    height: '300px',
-    width: '560px',
+    height: '300',
+    width: '560',
     title: 'Video',
   },
   onSave: newContent => console.log('Implement a function to save changes!', newContent),

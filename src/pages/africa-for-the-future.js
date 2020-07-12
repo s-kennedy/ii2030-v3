@@ -113,10 +113,10 @@ class HomePage extends React.Component {
                 </div>
               </Grid>
             </Grid>
-          </div>
-          <div className="background">
-            <img src={bgImg1} alt="" className="rotateme" />
-            <img src={bgImg2} alt="" className="rotateme-reverse" />
+            <div className="background">
+              <img src={bgImg1} alt="" className="rotateme" />
+              <img src={bgImg2} alt="" className="rotateme-reverse" />
+            </div>
           </div>
         </Section>
 

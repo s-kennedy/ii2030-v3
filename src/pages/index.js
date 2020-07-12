@@ -22,7 +22,6 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
 import Testimonial from "../components/common/Testimonial"
-import TrackRecord from "../components/common/TrackRecord"
 import PopoutVideo from "../components/common/PopoutVideo"
 import PartnerLogo from "../components/common/PartnerLogo"
 import Collection from "../components/common/Collection";
@@ -32,8 +31,9 @@ import tourIcon from "../assets/images/tour-icon-standardized.png"
 import factoryIcon from "../assets/images/factory-icon-standardized.png"
 import bgImg1 from "../assets/images/shapes/header-triangle-red.svg"
 import bgImg2 from "../assets/images/shapes/polygon-lg-blue.svg"
-import bgImg3 from "../assets/images/shapes/polygon-lg-vert.svg"
 import bgImg4 from "../assets/images/shapes/header-triangle-light-blue.svg"
+import bgImg5 from "../assets/images/shapes/triangle-blue.svg"
+import circuitBoard from "../assets/images/shapes/circuit-board-blue.svg"
 import endevaLogo from "../assets/images/logos/endeva.png"
 import ddgThumbnail from "../assets/images/ddgThumbnail.jpg"
 
@@ -129,10 +129,10 @@ class HomePage extends React.Component {
                 </div>
               </Grid>
             </Grid>
-          </div>
-          <div className="background">
-            <img src={bgImg1} alt="" className="rotateme" />
-            <img src={bgImg2} alt="" className="rotateme-reverse" />
+            <div className="background">
+              <img src={bgImg1} alt="" className="rotateme" />
+              <img src={bgImg2} alt="" className="rotateme-reverse" />
+            </div>
           </div>
         </Section>
 
@@ -200,7 +200,7 @@ class HomePage extends React.Component {
                 <div className="underline"><div className="shape red" /></div>
                 <div className="indented">
                   <EditableParagraph content={content["join-description"]} onSave={this.onSave('join-description')} />
-                  <EditableLink content={content["join-link"]} onSave={this.onSave('join-link')} classes="btn mt-20" />
+                  <EditableLink content={content["join-link"]} onSave={this.onSave('join-link')} classes="btn blue mt-20" />
                 </div>
               </Grid>
             </Grid>
@@ -239,10 +239,6 @@ class HomePage extends React.Component {
           </Grid>
 
           <div className="process-steps mt-20" ref={this.parallaxRefSteps}>
-            <div className="background">
-            <img className="rotateme-reverse" data-depth="0.8" src={bgImg3} alt="" />
-            </div>
-
             <Grid container alignItems="center" data-aos="fade-in" data-aos-delay={250}>
               <Grid item xs={12} md={5}>
                 <div className="horiz-center">
@@ -256,10 +252,11 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={7}>
                 <div className="step-description">
                   <ExpansionPanel square elevation={0} style={{ backgroundColor: 'transparent' }}>
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />}>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />} style={{ alignItems: 'baseline'}}>
                       <div>
-                        <span className="tag bg-highlight">consultation</span>
-                        <div className="oversize mt-10">
+                        <h3>Consultation</h3>
+                        <div className="underline"><div className="shape orange" style={{ height: "200%", top: "-50%" }} /></div>
+                        <div className="indented text-italic">
                           <EditableText content={content["step1-title"]} onSave={this.onSave('step1-title')} />
                         </div>
                       </div>
@@ -285,10 +282,11 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={7}>
                 <div className="step-description">
                   <ExpansionPanel square elevation={0} style={{ backgroundColor: 'transparent' }}>
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />}>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />} style={{ alignItems: 'baseline'}}>
                       <div>
-                        <span className="tag bg-highlight">co-creation</span>
-                        <div className="oversize mt-10">
+                        <h3>Co-Creation</h3>
+                        <div className="underline"><div className="shape gray" style={{ height: "200%", top: "-50%" }} /></div>
+                        <div className="indented text-italic">
                           <EditableText content={content["step2-title"]} onSave={this.onSave('step2-title')} />
                         </div>
                       </div>
@@ -314,10 +312,11 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={7}>
                 <div className="step-description">
                   <ExpansionPanel square elevation={0} style={{ backgroundColor: 'transparent' }}>
-                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />}>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />} style={{ alignItems: 'baseline'}}>
                       <div>
-                        <span className="tag bg-highlight">implementation</span>
-                        <div className="oversize mt-10">
+                        <h3>Implementation</h3>
+                        <div className="underline"><div className="shape red" style={{ height: "200%", top: "-50%" }} /></div>
+                        <div className="indented text-italic">
                           <EditableText content={content["step3-title"]} onSave={this.onSave('step3-title')} />
                         </div>
                       </div>
@@ -343,7 +342,7 @@ class HomePage extends React.Component {
             </Grid>
           </Grid>
 
-          <div className="mt-40 mb-40 primary" data-aos="fade-in">
+          <div className="mt-40 mb-40" data-aos="fade-in">
             <Grid container justify="space-around" alignItems="center">
               <Grid item xs={12} md={5}>
                 <div className="video">
@@ -355,6 +354,13 @@ class HomePage extends React.Component {
                 </div>
               </Grid>
               <Grid item xs={12} md={5}>
+                <div className="track-icon mb-10">
+                  <EditableImageUpload
+                    content={content["case1-icon"]}
+                    onSave={this.onSave('case1-icon')}
+                    uploadImage={uploadImage}
+                  />
+                </div>
                 <h3 className="mb-20"><EditableText content={content["case1-title"]} onSave={this.onSave('case1-title')} /></h3>
                 <EditableParagraph content={content["case1-description"]} onSave={this.onSave('case1-description')} />
                 <EditableFileUpload
@@ -363,18 +369,69 @@ class HomePage extends React.Component {
                   uploadFile={uploadFile}
                   maxSize={1024 * 1024 * 5}
                   linkText="Download the report"
-                  classes="btn"
+                  classes="btn blue"
                 />
               </Grid>
             </Grid>
           </div>
 
           <Grid container justify="space-around">
-            <Grid item xs={12} md={5} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="50">
-              <TrackRecord content={content["track-record-2"]} onSave={this.onSave('track-record-2')} shape="polygon" />
+            <Grid item xs={12} md={5}>
+              <div className="mt-30 mb-30">
+                <div className="circuit-collage">
+                  <img src={bgImg5} alt="" className="bg-img" style={{ transform: "rotate(200deg)" }}/>
+                  <img src={circuitBoard} alt="" className="bg-img p-absolute grow" style={{ bottom: "40px" }} />
+                  <EditableImageUpload
+                    content={content["case2-image"]}
+                    onSave={this.onSave('case2-image')}
+                    uploadImage={uploadImage}
+                    classes="main-image"
+                    styles={{
+                      image: {
+                        width: "70%"
+                      }
+                    }}
+                  />
+                </div>
+                <div className="track-icon mb-10">
+                  <EditableImageUpload
+                    content={content["case2-icon"]}
+                    onSave={this.onSave('case2-icon')}
+                    uploadImage={uploadImage}
+                  />
+                </div>
+                <h3 className="mb-20"><EditableText content={content["case2-title"]} onSave={this.onSave('case2-title')} /></h3>
+                <EditableParagraph content={content["case2-description"]} onSave={this.onSave('case2-description')} />
+              </div>
             </Grid>
-            <Grid item xs={12} md={5} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="200">
-              <TrackRecord content={content["track-record-3"]} onSave={this.onSave('track-record-3')} shape="polygon" />
+
+            <Grid item xs={12} md={5}>
+              <div className="mt-30 mb-30">
+                <div className="circuit-collage">
+                  <img src={bgImg5} alt="" className="bg-img" style={{ transform: "rotate(-120deg)" }} />
+                  <img src={circuitBoard} alt="" className="bg-img p-absolute grow" style={{ bottom: "40px" }} />
+                  <EditableImageUpload
+                    content={content["case3-image"]}
+                    onSave={this.onSave('case3-image')}
+                    uploadImage={uploadImage}
+                    classes="main-image"
+                    styles={{
+                      image: {
+                        width: "70%"
+                      }
+                    }}
+                  />
+                </div>
+                <div className="track-icon mb-10">
+                  <EditableImageUpload
+                    content={content["case3-icon"]}
+                    onSave={this.onSave('case3-icon')}
+                    uploadImage={uploadImage}
+                  />
+                </div>
+                <h3 className="mb-20"><EditableText content={content["case3-title"]} onSave={this.onSave('case3-title')} /></h3>
+                <EditableParagraph content={content["case3-description"]} onSave={this.onSave('case3-description')} />
+              </div>
             </Grid>
           </Grid>
 
@@ -402,9 +459,11 @@ class HomePage extends React.Component {
           </Grid>
 
           <Grid container data-aos="fade-in" justify="center">
-            <Grid item xs={12} md={5} >
+            <Grid item xs={12} md={5}>
               <div className="endeva-line">An <a href="http://www.endeva.org/" target="_blank" rel="noopener noreferrer"><img id="endeva-logo" src={endevaLogo} alt="Endeva logo" /></a> initiative</div>
-              <div className="underline centered"></div>
+            </Grid>
+            <Grid item xs={12} md={12}>
+              <EditableParagraph content={content["partners-description"]} onSave={this.onSave('partners-description')} classes="text-center mb-20" />
             </Grid>
           </Grid>
 
