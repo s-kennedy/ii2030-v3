@@ -26,6 +26,10 @@ $red-800: transparentize($red, 0.2);
 
 
 $white: #FFFFFF;
+$white-100: transparentize($white, 0.9);
+$white-500: transparentize($white, 0.5);
+$white-800: transparentize($white, 0.2);
+
 $off-white: $white;
 $black: #000000;
 $light-gray: #CCCCCC;

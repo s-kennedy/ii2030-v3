@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Dialog from '@material-ui/core/Dialog';
 import PlayIcon from "@material-ui/icons/PlayCircleOutline"
 import thumbnail from "../../assets/images/video-thumbnail.jpg"
-import circuitBoard from "../../assets/images/shapes/circuit-board-blue.svg"
 import defaultBgImg from "../../assets/images/shapes/triangle-blue.svg"
 
 import {Editable, EmbeddedIframeEditor} from "react-easy-editables";
@@ -69,7 +68,6 @@ const PopoutVideo = ({ className, ...props }) => {
     >
       <div className="video-collage">
         <img src={bgImg} alt="" className="bg-img rotateme-reverse" />
-        <img src={circuitBoard} alt="" className="bg-img p-absolute grow" />
         <button onClick={() => setOpen(true)} className="popout-video-btn">
           <PlayIcon />
           <img src={props.thumbnail} alt="video thumbnail" />

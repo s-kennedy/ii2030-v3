@@ -39,7 +39,6 @@ const styles = {
     borderBottom: "1px solid rgba(80, 143, 184, 0.2)",
     zIndex: "999",
     justifyContent: "space-between",
-    width: '100%'
   },
   mobileMenu: { width: '95vw' }
 }

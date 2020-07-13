@@ -31,6 +31,11 @@ section {
   color: $white;
 }
 
+.bg-blue {
+  background-color: $blue;
+  color: $white;
+}
+
 .bg-pattern {
   @include background-pattern;
 }
@@ -325,9 +330,9 @@ i.pause-btn, i.play-btn {
   .background {
     img {
       position: absolute;
-      height: 100%;
-      width: 100%;
-      left: 0;
+      height: 80%;
+      width: 80%;
+      left: 10%;
       right: 0;
       top: 0;
       bottom: 0;
@@ -513,7 +518,6 @@ i.pause-btn, i.play-btn {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.4s ease;
 
   .bg-img {
     width: 100%;
@@ -522,23 +526,23 @@ i.pause-btn, i.play-btn {
       bottom: 0;
       left: 0;
     }
-
-    &.grow {
-      transform: scale(0);
-      transition: all 0.5s ease;
-    }
   }
 
   .popout-video-btn {
     width: 70%;
     position: absolute;
-  }
 
-  &:hover {
-    .bg-img.grow {
-      transform: scale(1);
+    img {
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.2);
+      }
     }
   }
+
 }
 
 .circuit-collage {
@@ -569,11 +573,16 @@ i.pause-btn, i.play-btn {
     justify-content: center;
     align-items: center;
     display: flex;
+    overflow: hidden;
+
+    img {
+      transition: all 0.3s ease;
+    }
   }
 
   &:hover {
-    .bg-img.grow {
-      transform: scale(1);
+    .main-image img {
+      transform: scale(1.2);
     }
   }
 }

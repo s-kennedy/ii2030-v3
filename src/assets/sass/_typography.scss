@@ -123,6 +123,54 @@ body {
         background-color: $dark-blue-100;
         clip-path: polygon(12% 0%, 4% 84%, 25% 36%);
       }
+
+      &.arrow {
+        clip-path: polygon(0% 82%, 16% 93%, 12% 0%, 9% 54%);
+
+        &.orange {
+          background-color: $orange-100;
+          clip-path: polygon(1% 30%, 9% 97%, 16% 0%, 8% 41%);
+        }
+
+        &.red {
+          background-color: $red-100;
+          clip-path: polygon(2% 99%, 14% 28%, 0% 0%, 4% 52%);
+        }
+
+        &.blue {
+          background-color: $blue-100;
+          clip-path: polygon(0% 82%, 11% 100%, 12% 0%, 6% 66%);
+        }
+
+        &.gray {
+          background-color: $dark-blue-100;
+          clip-path: polygon(0% 82%, 16% 93%, 12% 0%, 9% 54%);
+        }
+      }
+
+      &.polygon {
+        clip-path: polygon(13% 0%, 2% 48%, 6% 66%, 27% 34%);
+
+        &.orange {
+          background-color: $orange-100;
+          clip-path: polygon(13% 0%, 0% 53%, 19% 100%, 23% 29%);
+        }
+
+        &.red {
+          background-color: $red-100;
+          clip-path: polygon(15% 0%, 0% 43%, 16% 100%, 21% 29%);
+        }
+
+        &.blue {
+          background-color: $blue-100;
+          clip-path: polygon(10% 1%, 2% 74%, 22% 57%, 21% 25%);
+        }
+
+        &.gray {
+          background-color: $dark-blue-100;
+          clip-path: polygon(13% 0%, 0% 53%, 19% 100%, 23% 29%);
+        }
+      }
     }
   }
 

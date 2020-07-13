@@ -17,7 +17,7 @@ import Grid from "@material-ui/core/Grid"
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
 
-import bgImg1 from "../assets/images/shapes/triangle-blue.svg"
+import bgImg1 from "../assets/images/shapes/polygon-lg-blue.svg"
 import bgImg2 from "../assets/images/shapes/header-triangle-orange.svg"
 
 import "slick-carousel/slick/slick.css";

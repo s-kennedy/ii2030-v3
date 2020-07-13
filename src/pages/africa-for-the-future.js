@@ -25,8 +25,8 @@ import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import bgImg1 from "../assets/images/shapes/triangle-blue.svg"
 import bgImg2 from "../assets/images/shapes/header-triangle-orange.svg"
+import bgImg3 from "../assets/images/shapes/polygon-lg-blue.svg"
 import robot from "../assets/images/head.png"
-import circuitBoard from "../assets/images/shapes/circuit-board-blue.svg"
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -120,7 +120,7 @@ class HomePage extends React.Component {
           </div>
         </Section>
 
-        <Section id="overview" className="bg-dark">
+        <Section id="ii2030" className="bg-dark">
           <div className="" data-aos="fade-in">
             <Grid container>
               <Grid item xs={12} md={5} >
@@ -130,7 +130,7 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={5}>
                 <div className="collage" ref={this.parallaxRefRobot}>
                   <img data-depth={"0.2"} src={robot} alt="" className="bg-img p-absolute" style={{ height: '260px', width: 'auto', zIndex: 1, marginTop: '-20px' }} />
-                  <img data-depth={"0.5"} src={circuitBoard} alt="" className="bg-img" style={{ marginBottom: '-50px' }} />
+                  <img data-depth={"0.5"} src={bgImg3} alt="" className="bg-img" style={{ height: '400px' }} />
                 </div>
               </Grid>
               <Grid item xs={12} md={7}>

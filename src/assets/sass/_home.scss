@@ -879,13 +879,14 @@ section#participants {
 #highlight {
   a {
     text-decoration: none;
+    color: $white;
 
     &:hover {
-      color: $white;
+      color: $dark-blue;
     }
 
     &:focus {
-      color: $dark-blue;
+      color: $black;
     }
   }
 }

@@ -33,7 +33,6 @@ import bgImg1 from "../assets/images/shapes/header-triangle-red.svg"
 import bgImg2 from "../assets/images/shapes/polygon-lg-blue.svg"
 import bgImg4 from "../assets/images/shapes/header-triangle-light-blue.svg"
 import bgImg5 from "../assets/images/shapes/triangle-blue.svg"
-import circuitBoard from "../assets/images/shapes/circuit-board-blue.svg"
 import endevaLogo from "../assets/images/logos/endeva.png"
 import ddgThumbnail from "../assets/images/ddgThumbnail.jpg"
 
@@ -136,7 +135,7 @@ class HomePage extends React.Component {
           </div>
         </Section>
 
-        <Section id="highlight" className="bg-highlight pt-10 pb-10" data-aos="fade-up">
+        <Section id="highlight" className="bg-blue pt-10 pb-10" data-aos="fade-up">
           <Grid container justify="center">
             <Grid item>
               <EditableLink content={content["apply-now-text"]} onSave={this.onSave('apply-now-text')} />
@@ -158,7 +157,7 @@ class HomePage extends React.Component {
               </Grid>
               <Grid item xs={12} md={5}>
                 <h2><EditableText content={content["overview-title"]} onSave={this.onSave('overview-title')} /></h2>
-                <div className="underline"><div className="shape" /></div>
+                <div className="underline"><div className="shape polygon" /></div>
                 <div className="indented">
                   <EditableParagraph content={content["overview-description"]} onSave={this.onSave('overview-description')} />
                   <EditableLink content={content["overview-link"]} onSave={this.onSave('overview-link')} classes="btn white mt-20" />
@@ -216,13 +215,13 @@ class HomePage extends React.Component {
           </Grid>
           <Grid container>
             <Grid item xs={12} md={4} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="50">
-              <Testimonial content={content["testimonial1"]} onSave={this.onSave('testimonial1')} quote={true} />
+              <Testimonial content={content["testimonial1"]} onSave={this.onSave('testimonial1')} quote={true} shape="polygon" />
             </Grid>
             <Grid item xs={12} md={4} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="200">
-              <Testimonial content={content["testimonial2"]} onSave={this.onSave('testimonial2')} quote={true} />
+              <Testimonial content={content["testimonial2"]} onSave={this.onSave('testimonial2')} quote={true} shape="polygon" />
             </Grid>
             <Grid item xs={12} md={4} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="450">
-              <Testimonial content={content["testimonial3"]} onSave={this.onSave('testimonial3')}quote={true}  />
+              <Testimonial content={content["testimonial3"]} onSave={this.onSave('testimonial3')}quote={true} shape="polygon"  />
             </Grid>
           </Grid>
         </Section>
@@ -255,7 +254,7 @@ class HomePage extends React.Component {
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />} style={{ alignItems: 'baseline'}}>
                       <div>
                         <h3>Consultation</h3>
-                        <div className="underline"><div className="shape orange" style={{ height: "200%", top: "-50%" }} /></div>
+                        <div className="underline"><div className="shape arrow orange" style={{ height: "200%", top: "-50%" }} /></div>
                         <div className="indented text-italic">
                           <EditableText content={content["step1-title"]} onSave={this.onSave('step1-title')} />
                         </div>
@@ -285,7 +284,7 @@ class HomePage extends React.Component {
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />} style={{ alignItems: 'baseline'}}>
                       <div>
                         <h3>Co-Creation</h3>
-                        <div className="underline"><div className="shape gray" style={{ height: "200%", top: "-50%" }} /></div>
+                        <div className="underline"><div className="shape arrow gray" style={{ height: "200%", top: "-50%" }} /></div>
                         <div className="indented text-italic">
                           <EditableText content={content["step2-title"]} onSave={this.onSave('step2-title')} />
                         </div>
@@ -315,7 +314,7 @@ class HomePage extends React.Component {
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />} style={{ alignItems: 'baseline'}}>
                       <div>
                         <h3>Implementation</h3>
-                        <div className="underline"><div className="shape red" style={{ height: "200%", top: "-50%" }} /></div>
+                        <div className="underline"><div className="shape arrow red" style={{ height: "200%", top: "-50%" }} /></div>
                         <div className="indented text-italic">
                           <EditableText content={content["step3-title"]} onSave={this.onSave('step3-title')} />
                         </div>
@@ -335,7 +334,7 @@ class HomePage extends React.Component {
           <Grid container>
             <Grid item xs={12} md={7} >
               <h2><EditableText content={content["track-record-title"]} onSave={this.onSave('track-record-title')} /></h2>
-              <div className="underline"><div className="shape" /></div>
+              <div className="underline"><div className="shape polygon" /></div>
               <div className="indented">
                 <EditableParagraph content={content["track-record-description"]} onSave={this.onSave('track-record-description')} />
               </div>
@@ -380,14 +379,13 @@ class HomePage extends React.Component {
               <div className="mt-30 mb-30">
                 <div className="circuit-collage">
                   <img src={bgImg5} alt="" className="bg-img" style={{ transform: "rotate(200deg)" }}/>
-                  <img src={circuitBoard} alt="" className="bg-img p-absolute grow" style={{ bottom: "40px" }} />
                   <EditableImageUpload
                     content={content["case2-image"]}
                     onSave={this.onSave('case2-image')}
                     uploadImage={uploadImage}
                     classes="main-image"
                     styles={{
-                      image: {
+                      container: {
                         width: "70%"
                       }
                     }}
@@ -409,14 +407,13 @@ class HomePage extends React.Component {
               <div className="mt-30 mb-30">
                 <div className="circuit-collage">
                   <img src={bgImg5} alt="" className="bg-img" style={{ transform: "rotate(-120deg)" }} />
-                  <img src={circuitBoard} alt="" className="bg-img p-absolute grow" style={{ bottom: "40px" }} />
                   <EditableImageUpload
                     content={content["case3-image"]}
                     onSave={this.onSave('case3-image')}
                     uploadImage={uploadImage}
                     classes="main-image"
                     styles={{
-                      image: {
+                      container: {
                         width: "70%"
                       }
                     }}
