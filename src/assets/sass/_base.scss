@@ -277,28 +277,6 @@ i.pause-btn, i.play-btn {
     flex: 1 1 auto;
     margin: 0 40px;
     position: relative;
-
-    &:before {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: -10px;
-      height: 10px;
-      width: 10px;
-      border-radius: 10px;
-      border: 2px solid $orange;
-    }
-
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      right: -10px;
-      height: 10px;
-      width: 10px;
-      border-radius: 10px;
-      border: 2px solid $orange;
-    }
   }
 }
 
@@ -443,13 +421,15 @@ i.pause-btn, i.play-btn {
 
 }
 
-#menu-appbar {
+#menu-appbar, #menu-appbar-mobile {
   a, button {
     &:focus, &:hover {
       color: $black !important;
     }
   }
+}
 
+#menu-appbar-mobile {
   .MuiMenu-paper {
     width: 100%;
   }

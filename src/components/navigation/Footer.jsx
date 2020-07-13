@@ -39,7 +39,7 @@ const Footer = props => {
               </Grid>
 
               <Grid item xs={12} md={4}>
-                <Link to={"/apply"} className="btn blue mt-10">Apply now!</Link>
+                <Link to={"/apply"} className="btn red mt-10">Apply now!</Link>
               </Grid>
 
             </Grid>

@@ -20,6 +20,7 @@ import bgImg1 from "../assets/images/shapes/polygon-lg-white.svg"
 import bgImg2 from "../assets/images/shapes/triangle-orange.svg"
 import bgImg3 from "../assets/images/shapes/circuit-board-white.svg"
 import bgImg4 from "../assets/images/shapes/polygon-red.svg"
+import bgImg5 from "../assets/images/shapes/triangle-blue.svg"
 import defaultImage1 from "../assets/images/head.png"
 import defaultImage2 from "../assets/images/tour.png"
 
@@ -182,7 +183,7 @@ class TrackTemplate extends React.Component {
           {
             introSlides["how"] &&
             <div className="question pb-40 pt-40">
-              <Grid container justify="space-between" alignItems="stretch">
+              <Grid container justify="space-around" alignItems="stretch">
 
                 <Grid item xs={12} md={5}>
                   <h3>
@@ -196,22 +197,35 @@ class TrackTemplate extends React.Component {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} md={7} style={{ position: "relative", minHeight: "260px" }}>
-                  <EditableImageUpload
-                      classes="track-icon"
-                      content={ content["track-img-1"] ? content["track-img-1"] : { imageSrc: defaultImage1, title: "Image placeholder" } }
-                      onSave={this.onSave('track-img-1')}
-                      uploadImage={uploadImage}
-                      styles={{
-                        image: {
-                          objectFit: "contain",
-                          height: "100%",
-                          width: "100%",
-                          maxHeight: "450px"
-                        }
-                      }}
-                    />
-                </Grid>
+                {
+                  (year === 2019) ?
+                  <Grid item xs={12} md={5}>
+                    <div className="video">
+                      <PopoutVideo
+                        content={content["track-video"]}
+                        onSave={this.onSave('track-video')}
+                        bgImg={bgImg5}
+                      />
+                    </div>
+                  </Grid> :
+                  <Grid item xs={12} md={7} style={{ position: "relative", minHeight: "260px" }}>
+                    <EditableImageUpload
+                        classes="track-icon"
+                        content={ content["track-img-1"] ? content["track-img-1"] : { imageSrc: defaultImage1, title: "Image placeholder" } }
+                        onSave={this.onSave('track-img-1')}
+                        uploadImage={uploadImage}
+                        styles={{
+                          image: {
+                            objectFit: "contain",
+                            height: "100%",
+                            width: "100%",
+                            maxHeight: "450px"
+                          }
+                        }}
+                      />
+                  </Grid>
+                }
+
               </Grid>
             </div>
           }
@@ -225,7 +239,7 @@ class TrackTemplate extends React.Component {
                     <EditableText content={introSlides["what"]["question"]} onSave={this.onSaveQuestion(introSlides, "what", "question")} />
                   </h3>
                   <div className="underline">
-                    <div className={`shape gray`} />
+                    <div className={`shape orange`} />
                   </div>
                   <div className="indented">
                     <EditableParagraph content={introSlides["what"]["answer"]} onSave={this.onSaveQuestion(introSlides, "what", "answer")} />
@@ -276,7 +290,7 @@ class TrackTemplate extends React.Component {
                     <EditableText content={introSlides["who"]["question"]} onSave={this.onSaveQuestion(introSlides, "who", "question")} />
                   </h3>
                   <div className="underline">
-                    <div className={`shape orange`} />
+                    <div className={`shape blue`} />
                   </div>
                   <div className="indented">
                     <EditableParagraph content={introSlides["who"]["answer"]} onSave={this.onSaveQuestion(introSlides, "who", "answer")} />
@@ -296,25 +310,12 @@ class TrackTemplate extends React.Component {
                     <EditableText content={introSlides["why"]["question"]} onSave={this.onSaveQuestion(introSlides, "why", "question")} />
                   </h3>
                   <div className="underline">
-                    <div className={`shape blue`} />
+                    <div className={`shape gray`} />
                   </div>
                   <div className="indented">
                     <EditableParagraph content={introSlides["why"]["answer"]} onSave={this.onSaveQuestion(introSlides, "why", "answer")} />
                   </div>
                 </Grid>
-
-              {
-                (year === 2019) &&
-                <Grid item xs={12} md={5}>
-                  <div className="video">
-                    <PopoutVideo
-                      content={content["track-video"]}
-                      onSave={this.onSave('track-video')}
-                      bgImg={bgImg2}
-                    />
-                  </div>
-                </Grid>
-              }
 
               </Grid>
             </div>

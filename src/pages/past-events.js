@@ -130,9 +130,7 @@ class HomePage extends React.Component {
         <Section id="tracks2019" className="bg-light">
           <Grid container>
             <Grid item xs={12} md={7}>
-              <h2><EditableText content={content["2019-title"]} onSave={this.onSave('2019-title')} /></h2>
-              <EditableParagraph content={content["2019-details"]} onSave={this.onSave('2019-details')} />
-              <div className="underline"><div className="shape orange" /></div>
+              <h2 className="mb-40"><EditableText content={content["2019-title"]} onSave={this.onSave('2019-title')} /></h2>
               <div className="indented">
                 <EditableParagraph content={content["2019-description"]} onSave={this.onSave('2019-description')} />
               </div>
@@ -213,9 +211,7 @@ class HomePage extends React.Component {
         <Section id="2017" className="">
           <Grid container>
             <Grid item xs={12} md={7}>
-              <h2><EditableText content={content["2017-title"]} onSave={this.onSave('2017-title')} /></h2>
-              <EditableParagraph content={content["2017-details"]} onSave={this.onSave('2017-details')} />
-              <div className="underline"><div className="shape red" /></div>
+              <h2 className="mb-40"><EditableText content={content["2017-title"]} onSave={this.onSave('2017-title')} /></h2>
               <div className="indented">
                 <EditableParagraph content={content["2017-description"]} onSave={this.onSave('2017-description')} />
               </div>

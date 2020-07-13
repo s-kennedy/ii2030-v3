@@ -41,12 +41,12 @@
   }
 
   &:hover {
-    background: $red;
+    background: $orange;
     color: $white;
   }
 
   &:focus {
-    background: $orange;
+    background: $blue;
     color: $white;
   }
 }

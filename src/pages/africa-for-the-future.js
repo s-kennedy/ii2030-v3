@@ -25,7 +25,7 @@ import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import bgImg1 from "../assets/images/shapes/triangle-blue.svg"
 import bgImg2 from "../assets/images/shapes/header-triangle-orange.svg"
-import bgImg3 from "../assets/images/shapes/polygon-lg-blue.svg"
+import bgImg3 from "../assets/images/shapes/polygon-orange.svg"
 import robot from "../assets/images/head.png"
 
 import "slick-carousel/slick/slick.css";
@@ -134,8 +134,7 @@ class HomePage extends React.Component {
                 </div>
               </Grid>
               <Grid item xs={12} md={7}>
-                <h2><EditableText content={content["overview-title"]} onSave={this.onSave('overview-title')} /></h2>
-                <div className="underline"><div className="shape" /></div>
+                <h2 className="mb-40"><EditableText content={content["overview-title"]} onSave={this.onSave('overview-title')} /></h2>
                 <div className="indented">
                   <EditableParagraph content={content["overview-description"]} onSave={this.onSave('overview-description')} />
                   <EditableLink content={content["overview-link"]} onSave={this.onSave('overview-link')} classes="btn white mt-20" />
@@ -162,8 +161,7 @@ class HomePage extends React.Component {
         <Section id="journey" className="bg-light">
           <Grid container>
             <Grid item xs={12} md={7} >
-              <h2><EditableText content={content["journey-title"]} onSave={this.onSave('journey-title')} /></h2>
-              <div className="underline"><div className="shape gray" /></div>
+              <h2 className="mb-40"><EditableText content={content["journey-title"]} onSave={this.onSave('journey-title')} /></h2>
               <div className="indented">
                 <EditableParagraph content={content["journey-description"]} onSave={this.onSave('journey-description')} />
               </div>
@@ -190,8 +188,7 @@ class HomePage extends React.Component {
         <Section id="track-list" className="">
           <Grid container>
             <Grid item xs={12} md={7}>
-              <h2><EditableText content={content["tracklist-title"]} onSave={this.onSave('tracklist-title')} /></h2>
-              <div className="underline"><div className="shape orange" /></div>
+              <h2 className="mb-40"><EditableText content={content["tracklist-title"]} onSave={this.onSave('tracklist-title')} /></h2>
               <div className="indented">
                 <EditableParagraph content={content["tracklist-description"]} onSave={this.onSave('tracklist-description')} />
               </div>
@@ -228,8 +225,7 @@ class HomePage extends React.Component {
           <div className="mb-60" data-aos="fade-in">
             <Grid container>
               <Grid item xs={12} md={7}>
-                <h2><EditableText content={content["partners-title"]} onSave={this.onSave('partners-title')} /></h2>
-                <div className="underline"><div className="shape orange" /></div>
+                <h2 className="mb-40"><EditableText content={content["partners-title"]} onSave={this.onSave('partners-title')} /></h2>
                 <div className="indented">
                   <EditableParagraph content={content["partners-description"]} onSave={this.onSave('partners-description')} />
                 </div>

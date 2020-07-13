@@ -109,9 +109,9 @@ class HomePage extends React.Component {
             <Grid container>
               <Grid item xs={12} md={6}>
                 <h1>
-                  <span className="red-text">i</span>nclusive<br/>
-                  <span className="red-text">i</span>nnovation<br/>
-                  <span className="red-text">2030</span>
+                  <span className="highlight-text">i</span>nclusive<br/>
+                  <span className="highlight-text">i</span>nnovation<br/>
+                  <span className="highlight-text">2030</span>
                 </h1>
               </Grid>
               <Grid item xs={12} md={6} ref={this.parallaxRef}>
@@ -156,8 +156,7 @@ class HomePage extends React.Component {
                 </div>
               </Grid>
               <Grid item xs={12} md={5}>
-                <h2><EditableText content={content["overview-title"]} onSave={this.onSave('overview-title')} /></h2>
-                <div className="underline"><div className="shape polygon" /></div>
+                <h2 className="mb-40"><EditableText content={content["overview-title"]} onSave={this.onSave('overview-title')} /></h2>
                 <div className="indented">
                   <EditableParagraph content={content["overview-description"]} onSave={this.onSave('overview-description')} />
                   <EditableLink content={content["overview-link"]} onSave={this.onSave('overview-link')} classes="btn white mt-20" />
@@ -199,7 +198,7 @@ class HomePage extends React.Component {
                 <div className="underline"><div className="shape red" /></div>
                 <div className="indented">
                   <EditableParagraph content={content["join-description"]} onSave={this.onSave('join-description')} />
-                  <EditableLink content={content["join-link"]} onSave={this.onSave('join-link')} classes="btn blue mt-20" />
+                  <EditableLink content={content["join-link"]} onSave={this.onSave('join-link')} classes="btn red mt-20" />
                 </div>
               </Grid>
             </Grid>
@@ -215,13 +214,13 @@ class HomePage extends React.Component {
           </Grid>
           <Grid container>
             <Grid item xs={12} md={4} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="50">
-              <Testimonial content={content["testimonial1"]} onSave={this.onSave('testimonial1')} quote={true} shape="polygon" />
+              <Testimonial content={content["testimonial1"]} onSave={this.onSave('testimonial1')} quote={true} />
             </Grid>
             <Grid item xs={12} md={4} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="200">
-              <Testimonial content={content["testimonial2"]} onSave={this.onSave('testimonial2')} quote={true} shape="polygon" />
+              <Testimonial content={content["testimonial2"]} onSave={this.onSave('testimonial2')} quote={true} />
             </Grid>
             <Grid item xs={12} md={4} className="testimonial-container stagger" data-aos="fade-in" data-aos-delay="450">
-              <Testimonial content={content["testimonial3"]} onSave={this.onSave('testimonial3')}quote={true} shape="polygon"  />
+              <Testimonial content={content["testimonial3"]} onSave={this.onSave('testimonial3')}quote={true}  />
             </Grid>
           </Grid>
         </Section>
@@ -229,8 +228,7 @@ class HomePage extends React.Component {
         <Section id="process" className="bg-light">
           <Grid container>
             <Grid item xs={12} md={7} >
-              <h2><EditableText content={content["process-title"]} onSave={this.onSave('process-title')} /></h2>
-              <div className="underline"><div className="shape blue" /></div>
+              <h2 className="mb-40"><EditableText content={content["process-title"]} onSave={this.onSave('process-title')} /></h2>
               <div className="indented">
                 <EditableParagraph content={content["process-description"]} onSave={this.onSave('process-description')} />
               </div>
@@ -284,7 +282,7 @@ class HomePage extends React.Component {
                     <ExpansionPanelSummary expandIcon={<ExpandMoreIcon style={{ color: "#AB3911"}} />} style={{ alignItems: 'baseline'}}>
                       <div>
                         <h3>Co-Creation</h3>
-                        <div className="underline"><div className="shape arrow gray" style={{ height: "200%", top: "-50%" }} /></div>
+                        <div className="underline"><div className="shape arrow blue" style={{ height: "200%", top: "-50%" }} /></div>
                         <div className="indented text-italic">
                           <EditableText content={content["step2-title"]} onSave={this.onSave('step2-title')} />
                         </div>
@@ -333,8 +331,7 @@ class HomePage extends React.Component {
         <Section id="results" className="">
           <Grid container>
             <Grid item xs={12} md={7} >
-              <h2><EditableText content={content["track-record-title"]} onSave={this.onSave('track-record-title')} /></h2>
-              <div className="underline"><div className="shape polygon" /></div>
+              <h2 className="mb-40"><EditableText content={content["track-record-title"]} onSave={this.onSave('track-record-title')} /></h2>
               <div className="indented">
                 <EditableParagraph content={content["track-record-description"]} onSave={this.onSave('track-record-description')} />
               </div>
@@ -368,7 +365,7 @@ class HomePage extends React.Component {
                   uploadFile={uploadFile}
                   maxSize={1024 * 1024 * 5}
                   linkText="Download the report"
-                  classes="btn blue"
+                  classes="btn red"
                 />
               </Grid>
             </Grid>

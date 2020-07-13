@@ -163,7 +163,7 @@ class Navigation extends React.Component {
               </div>
             </Grid>
             <Grid item>
-              <Link to="/apply" className="btn blue">Apply now!</Link>
+              <Link to="/apply" className="btn red">Apply now!</Link>
             </Grid>
           </Grid>
         </Hidden>
@@ -175,7 +175,7 @@ class Navigation extends React.Component {
             </Grid>
             <Grid item>
               <Button
-                aria-owns={open ? 'menu-appbar' : undefined}
+                aria-owns={open ? 'menu-appbar-mobile' : undefined}
                 aria-haspopup="true"
                 onClick={this.handleMenu}
                 color="inherit"
@@ -186,7 +186,7 @@ class Navigation extends React.Component {
                 </>
               </Button>
               <Menu
-                id="menu-appbar"
+                id="menu-appbar-mobile"
                 MenuListProps={{ style: {width: "100%", flexGrow: "1"} }}
                 anchorEl={anchorEl}
                 getContentAnchorEl={null}
