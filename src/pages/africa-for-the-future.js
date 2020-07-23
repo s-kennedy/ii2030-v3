@@ -18,10 +18,6 @@ import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
 import TrackList from "../components/common/TrackList"
 import TrackRecord from "../components/common/TrackRecord"
-import PartnerLogo from "../components/common/PartnerLogo"
-import Collection from "../components/common/Collection";
-
-import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 import bgImg1 from "../assets/images/shapes/triangle-blue.svg"
 import bgImg2 from "../assets/images/shapes/header-triangle-orange.svg"
@@ -168,18 +164,21 @@ class HomePage extends React.Component {
             </Grid>
           </Grid>
 
-          <Grid container>
-            <Grid item xs={12} md={3} className="journey-container mt-40" data-aos="fade-in" data-aos-delay="50">
+          <Grid container justify="space-around">
+            <Grid item xs={12} sm={4} md={2} className="journey-container mt-40" data-aos="fade-in" data-aos-delay="50">
               <TrackRecord className="mt-100" content={content["journey-step-1"]} onSave={this.onSave('journey-step-1')} shape="arrow" />
             </Grid>
-            <Grid item xs={12} md={3} className="journey-container mt-80" data-aos="fade-in" data-aos-delay="250">
-              <TrackRecord className="mt-70" content={content["journey-step-2"]} onSave={this.onSave('journey-step-2')} shape="arrow" />
+            <Grid item xs={12} sm={4} md={2} className="journey-container mt-80" data-aos="fade-in" data-aos-delay="250">
+              <TrackRecord className="mt-80" content={content["journey-step-2"]} onSave={this.onSave('journey-step-2')} shape="arrow" />
             </Grid>
-            <Grid item xs={12} md={3} className="journey-container mt-60" data-aos="fade-in" data-aos-delay="450">
-              <TrackRecord className="mt-40" content={content["journey-step-3"]} onSave={this.onSave('journey-step-3')} shape="arrow" />
+            <Grid item xs={12} sm={4} md={2} className="journey-container mt-60" data-aos="fade-in" data-aos-delay="450">
+              <TrackRecord className="mt-60" content={content["journey-step-3"]} onSave={this.onSave('journey-step-3')} shape="arrow" />
             </Grid>
-            <Grid item xs={12} md={3} className="journey-container" data-aos="fade-in" data-aos-delay="650">
-              <TrackRecord content={content["journey-step-4"]} onSave={this.onSave('journey-step-4')} shape="arrow" />
+            <Grid item xs={12} sm={4} md={2} className="journey-container" data-aos="fade-in" data-aos-delay="650">
+              <TrackRecord className="mt-30" content={content["journey-step-4"]} onSave={this.onSave('journey-step-4')} shape="arrow" />
+            </Grid>
+            <Grid item xs={12} sm={4} md={2} className="journey-container" data-aos="fade-in" data-aos-delay="850">
+              <TrackRecord content={content["journey-step-5"]} onSave={this.onSave('journey-step-5')} shape="arrow" />
             </Grid>
           </Grid>
 
@@ -234,17 +233,8 @@ class HomePage extends React.Component {
 
             <Grid container data-aos="fade-in">
               <Grid item xs={12}>
+                <EditableImageUpload content={content["partner-logo-images"]} onSave={this.onSave('partner-logo-images')} uploadImage={uploadImage} />
               </Grid>
-              <Collection
-                items={content["partner-logos"]}
-                Component={PartnerLogo}
-                onSave={this.onSave('partner-logos')}
-                onAddItem={this.onAddItem('partner-logos')}
-                onDeleteItem={this.onDeleteItem('partner-logos')}
-                isEditingPage={this.props.isEditingPage}
-                defaultContent={DEFAULT_COMPONENT_CONTENT['partner-logos']}
-                classes="partner-logos mt-20"
-              />
             </Grid>
           </div>
 

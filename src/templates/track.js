@@ -74,8 +74,6 @@ class TrackTemplate extends React.Component {
 
   onSave = fieldId => content => {
     const { id } = this.props.data.tracks;
-    console.log(`Saving ${fieldId}`)
-    console.log(content)
     this.props.onUpdateTrackContent(id, fieldId, content);
   };
 

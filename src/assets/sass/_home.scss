@@ -826,6 +826,7 @@ section#participants {
 }
 
 .journey-container {
+
   .testimonial {
     .image-container {
       position: relative;
@@ -839,9 +840,9 @@ section#participants {
 
       img.image {
         max-width: 100%;
-        min-height: 250px;
+        min-height: 180px;
         object-fit: cover;
-        padding: 40px;
+        padding: 20px;
       }
     }
 
