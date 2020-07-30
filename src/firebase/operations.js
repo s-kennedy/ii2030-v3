@@ -94,7 +94,23 @@ export const copyContentFromStaging = () => {
               return reject(err)
             }
 
-            resolve()
+            stagingDB
+              .ref('tracks')
+              .once('value')
+              .then(snapshot => {
+                const stagingTracks = snapshot.val();
+
+                currentDB
+                  .ref('tracks')
+                  .set(stagingTracks)
+                  .then(err => {
+                    if (err) {
+                      return reject(err)
+                    }
+
+                    resolve()
+                  })
+              })
           })
       });
   })
