@@ -13,6 +13,7 @@ import Button from "@material-ui/core/Button";
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
 import PopoutVideo from "../components/common/PopoutVideo"
+import TrackRecord from "../components/common/TrackRecord"
 import { EditableText, EditableParagraph, EditableImageUpload } from "react-easy-editables"
 import { uploadImage } from "../firebase/operations"
 
@@ -320,6 +321,40 @@ class TrackTemplate extends React.Component {
           }
 
         </Section>
+
+        { (year === 2020) &&
+
+          <Section id="journey" className="bg-light">
+            <Grid container>
+              <Grid item xs={12} md={7} >
+                <h2 className="mb-40"><EditableText content={content["journey-title"]} onSave={this.onSave('journey-title')} /></h2>
+                <div className="indented">
+                  <EditableParagraph content={content["journey-description"]} onSave={this.onSave('journey-description')} />
+                </div>
+              </Grid>
+            </Grid>
+
+            <Grid container justify="space-around">
+              <Grid item xs={12} sm={4} md={2} className="journey-container mt-40" data-aos="fade-in" data-aos-delay="50">
+                <TrackRecord className="mt-100" content={content["journey-step-1"]} onSave={this.onSave('journey-step-1')} shape="arrow" />
+              </Grid>
+              <Grid item xs={12} sm={4} md={2} className="journey-container mt-80" data-aos="fade-in" data-aos-delay="250">
+                <TrackRecord className="mt-80" content={content["journey-step-2"]} onSave={this.onSave('journey-step-2')} shape="arrow" />
+              </Grid>
+              <Grid item xs={12} sm={4} md={2} className="journey-container mt-60" data-aos="fade-in" data-aos-delay="450">
+                <TrackRecord className="mt-60" content={content["journey-step-3"]} onSave={this.onSave('journey-step-3')} shape="arrow" />
+              </Grid>
+              <Grid item xs={12} sm={4} md={2} className="journey-container" data-aos="fade-in" data-aos-delay="650">
+                <TrackRecord className="mt-30" content={content["journey-step-4"]} onSave={this.onSave('journey-step-4')} shape="arrow" />
+              </Grid>
+              <Grid item xs={12} sm={4} md={2} className="journey-container" data-aos="fade-in" data-aos-delay="850">
+                <TrackRecord content={content["journey-step-5"]} onSave={this.onSave('journey-step-5')} shape="arrow" />
+              </Grid>
+            </Grid>
+
+          </Section>
+        }
+
 
           { (trackLeads.length > 0 || this.props.isEditingPage) &&
             <Section id="track-lead" className="bg-light">
