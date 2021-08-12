@@ -244,26 +244,26 @@ class HomePage extends React.Component {
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
 
-export const query = graphql`
-  query {
-    pages(id: {eq: "home"}) {
-      id
-      content
-      title
-      slug
-    }
-    allTracks(filter: { year: { eq: 2019 }}) {
-      edges {
-        node {
-          id
-          title
-          slug
-          tech
-          content
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query {
+//     pages(id: {eq: "home"}) {
+//       id
+//       content
+//       title
+//       slug
+//     }
+//     allTracks(filter: { year: { eq: 2019 }}) {
+//       edges {
+//         node {
+//           id
+//           title
+//           slug
+//           tech
+//           content
+//         }
+//       }
+//     }
+//   }
+// `;
 
 

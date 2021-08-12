@@ -1,10 +1,15 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { connect } from "react-redux";
+import { nanoid } from 'nanoid'
+
 import {
   saveTrackContent,
   saveTrackData,
   loadPageData,
+  updatePage,
+  pushContentItem,
+  removeContentItem,
 } from "../redux/actions";
 
 import Grid from "@material-ui/core/Grid";
@@ -12,21 +17,22 @@ import Button from "@material-ui/core/Button";
 
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
-import PopoutVideo from "../components/common/PopoutVideo"
 import { EditableText, EditableParagraph, EditableImageUpload } from "react-easy-editables"
 import { uploadImage } from "../firebase/operations"
+import Collection from "../components/common/Collection";
+import ParticipantLogo from "../components/common/ParticipantLogo"
 
 import bgImg1 from "../assets/images/shapes/polygon-lg-white.svg"
 import bgImg2 from "../assets/images/shapes/triangle-orange.svg"
 import bgImg3 from "../assets/images/shapes/circuit-board-white.svg"
 import bgImg4 from "../assets/images/shapes/polygon-red.svg"
-import bgImg5 from "../assets/images/shapes/triangle-blue.svg"
 import defaultImage1 from "../assets/images/head.png"
 import defaultImage2 from "../assets/images/tour.png"
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 
 const mapDispatchToProps = dispatch => {
@@ -39,6 +45,15 @@ const mapDispatchToProps = dispatch => {
     },
     onLoadPageData: data => {
       dispatch(loadPageData(data));
+    },
+    onUpdatePageData: (page, id, data) => {
+      dispatch(updatePage(page, id, data));
+    },
+    onPushContentItem: (location, data) => {
+      dispatch(pushContentItem(location, data))
+    },
+    onRemoveContentItem: (location, itemId) => {
+      dispatch(removeContentItem(location, itemId))
     },
   };
 };
@@ -53,6 +68,7 @@ const mapStateToProps = state => {
 class TrackTemplate extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props)
     const initialPageData = {
       ...this.props.data.tracks,
       content: JSON.parse(this.props.data.tracks.content)
@@ -137,12 +153,28 @@ class TrackTemplate extends React.Component {
     this.props.onUpdateTrackContent(id, 'intro-slides', slides);
   }
 
+  addParticipantLogo = (newItem) => {
+    const { id } = this.props.data.tracks;
+    const newLogos = this.props.pageData.content["participant-logos"] ? {...this.props.pageData.content["participant-logos"]} : {};
+    const itemId = nanoid(10);
+    newLogos[itemId] = newItem
+    this.props.onUpdateTrackContent(id, "participant-logos", newLogos)
+  };
+
+  deleteParticipantLogo = itemId => {
+    const { id } = this.props.data.tracks;
+    const newLogos = {...this.props.pageData.content["participant-logos"]};
+
+    delete newLogos[itemId];
+
+    this.props.onUpdateTrackContent(id, "participant-logos", newLogos)
+  };
+
   render() {
     const title = this.props.pageData ? this.props.pageData.title : "";
     const content = this.props.pageData ? this.props.pageData.content : {};
     const introSlides = content["intro-slides"] || [];
     const trackLeads = content["track-leads"] || [];
-    const year = this.props.pageData ? this.props.pageData.year : null;
 
     return (
       <Layout className="track-page" location={this.props.location}>
@@ -195,34 +227,22 @@ class TrackTemplate extends React.Component {
                   </div>
                 </Grid>
 
-                {
-                  (year === 2019) ?
-                  <Grid item xs={12} md={5}>
-                    <div className="video">
-                      <PopoutVideo
-                        content={content["track-video"]}
-                        onSave={this.onSave('track-video')}
-                        bgImg={bgImg5}
-                      />
-                    </div>
-                  </Grid> :
-                  <Grid item xs={12} md={7} style={{ position: "relative", minHeight: "260px" }}>
-                    <EditableImageUpload
-                        classes="track-icon"
-                        content={ content["track-img-1"] ? content["track-img-1"] : { imageSrc: defaultImage1, title: "Image placeholder" } }
-                        onSave={this.onSave('track-img-1')}
-                        uploadImage={uploadImage}
-                        styles={{
-                          image: {
-                            objectFit: "contain",
-                            height: "100%",
-                            width: "100%",
-                            maxHeight: "450px"
-                          }
-                        }}
-                      />
-                  </Grid>
-                }
+                <Grid item xs={12} md={7} style={{ position: "relative", minHeight: "260px" }}>
+                  <EditableImageUpload
+                      classes="track-icon"
+                      content={ content["track-img-1"] ? content["track-img-1"] : { imageSrc: defaultImage1, title: "Image placeholder" } }
+                      onSave={this.onSave('track-img-1')}
+                      uploadImage={uploadImage}
+                      styles={{
+                        image: {
+                          objectFit: "contain",
+                          height: "100%",
+                          width: "100%",
+                          maxHeight: "450px"
+                        }
+                      }}
+                    />
+                </Grid>
 
               </Grid>
             </div>
@@ -248,7 +268,7 @@ class TrackTemplate extends React.Component {
           }
 
           {
-            introSlides["who"] &&
+            introSlides["why"] &&
             <div className="question pb-40 pt-40">
               <Grid container justify="space-between" alignItems="stretch">
                 <Grid item xs={12} md={7} style={{ position: "relative", minHeight: "260px" }}>
@@ -285,13 +305,13 @@ class TrackTemplate extends React.Component {
 
                 <Grid item xs={12} md={5}>
                   <h3>
-                    <EditableText content={introSlides["who"]["question"]} onSave={this.onSaveQuestion(introSlides, "who", "question")} />
+                    <EditableText content={introSlides["why"]["question"]} onSave={this.onSaveQuestion(introSlides, "why", "question")} />
                   </h3>
                   <div className="underline">
                     <div className={`shape blue`} />
                   </div>
                   <div className="indented">
-                    <EditableParagraph content={introSlides["who"]["answer"]} onSave={this.onSaveQuestion(introSlides, "who", "answer")} />
+                    <EditableParagraph content={introSlides["why"]["answer"]} onSave={this.onSaveQuestion(introSlides, "why", "answer")} />
                   </div>
                 </Grid>
               </Grid>
@@ -299,20 +319,27 @@ class TrackTemplate extends React.Component {
           }
 
           {
-            introSlides["why"] &&
+            introSlides["who"] &&
             <div className="question pb-40 pt-40">
               <Grid container justify="center">
 
-                <Grid item xs={12} md={7}>
+                <Grid item xs={12} md={12}>
                   <h3>
-                    <EditableText content={introSlides["why"]["question"]} onSave={this.onSaveQuestion(introSlides, "why", "question")} />
+                    <EditableText content={introSlides["who"]["question"]} onSave={this.onSaveQuestion(introSlides, "who", "question")} />
                   </h3>
                   <div className="underline">
                     <div className={`shape gray`} />
                   </div>
-                  <div className="indented">
-                    <EditableParagraph content={introSlides["why"]["answer"]} onSave={this.onSaveQuestion(introSlides, "why", "answer")} />
-                  </div>
+                  <Collection
+                    items={content["participant-logos"]}
+                    Component={ParticipantLogo}
+                    onSave={this.onSave('participant-logos')}
+                    onAddItem={this.addParticipantLogo}
+                    onDeleteItem={this.deleteParticipantLogo}
+                    isEditingPage={this.props.isEditingPage}
+                    defaultContent={DEFAULT_COMPONENT_CONTENT['partner-logos']}
+                    classes="partner-logos indented"
+                  />
                 </Grid>
 
               </Grid>
@@ -320,6 +347,7 @@ class TrackTemplate extends React.Component {
           }
 
         </Section>
+
 
           { (trackLeads.length > 0 || this.props.isEditingPage) &&
             <Section id="track-lead" className="bg-light">

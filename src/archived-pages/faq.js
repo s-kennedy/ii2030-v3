@@ -165,13 +165,13 @@ export default connect(mapStateToProps, mapDispatchToProps)(
   FrequentlyAskedQuestions
 );
 
-export const query = graphql`
-  query {
-    pages(id: { eq: "faqs" }) {
-      id
-      content
-      title
-      slug
-    }
-  }
-`;
+// export const query = graphql`
+//   query {
+//     pages(id: { eq: "faqs" }) {
+//       id
+//       content
+//       title
+//       slug
+//     }
+//   }
+// `;

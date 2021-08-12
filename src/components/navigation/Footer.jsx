@@ -10,26 +10,24 @@ const Footer = props => {
     <footer className="pt-20 pb-20">
       <Container maxWidth={"lg"}>
         <Grid container spacing={2}>
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} md={7}>
             <p className="column-header">ii2030</p>
             <p className="contact">For more information:</p>
             <p className="contact">Email: <a href="mailto:ii2030@endeva.org">ii2030@endeva.org</a></p>
           </Grid>
-          <Grid item xs={12} md={7}>
+          <Grid item xs={12} md={5}>
             <Grid container spacing={2}>
 
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} md={6}>
                 <p className="column-header">Pages</p>
                 <ul>
                   <li><Link to={"/"}>ii2030 Home</Link></li>
-                  <li><Link to={"/africa-for-the-future"}>#Africa4Future</Link></li>
                   <li><Link to={"/past-events"}>Past Editions</Link></li>
-                  <li><Link to={"/faq"}>FAQ</Link></li>
                   <li><Link to={"/impressum"}>Impressum</Link></li>
                 </ul>
               </Grid>
 
-              <Grid item xs={12} md={4}>
+              <Grid item xs={12} md={6}>
                 <p className="column-header">#Africa4Future Tracks</p>
                 <ul>
                 {
@@ -38,9 +36,9 @@ const Footer = props => {
                 </ul>
               </Grid>
 
-              <Grid item xs={12} md={4}>
+              {/*<Grid item xs={12} md={4}>
                 <Link to={"/apply"} className="btn red mt-10">Apply now!</Link>
-              </Grid>
+              </Grid>*/}
 
             </Grid>
           </Grid>

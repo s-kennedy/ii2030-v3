@@ -1,7 +1,7 @@
 import React, { createRef } from "react";
 import { graphql, Link } from "gatsby";
 import { connect } from "react-redux";
-import { EditableText, EditableParagraph, EditableLink } from "react-easy-editables"
+import { EditableText, EditableParagraph } from "react-easy-editables"
 import Parallax from 'parallax-js'
 
 import {
@@ -19,16 +19,19 @@ import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
 import PopoutVideo from "../components/common/PopoutVideo"
 import ImageCarousel from "../components/common/ImageCarousel"
+import Collection from "../components/common/Collection";
+import ParticipantLogo from "../components/common/ParticipantLogo"
 
 import bgPolygonRed from "../assets/images/shapes/polygon-lg-white.svg"
 import bgPolygonBlue from "../assets/images/shapes/polygon-lg-blue.svg"
 
 import bgImg1 from "../assets/images/shapes/header-triangle-orange.svg"
-// import bgImg2 from "../assets/images/shapes/polygon-lg-blue.svg"
-import thumbnail from "../assets/images/thumbnail3.jpg"
+import thumbnail from "../assets/images/thumbnail-a4f.jpg"
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
+import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
 
 const PAGE_ID = "past_events"
 
@@ -93,6 +96,7 @@ class HomePage extends React.Component {
 
     const tracks2017 = tracks.filter(t => t.year === 2017)
     const tracks2019 = tracks.filter(t => t.year === 2019)
+    const tracks2020 = tracks.filter(t => t.year === 2020)
 
     return (
       <Layout location={this.props.location} className="past-events-page">
@@ -127,7 +131,98 @@ class HomePage extends React.Component {
           </div>
         </Section>
 
-        <Section id="tracks2019" className="bg-light">
+        <Section id="2020" className="bg-light">
+          <Grid container>
+            <Grid item xs={12} sm={12} md={9}>
+              <h2 className="mb-40"><EditableText content={content["2020-title"]} onSave={this.onSave('2020-title')} /></h2>
+              <Collection
+                items={content["a4f-partner-logos"]}
+                Component={ParticipantLogo}
+                onSave={this.onSave('a4f-partner-logos')}
+                onAddItem={this.onAddItem('a4f-partner-logos')}
+                onDeleteItem={this.onDeleteItem('a4f-partner-logos')}
+                isEditingPage={this.props.isEditingPage}
+                defaultContent={DEFAULT_COMPONENT_CONTENT['partner-logos']}
+                classes="partner-logos indented"
+              />
+              <div className="indented">
+                <EditableParagraph content={content["2020-description"]} onSave={this.onSave('2020-description')} />
+              </div>
+            </Grid>
+          </Grid>
+
+
+          <Grid container data-aos="fade-in">
+            <Grid item xs={12}>
+              <div className="image-slides">
+                <div className="bg-img">
+                  <img src={bgPolygonRed} alt="" />
+                </div>
+                <ImageCarousel
+                  content={content["photos-2020"]}
+                  onSave={this.onSave('photos-2020')}
+                  onAddItem={this.onAddItem('photos-2020')}
+                  onDeleteItem={this.onDeleteItem('photos-2020')}
+                  isEditingPage={this.props.isEditingPage}
+                />
+              </div>
+            </Grid>
+          </Grid>
+
+          <Grid container justify="center">
+            <Grid item xs={12} md={7}>
+              {
+                tracks2020.map(track => {
+                  let content = {}
+                  try {
+                    content = JSON.parse(track.content)
+                  } catch(err) {
+                    console.log(err)
+                  }
+                  return(
+                    <div key={track.slug} className={`track-item mb-60 mt-60`} data-aos="fade-in">
+                      <Grid container spacing={6}>
+                        <Grid item xs={12} sm={3}>
+                          <div className="image-container">
+                            <div className="bg-circle"></div>
+                            <div className="icon">
+                            {
+                              content["icon-small"] &&
+                              <img
+                                className="image"
+                                src={content["icon-small"]["imageSrc"]}
+                                alt={content["icon-small"]["caption"]}
+                              />
+                            }
+                            </div>
+                          </div>
+                        </Grid>
+
+                        <Grid item xs={12} sm={9}>
+                          <div className="text">
+                            <h4 className="mb-20">
+                              { track.title }
+                            </h4>
+
+                            {
+                              content["topic"] &&
+                              <div className="description mb-20">
+                                { content["topic"]["text"] }
+                              </div>
+                            }
+                            <Link className="link red" to={track.slug}>Visit the track <ArrowIcon /></Link>
+                          </div>
+                        </Grid>
+                      </Grid>
+                    </div>
+                  )
+                })
+              }
+            </Grid>
+          </Grid>
+        </Section>
+
+        <Section id="2019" className="">
           <Grid container>
             <Grid item xs={12} md={7}>
               <h2 className="mb-40"><EditableText content={content["2019-title"]} onSave={this.onSave('2019-title')} /></h2>
@@ -208,7 +303,7 @@ class HomePage extends React.Component {
           </Grid>
         </Section>
 
-        <Section id="2017" className="">
+        <Section id="2017" className="bg-light">
           <Grid container>
             <Grid item xs={12} md={7}>
               <h2 className="mb-40"><EditableText content={content["2017-title"]} onSave={this.onSave('2017-title')} /></h2>
@@ -285,20 +380,6 @@ class HomePage extends React.Component {
                   )
                 })
               }
-            </Grid>
-          </Grid>
-        </Section>
-
-        <Section id="cta" className="bg-dark" data-aos="fade-in">
-          <Grid container>
-            <Grid item xs={12}>
-              <div className="cta">
-                <h2 className="text">
-                  <EditableText content={content["cta-text"]} onSave={this.onSave('cta-text')} />
-                </h2>
-                <div className="line" />
-                <EditableLink classes="btn white" content={content["cta-link"]} onSave={this.onSave('cta-link')} />
-              </div>
             </Grid>
           </Grid>
         </Section>

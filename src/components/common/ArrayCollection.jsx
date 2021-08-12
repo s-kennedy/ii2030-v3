@@ -9,6 +9,9 @@ class EditableCollection extends React.Component {
       ...this.props.items,
       [itemId]: item
     }
+    console.log("itemId", itemId)
+    console.log("item", item)
+    console.log("newCollection", newCollection)
     this.props.onSave(newCollection)
   }
 

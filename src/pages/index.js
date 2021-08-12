@@ -33,7 +33,7 @@ import bgImg1 from "../assets/images/shapes/header-triangle-red.svg"
 import bgImg2 from "../assets/images/shapes/polygon-lg-blue.svg"
 import bgImg4 from "../assets/images/shapes/header-triangle-light-blue.svg"
 import bgImg5 from "../assets/images/shapes/triangle-blue.svg"
-import endevaLogo from "../assets/images/logos/endeva.png"
+import endevaLogo from "../assets/images/logos/endeva_logo_classic.png"
 import ddgThumbnail from "../assets/images/ddgThumbnail.jpg"
 
 import { DEFAULT_COMPONENT_CONTENT } from "../utils/constants"
@@ -135,14 +135,6 @@ class HomePage extends React.Component {
           </div>
         </Section>
 
-        <Section id="highlight" className="bg-blue pt-10 pb-10" data-aos="fade-up">
-          <Grid container justify="center">
-            <Grid item>
-              <EditableLink content={content["apply-now-text"]} onSave={this.onSave('apply-now-text')} />
-            </Grid>
-          </Grid>
-        </Section>
-
         <Section id="overview" className="bg-dark">
           <div className="" data-aos="fade-in">
             <Grid container justify="space-around" alignItems="center" className="mt-50 mb-30">
@@ -196,10 +188,10 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={7}>
                 <h2><EditableText content={content["join-title"]} onSave={this.onSave('join-title')} /></h2>
                 <div className="underline"><div className="shape red" /></div>
-                <div className="indented">
+                {/*<div className="indented">
                   <EditableParagraph content={content["join-description"]} onSave={this.onSave('join-description')} />
                   <EditableLink content={content["join-link"]} onSave={this.onSave('join-link')} classes="btn red mt-20" />
-                </div>
+                </div>*/}
               </Grid>
             </Grid>
           </div>

@@ -156,15 +156,14 @@ class Navigation extends React.Component {
             <Grid item style={styles.grow}>
               <div className="menu-left">
                 <Link to={'/'} className={`menu-heading ${selected === '/' ? 'selected' : ""}`}>ii2030</Link>
-                <Link to={'/africa-for-the-future'} className={`${selected === '/africa-for-the-future' ? 'selected' : ""}`}>#Africa4Future</Link>
+                {/*<Link to={'/africa-for-the-future'} className={`${selected === '/africa-for-the-future' ? 'selected' : ""}`}>#Africa4Future</Link>*/}
                 <Link to={'/past-events'} className={`${selected === '/past-events' ? 'selected' : ""}`}>Past Editions</Link>
                 <TracksDropdown anchorText={"Tracks"} tracks={tracks} />
-                <Link to={'/faq'} className={`${selected === '/faq' ? 'selected' : ""}`}>FAQ</Link>
               </div>
             </Grid>
-            <Grid item>
+{/*            <Grid item>
               <Link to="/apply" className="btn red">Apply now!</Link>
-            </Grid>
+            </Grid>*/}
           </Grid>
         </Hidden>
 
