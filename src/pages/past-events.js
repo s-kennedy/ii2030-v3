@@ -98,8 +98,13 @@ class HomePage extends React.Component {
     const tracks2019 = tracks.filter(t => t.year === 2019)
     const tracks2020 = tracks.filter(t => t.year === 2020)
 
+    const metadata = {
+      title: content["landing-title"]["text"],
+      url: this.props.location.href
+    }
+
     return (
-      <Layout location={this.props.location} className="past-events-page">
+      <Layout location={this.props.location} className="past-events-page" metadata={metadata}>
         <Section id="header" data-aos="fade-in">
           <div className="content">
             <Grid container>

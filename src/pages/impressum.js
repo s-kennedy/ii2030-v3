@@ -45,9 +45,13 @@ class Impressum extends React.Component {
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : {};
+    const metadata = {
+      title: content["impressum-title"] ? content["impressum-title"]["text"] : "Impressum",
+      url: this.props.location.href
+    }
 
     return (
-      <Layout>
+      <Layout metadata={metadata}>
 
         <main>
           <Section id="basic-page">

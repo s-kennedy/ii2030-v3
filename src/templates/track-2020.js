@@ -172,12 +172,21 @@ class TrackTemplate extends React.Component {
 
   render() {
     const title = this.props.pageData ? this.props.pageData.title : "";
-    const content = this.props.pageData ? this.props.pageData.content : {};
+    const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.tracks.content);
     const introSlides = content["intro-slides"] || [];
     const trackLeads = content["track-leads"] || [];
 
+    let metadata = {
+      title: title,
+      url: this.props.location.href
+    }
+
+    if (content["topic"]) {
+      metadata.description = content["topic"]["text"]
+    }
+
     return (
-      <Layout className="track-page" location={this.props.location}>
+      <Layout className="track-page" location={this.props.location} metadata={metadata}>
         <Section id="header" className="bg-light" data-aos="fade-in">
           <div className="content">
             <Grid container spacing={6}>

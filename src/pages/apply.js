@@ -80,9 +80,13 @@ class HomePage extends React.Component {
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
+    const metadata = {
+      title: content["landing-title"]["text"],
+      url: this.props.location.href
+    }
 
     return (
-      <Layout location={this.props.location} className="apply-page">
+      <Layout location={this.props.location} className="apply-page" metadata={metadata}>
         <Section id="header" data-aos="fade-in">
           <div className="content">
             <Grid container>

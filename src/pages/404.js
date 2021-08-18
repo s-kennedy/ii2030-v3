@@ -12,7 +12,7 @@ const styles = {
 }
 
 const NotFoundPage = props => (
-  <Layout>
+  <Layout metadata={{ title: 'Page Not Found', url: props.location.href }}>
     <Grid container justify="center" className={props.classes.container}>
       <Grid item>
         <Typography variant="display1" gutterBottom>

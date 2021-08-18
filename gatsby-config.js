@@ -13,6 +13,9 @@ const firebaseConfig = require(`./config/firebase-config.${process.env.GATSBY_FI
 module.exports = {
   siteMetadata: {
     title: `Inclusive Innovation 2030`,
+    description: "ii2030 is a catalytic process that begins with a problem and an opportunity and ends with the implementation of the prototype of a systemic solution. It catalyzes collaboration amongst innovators from corporates, startups, the public sector, NGOs and science.",
+    image: "https://www.ii2030.com/share-image.png",
+    url: "https://www.ii2030.com",
   },
   pathPrefix: `/`,
   plugins: [

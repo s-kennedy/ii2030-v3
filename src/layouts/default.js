@@ -97,18 +97,23 @@ class DefaultLayout extends React.Component {
 
   render() {
     const { props } = this;
+    const defaultMetadata = props.data.site.siteMetadata
+    const pageMetadata = props.metadata || {}
+    const metaData = { ...defaultMetadata, ...pageMetadata }
     return(
       <div style={styles.container} className={`nl-page ${props.className || ""}`}>
         <Helmet>
-          <title>
-            Inclusive Innovation 2030 | #A4F
-          </title>
-          <meta
-            charSet="utf-8"
-            description="Inclusive Innovation 2030"
-            keywords="inclusive, innovation, Africa, future, conference"
-            viewport="width=device-width,initial-scale=1.0,maximum-scale=1"
-          />
+          <title>{metaData.title}</title>
+          <meta charSet="utf-8" />
+          <meta name="description" content={metaData.description} />
+          <meta name="image" content={metaData.image} />
+          <meta property="og:url" content={metaData.url} />
+          <meta property="og:title" content={metaData.title} />
+          <meta property="og:description" content={metaData.description} />
+          <meta property="og:image" content={metaData.image} />
+          <meta property="og:type" content="website" />
+          <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+          <meta name="keywords" content="inclusive, innovation, Africa, future, conference" />
           <link rel="icon" href={favicon} type="image/x-icon" />
         </Helmet>
         <Notification />
@@ -139,6 +144,14 @@ const LayoutContainer = props => (
               slug
               content
             }
+          }
+        }
+        site {
+          siteMetadata {
+            title
+            description
+            image
+            url
           }
         }
       }
