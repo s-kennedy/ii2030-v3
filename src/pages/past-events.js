@@ -99,7 +99,7 @@ class HomePage extends React.Component {
     const tracks2020 = tracks.filter(t => t.year === 2020)
 
     const metadata = {
-      title: content["landing-title"]["text"],
+      title: content["landing-title"] ? content["landing-title"]["text"] : "Past Editions",
       url: this.props.location.href
     }
 

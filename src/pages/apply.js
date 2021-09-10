@@ -81,7 +81,7 @@ class HomePage extends React.Component {
   render() {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
     const metadata = {
-      title: content["landing-title"]["text"],
+      title: content["landing-title"] ? content["landing-title"]["text"] : "Apply",
       url: this.props.location.href
     }
 
