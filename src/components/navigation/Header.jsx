@@ -26,6 +26,11 @@ const styles = {
     paddingLeft: '40px',
     whiteSpace: 'normal',
   },
+  currentMenuItem: {
+    fontWeight: 100,
+    fontSize: '16px',
+    whiteSpace: 'normal',
+  },
   grow: {
     flexGrow: 1,
   },
@@ -42,6 +47,66 @@ const styles = {
   },
   mobileMenu: { width: '95vw' }
 }
+
+class CurrentTracksDropdown extends React.Component {
+  state = {
+    anchorEl: null
+  }
+
+  handleMenu = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  orderTracks = tracks => {
+    return sortBy(tracks, ['node.navigation.order', 'node.tech'])
+  }
+
+  render() {
+    const { anchorEl } = this.state;
+    const { tracks } = this.props;
+    const open = Boolean(anchorEl);
+
+    return(
+      <Fragment>
+        <button
+          style={{ display: 'inline-flex', alignItems: 'center', background: 'none', border: 'none' }}
+          className="link nav-link"
+          aria-owns={open ? 'menu-appbar' : undefined}
+          aria-haspopup="true"
+          onClick={this.handleMenu}
+          color="inherit"
+        >
+          <>
+            { this.props.anchorText }
+            { open ? <ExpandLessIcon style={{ marginLeft: '2px' }} /> : <ExpandMoreIcon style={{ marginLeft: '2px' }} />}
+          </>
+        </button>
+        <Menu
+          id="menu-appbar"
+          anchorEl={anchorEl}
+          getContentAnchorEl={null}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'left',
+          }}
+          open={open}
+          onClose={this.handleClose}
+        >
+          {tracks.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.currentMenuItem}>{track.title}</MenuItem>)}
+        </Menu>
+      </Fragment>
+    )
+  }
+}
+
 
 class TracksDropdown extends React.Component {
   state = {
@@ -162,7 +227,7 @@ class Navigation extends React.Component {
             <Grid item style={styles.grow}>
               <div className="menu-left">
                 <Link to={'/'} className={`menu-heading ${selected === '/' ? 'selected' : ""}`}>ii2030</Link>
-                <Link to={'/current-tracks'} className={`${selected === '/current-tracks' ? 'selected' : ""}`}>Current tracks</Link>
+                <CurrentTracksDropdown anchorText={"Current Tracks"} tracks={tracks2021} />
                 <Link to={'/past-events'} className={`${selected === '/past-events' ? 'selected' : ""}`}>Past Editions</Link>
                 <TracksDropdown anchorText={"Tracks"} tracks={tracks} />
               </div>

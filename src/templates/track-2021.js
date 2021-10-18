@@ -17,7 +17,7 @@ import Button from "@material-ui/core/Button";
 
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
-import { EditableText, EditableParagraph, EditableImageUpload } from "react-easy-editables"
+import { EditableText, EditableParagraph, EditableImageUpload, EditableLink } from "react-easy-editables"
 import { uploadImage } from "../firebase/operations"
 import Collection from "../components/common/Collection";
 import ParticipantLogo from "../components/common/ParticipantLogo"
@@ -448,6 +448,20 @@ class TrackTemplate extends React.Component {
             </div>
           }
 
+        </Section>
+
+        <Section id="cta" className="bg-dark" data-aos="fade-in">
+          <Grid container>
+            <Grid item xs={12}>
+              <div className="cta">
+                <h2 className="text">
+                  <EditableText content={content["cta-text"]} onSave={this.onSave('cta-text')} />
+                </h2>
+                <div className="line" />
+                <EditableLink classes="btn white" content={content["cta-link"]} onSave={this.onSave('cta-link')} />
+              </div>
+            </Grid>
+          </Grid>
         </Section>
 
       </Layout>
