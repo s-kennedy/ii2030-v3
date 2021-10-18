@@ -67,6 +67,7 @@ class TracksDropdown extends React.Component {
     const tracks2017 = this.orderTracks(tracks.filter(t => t.year === 2017))
     const tracks2019 = this.orderTracks(tracks.filter(t => t.year === 2019))
     const tracks2020 = this.orderTracks(tracks.filter(t => t.year === 2020))
+    const tracks2021 = this.orderTracks(tracks.filter(t => t.year === 2021))
 
     return(
       <Fragment>
@@ -98,6 +99,10 @@ class TracksDropdown extends React.Component {
           open={open}
           onClose={this.handleClose}
         >
+          <MenuItem disabled={true} key={"2021-tracks"} style={styles.menuHeader}>2021 Tracks</MenuItem>
+          {
+            tracks2021 && tracks2021.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
+          }
           <MenuItem disabled={true} key={"2020-tracks"} style={styles.menuHeader}>2020 Tracks</MenuItem>
           {
             tracks2020 && tracks2020.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
@@ -148,6 +153,7 @@ class Navigation extends React.Component {
     const tracks2017 = this.orderTracks(tracks.filter(t => t.year === 2017))
     const tracks2019 = this.orderTracks(tracks.filter(t => t.year === 2019))
     const tracks2020 = this.orderTracks(tracks.filter(t => t.year === 2020))
+    const tracks2021 = this.orderTracks(tracks.filter(t => t.year === 2021))
 
     return (
       <div style={styles.menu} id="main-menu">
@@ -156,14 +162,14 @@ class Navigation extends React.Component {
             <Grid item style={styles.grow}>
               <div className="menu-left">
                 <Link to={'/'} className={`menu-heading ${selected === '/' ? 'selected' : ""}`}>ii2030</Link>
-                {/*<Link to={'/africa-for-the-future'} className={`${selected === '/africa-for-the-future' ? 'selected' : ""}`}>#Africa4Future</Link>*/}
+                <Link to={'/current-tracks'} className={`${selected === '/current-tracks' ? 'selected' : ""}`}>Current tracks</Link>
                 <Link to={'/past-events'} className={`${selected === '/past-events' ? 'selected' : ""}`}>Past Editions</Link>
                 <TracksDropdown anchorText={"Tracks"} tracks={tracks} />
               </div>
             </Grid>
-{/*            <Grid item>
+            <Grid item>
               <Link to="/apply" className="btn red">Apply now!</Link>
-            </Grid>*/}
+            </Grid>
           </Grid>
         </Hidden>
 
@@ -201,7 +207,7 @@ class Navigation extends React.Component {
                 onClose={this.handleClose}
               >
                 <MenuItem onClick={this.handleClose} component={Link} to={"/"}>Home</MenuItem>
-                <MenuItem onClick={this.handleClose} component={Link} to={"/africa-for-the-future"}>#Africa4Future</MenuItem>
+                <MenuItem onClick={this.handleClose} component={Link} to={"/current-tracks"}>Current tracks</MenuItem>
                 <MenuItem onClick={this.handleClose} component={Link} to={"/past-events"}>Past Editions</MenuItem>
                 <MenuItem button onClick={this.handleOpenTracks} style={{ display: "flex", justifyContent: "space-between" }} className="link nav-link">
                   Tracks
@@ -209,6 +215,10 @@ class Navigation extends React.Component {
                 </MenuItem>
                 <Collapse in={openTracks} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
+                    <MenuItem disabled={true} key={"2021-tracks"} style={styles.menuHeader}>2021 Tracks</MenuItem>
+                    {
+                      tracks2021 && tracks2021.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
+                    }
                     <MenuItem disabled={true} key={"2020-tracks"} style={styles.menuHeader}>2020 Tracks</MenuItem>
                     {
                       tracks2020 && tracks2020.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)

@@ -37,6 +37,30 @@
       "question" : {
         "text" : "Why"
       }
+    },
+    "next" : {
+      "answer" : {
+        "text" : ""
+      },
+      "question" : {
+        "text" : "Next Steps"
+      }
+    },
+    "status" : {
+      "answer" : {
+        "text" : ""
+      },
+      "question" : {
+        "text" : "Status"
+      }
+    },
+    "participants" : {
+      "answer" : {
+        "text" : ""
+      },
+      "question" : {
+        "text" : "Partners"
+      }
     }
   },
   "topic" : {

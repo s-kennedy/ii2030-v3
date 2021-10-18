@@ -39,7 +39,7 @@ const emptyPage = {
   title: "",
   tech: "",
   order: 0,
-  year: 2020,
+  year: 2021,
 }
 
 class CreatePageModal extends React.Component {
@@ -102,13 +102,18 @@ class CreatePageModal extends React.Component {
       })
     }
 
+    let templateFile = 'track.js'
+    if (this.state.page.year === 2021) {
+      templateFile = 'track-2021.js'
+    }
+
     const trackData = {
       title: this.state.page.title,
       tech: this.state.page.tech,
       slug: `/tracks/${this.state.page.year}/${pageId}`,
       year: this.state.page.year,
       page_type: "track",
-      template: "track.js",
+      template: templateFile,
       navigation: {
         order: parseInt(this.state.page.order),
         displayTitle: this.state.page.title,
@@ -160,6 +165,7 @@ class CreatePageModal extends React.Component {
               error={Boolean(this.state.errors.year)}
               helperText={this.state.errors.year}
             >
+              <MenuItem value={2021}>2021</MenuItem>
               <MenuItem value={2020}>2020</MenuItem>
               <MenuItem value={2019}>2019</MenuItem>
               <MenuItem value={2017}>2017</MenuItem>

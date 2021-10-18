@@ -114,3 +114,4 @@ export const DEFAULT_COMPONENT_CONTENT = {
     "partner-link": { "link": "/", "anchor": "Link" }
   },
 }
+

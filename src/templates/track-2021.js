@@ -21,6 +21,7 @@ import { EditableText, EditableParagraph, EditableImageUpload } from "react-easy
 import { uploadImage } from "../firebase/operations"
 import Collection from "../components/common/Collection";
 import ParticipantLogo from "../components/common/ParticipantLogo"
+import TrackRecord from "../components/common/TrackRecord"
 
 import bgImg1 from "../assets/images/shapes/polygon-lg-white.svg"
 import bgImg2 from "../assets/images/shapes/triangle-orange.svg"
@@ -68,6 +69,7 @@ const mapStateToProps = state => {
 class TrackTemplate extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props)
     const initialPageData = {
       ...this.props.data.tracks,
       content: JSON.parse(this.props.data.tracks.content)
@@ -238,8 +240,8 @@ class TrackTemplate extends React.Component {
                 <Grid item xs={12} md={7} style={{ position: "relative", minHeight: "260px" }}>
                   <EditableImageUpload
                       classes="track-icon"
-                      content={ content["track-img-1"] ? content["track-img-1"] : { imageSrc: defaultImage1, title: "Image placeholder" } }
-                      onSave={this.onSave('track-img-1')}
+                      content={ content["track-img-how"] ? content["track-img-how"] : { imageSrc: defaultImage1, title: "Image placeholder" } }
+                      onSave={this.onSave('track-img-how')}
                       uploadImage={uploadImage}
                       styles={{
                         image: {
@@ -283,8 +285,8 @@ class TrackTemplate extends React.Component {
 
                     <EditableImageUpload
                       classes="track-icon"
-                      content={ content["track-img-2"] ? content["track-img-2"] : { imageSrc: defaultImage2, title: "Image placeholder" } }
-                      onSave={this.onSave('track-img-2')}
+                      content={ content["track-img-why"] ? content["track-img-why"] : { imageSrc: defaultImage2, title: "Image placeholder" } }
+                      onSave={this.onSave('track-img-why')}
                       uploadImage={uploadImage}
                       styles={{
                         container: {
@@ -325,15 +327,107 @@ class TrackTemplate extends React.Component {
               </Grid>
             </div>
           }
+          </Section>
+
+          <Section id="journey" className="bg-light">
+            <Grid container>
+              <Grid item xs={12} md={7} >
+                <h2 className="mb-40"><EditableText content={content["journey-title"]} onSave={this.onSave('journey-title')} /></h2>
+                <div className="indented">
+                  <EditableParagraph content={content["journey-description"]} onSave={this.onSave('journey-description')} />
+                </div>
+              </Grid>
+            </Grid>
+
+            <Grid container justify="space-around">
+              <Grid item xs={12} sm={4} md={2} className="journey-container mt-40" data-aos="fade-in" data-aos-delay="50">
+                <TrackRecord className="mt-100" content={content["journey-step-1"]} onSave={this.onSave('journey-step-1')} shape="arrow" />
+              </Grid>
+              <Grid item xs={12} sm={4} md={2} className="journey-container mt-80" data-aos="fade-in" data-aos-delay="250">
+                <TrackRecord className="mt-80" content={content["journey-step-2"]} onSave={this.onSave('journey-step-2')} shape="arrow" />
+              </Grid>
+              <Grid item xs={12} sm={4} md={2} className="journey-container mt-60" data-aos="fade-in" data-aos-delay="450">
+                <TrackRecord className="mt-60" content={content["journey-step-3"]} onSave={this.onSave('journey-step-3')} shape="arrow" />
+              </Grid>
+              <Grid item xs={12} sm={4} md={2} className="journey-container" data-aos="fade-in" data-aos-delay="650">
+                <TrackRecord className="mt-40" content={content["journey-step-4"]} onSave={this.onSave('journey-step-4')} shape="arrow" />
+              </Grid>
+              <Grid item xs={12} sm={4} md={2} className="journey-container" data-aos="fade-in" data-aos-delay="850">
+                <TrackRecord className="mt-20" content={content["journey-step-5"]} onSave={this.onSave('journey-step-5')} shape="arrow" />
+              </Grid>
+              <Grid item xs={12} sm={4} md={2} className="journey-container" data-aos="fade-in" data-aos-delay="1000">
+                <TrackRecord content={content["journey-step-6"]} onSave={this.onSave('journey-step-6')} shape="arrow" />
+              </Grid>
+            </Grid>
+
+          </Section>
+
+          <Section id="questions-continued" className="">
+          {
+            introSlides["next"] &&
+            <div className="question pb-40 pt-40">
+              <Grid container justify="space-around" alignItems="stretch">
+
+                <Grid item xs={12} md={5}>
+                  <h3>
+                    <EditableText content={introSlides["next"]["question"]} onSave={this.onSaveQuestion(introSlides, "next", "question")} />
+                  </h3>
+                  <div className="underline">
+                    <div className={`shape red`} />
+                  </div>
+                  <div className="indented">
+                    <EditableParagraph content={introSlides["next"]["answer"]} onSave={this.onSaveQuestion(introSlides, "next", "answer")} />
+                  </div>
+                </Grid>
+
+                <Grid item xs={12} md={7} style={{ position: "relative", minHeight: "260px" }}>
+                  <EditableImageUpload
+                      classes="track-icon"
+                      content={ content["track-img-next"] ? content["track-img-next"] : { imageSrc: defaultImage1, title: "Image placeholder" } }
+                      onSave={this.onSave('track-img-next')}
+                      uploadImage={uploadImage}
+                      styles={{
+                        image: {
+                          objectFit: "contain",
+                          height: "100%",
+                          width: "100%",
+                          maxHeight: "450px"
+                        }
+                      }}
+                    />
+                </Grid>
+
+              </Grid>
+            </div>
+          }
 
           {
             introSlides["who"] &&
             <div className="question pb-40 pt-40">
               <Grid container justify="center">
-
-                <Grid item xs={12} md={12}>
+                <Grid item xs={12} md={7}>
                   <h3>
                     <EditableText content={introSlides["who"]["question"]} onSave={this.onSaveQuestion(introSlides, "who", "question")} />
+                  </h3>
+                  <div className="underline">
+                    <div className={`shape orange`} />
+                  </div>
+                  <div className="indented">
+                    <EditableParagraph content={introSlides["who"]["answer"]} onSave={this.onSaveQuestion(introSlides, "who", "answer")} />
+                  </div>
+                </Grid>
+              </Grid>
+            </div>
+          }
+
+          {
+            introSlides["participants"] &&
+            <div className="question pb-40 pt-40">
+              <Grid container justify="flex-end">
+
+                <Grid item xs={12} md={5}>
+                  <h3>
+                    <EditableText content={introSlides["participants"]["question"]} onSave={this.onSaveQuestion(introSlides, "participants", "question")} />
                   </h3>
                   <div className="underline">
                     <div className={`shape gray`} />
@@ -355,61 +449,6 @@ class TrackTemplate extends React.Component {
           }
 
         </Section>
-
-
-          { (trackLeads.length > 0 || this.props.isEditingPage) &&
-            <Section id="track-lead" className="bg-light">
-              <Grid container>
-                <Grid item xs={12} md={5}>
-                  <h2 className="mb-40">
-                    <EditableText content={ content["track-lead-title"] } onSave={this.onSave('track-lead-title')} />
-                  </h2>
-                </Grid>
-              </Grid>
-
-              {
-                trackLeads.map((lead, index) => {
-                  return (
-                    <div className="track-lead" key={`track-lead-${index}`}>
-                      <Grid container spacing={6}>
-                        <Grid item xs={12} md={5}>
-                          <div className="image-container">
-                            <img src={bgImg4} alt=""  />
-                            <img src={bgImg3} alt=""  />
-                            <EditableImageUpload
-                              content={lead["track-lead-image"]}
-                              className="pure-img"
-                              onSave={this.editTrackLead(index, "track-lead-image")}
-                              uploadImage={uploadImage}
-                              styles={{ image: { borderRadius: "50%", height: "260px", width: "260px", left: "calc(50% - 130px)", top: "calc(50% - 130px)", boxShadow: "4px 4px 20px 0px rgba(64, 64, 64, 0.75)"  }}}
-                            />
-                          </div>
-                        </Grid>
-                        <Grid item xs={12} md={7} className="vert-center">
-                          <div className="text">
-                            <h3 className="mb-20">
-                              <EditableText content={lead["track-lead-name"]} onSave={this.editTrackLead(index, "track-lead-name")} />
-                            </h3>
-                            <div className="quote">
-                              <EditableParagraph content={lead["track-lead-quote"]} onSave={this.editTrackLead(index, "track-lead-quote")} />
-                            </div>
-                            {
-                              this.props.isEditingPage &&
-                              <div className="">
-                                <Button onClick={this.deleteTrackLead(index)}>Delete implementation partner</Button>
-                              </div>
-                            }
-                          </div>
-                        </Grid>
-                      </Grid>
-                    </div>
-                  )
-                })
-              }
-
-              { this.props.isEditingPage && <Button onClick={this.addTrackLead}>Add implementation partner</Button> }
-            </Section>
-          }
 
       </Layout>
     );
