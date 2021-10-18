@@ -28,7 +28,7 @@ const Footer = props => {
               </Grid>
 
               <Grid item xs={12} md={6}>
-                <p className="column-header">#Africa4Future Tracks</p>
+                <p className="column-header">Current tracks</p>
                 <ul>
                 {
                   tracks.map(track => <li key={track.slug}><Link to={track.slug} className="titlecase">{track.tech}</Link></li>)
@@ -61,7 +61,7 @@ export default () => (
             }
           }
         }
-        allTracks(filter: { year: { eq: 2020 } }) {
+        allTracks(filter: { year: { eq: 2021 } }) {
           edges {
             node {
               id
