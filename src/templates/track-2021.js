@@ -441,7 +441,7 @@ class TrackTemplate extends React.Component {
 
         </Section>
 
-        <Section id="cta" className="bg-dark" data-aos="fade-in">
+{/*        <Section id="cta" className="bg-dark" data-aos="fade-in">
           <Grid container>
             <Grid item xs={12}>
               <div className="cta">
@@ -454,7 +454,7 @@ class TrackTemplate extends React.Component {
             </Grid>
           </Grid>
         </Section>
-
+*/}
       </Layout>
     );
   }

@@ -232,9 +232,9 @@ class Navigation extends React.Component {
                 <TracksDropdown anchorText={"Tracks"} tracks={tracks} />
               </div>
             </Grid>
-            <Grid item>
+{/*            <Grid item>
               <Link to="/apply" className="btn red">Apply now!</Link>
-            </Grid>
+            </Grid>*/}
           </Grid>
         </Hidden>
 
