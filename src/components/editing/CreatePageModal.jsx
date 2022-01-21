@@ -39,7 +39,7 @@ const emptyPage = {
   title: "",
   tech: "",
   order: 0,
-  year: 2021,
+  year: 2022,
 }
 
 class CreatePageModal extends React.Component {
@@ -103,7 +103,7 @@ class CreatePageModal extends React.Component {
     }
 
     let templateFile = 'track.js'
-    if (this.state.page.year === 2021) {
+    if (this.state.page.year === 2021 || this.state.page.year === 2022) {
       templateFile = 'track-2021.js'
     }
 
@@ -165,6 +165,7 @@ class CreatePageModal extends React.Component {
               error={Boolean(this.state.errors.year)}
               helperText={this.state.errors.year}
             >
+              <MenuItem value={2022}>2022</MenuItem>
               <MenuItem value={2021}>2021</MenuItem>
               <MenuItem value={2020}>2020</MenuItem>
               <MenuItem value={2019}>2019</MenuItem>
