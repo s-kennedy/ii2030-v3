@@ -225,6 +225,8 @@ class Navigation extends React.Component {
     const tracks2020 = this.orderTracks(tracks.filter(t => t.year === 2020))
     const tracks2021 = this.orderTracks(tracks.filter(t => t.year === 2021))
 
+    const applicationsOpen = process.env.GATSBY_APPLICATIONS_OPEN === "true"
+
     return (
       <div style={styles.menu} id="main-menu">
         <Hidden smDown>
@@ -237,9 +239,11 @@ class Navigation extends React.Component {
                 <TracksDropdown anchorText={"Tracks"} tracks={tracks} />
               </div>
             </Grid>
-            <Grid item>
-              <Link to="/apply" className="btn red">Apply now!</Link>
-            </Grid>
+            {applicationsOpen &&
+              <Grid item>
+                <Link to="/apply" className="btn red">Apply now!</Link>
+              </Grid>
+            }
           </Grid>
         </Hidden>
 
@@ -304,7 +308,10 @@ class Navigation extends React.Component {
                   </List>
                 </Collapse>
                 <MenuItem onClick={this.handleClose} component={Link} to={"/faq"}>FAQ</MenuItem>
-                <MenuItem onClick={this.handleClose} className="btn blue" component={Link} to={"/apply"}>Apply now!</MenuItem>
+                {
+                  applicationsOpen &&
+                  <MenuItem onClick={this.handleClose} className="btn blue" component={Link} to={"/apply"}>Apply now!</MenuItem>
+                }
               </Menu>
             </Grid>
           </Grid>

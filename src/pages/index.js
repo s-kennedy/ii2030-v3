@@ -101,6 +101,7 @@ class HomePage extends React.Component {
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
+    const applicationsOpen = process.env.GATSBY_APPLICATIONS_OPEN === "true"
 
     return (
       <Layout location={this.props.location} className="home-page">
@@ -135,13 +136,16 @@ class HomePage extends React.Component {
           </div>
         </Section>
 
-        <Section id="highlight" className="bg-blue pt-10 pb-10" data-aos="fade-up">
-          <Grid container justify="center">
-            <Grid item>
-              <EditableLink content={content["apply-now-text"]} onSave={this.onSave('apply-now-text')} />
+        {
+          applicationsOpen &&
+          <Section id="highlight" className="bg-blue pt-10 pb-10" data-aos="fade-up">
+            <Grid container justify="center">
+              <Grid item>
+                <EditableLink content={content["apply-now-text"]} onSave={this.onSave('apply-now-text')} />
+              </Grid>
             </Grid>
-          </Grid>
-        </Section>
+          </Section>
+        }
 
         <Section id="overview" className="bg-dark">
           <div className="" data-aos="fade-in">
@@ -196,10 +200,13 @@ class HomePage extends React.Component {
               <Grid item xs={12} md={7}>
                 <h2><EditableText content={content["join-title"]} onSave={this.onSave('join-title')} /></h2>
                 <div className="underline"><div className="shape red" /></div>
-                {/*<div className="indented">
-                  <EditableParagraph content={content["join-description"]} onSave={this.onSave('join-description')} />
-                  <EditableLink content={content["join-link"]} onSave={this.onSave('join-link')} classes="btn red mt-20" />
-                </div>*/}
+                {
+                  applicationsOpen &&
+                  <div className="indented">
+                    <EditableParagraph content={content["join-description"]} onSave={this.onSave('join-description')} />
+                    <EditableLink content={content["join-link"]} onSave={this.onSave('join-link')} classes="btn red mt-20" />
+                  </div>
+                }
               </Grid>
             </Grid>
           </div>
@@ -431,6 +438,7 @@ class HomePage extends React.Component {
 
         </Section>
 
+        {applicationsOpen &&
         <Section id="cta" className="bg-dark" data-aos="fade-in">
           <Grid container>
             <Grid item xs={12}>
@@ -444,6 +452,8 @@ class HomePage extends React.Component {
             </Grid>
           </Grid>
         </Section>
+        }
+
 
         <Section id="partners" className="">
           <Grid container data-aos="fade-in">

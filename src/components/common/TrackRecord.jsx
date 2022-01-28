@@ -13,7 +13,10 @@ import arrow from "../../assets/images/shapes/arrow-white.svg"
 
 import { uploadImage } from "../../firebase/operations"
 
-const TrackRecordEditor = ({ content, onContentChange }) => {
+const TrackRecordEditor = (props) => {
+  console.log("editor props", props)
+  const { content, onContentChange } = props;
+
   const handleEditorChange = field => item => {
     onContentChange({
       ...content,
@@ -53,8 +56,11 @@ const TrackRecordEditor = ({ content, onContentChange }) => {
 }
 
 const TrackRecord = props => {
+  console.log("track record prosp", props)
 
   const content = props.content || {};
+
+  console.log("track recrod content", content)
 
   const handleSave = newContent => {
     props.onSave(newContent)
@@ -122,3 +128,4 @@ TrackRecord.defaultProps = {
 }
 
 export default TrackRecord;
+

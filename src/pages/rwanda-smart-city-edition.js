@@ -90,6 +90,7 @@ class CustomPage extends React.Component {
 
   render() {
     const content = this.props.pageData ? this.props.pageData.content : JSON.parse(this.props.data.pages.content);
+    const applicationsOpen = process.env.GATSBY_APPLICATIONS_OPEN === "true"
 
     return (
       <Layout location={this.props.location}>
@@ -136,7 +137,6 @@ class CustomPage extends React.Component {
               <Grid item xs={12} md={7}>
                 <div className="">
                   <EditableParagraph content={content["overview-description"]} onSave={this.onSave('overview-description')} />
-                  <EditableLink content={content["overview-link"]} onSave={this.onSave('overview-link')} classes="btn white mt-20" />
                 </div>
               </Grid>
             </Grid>
@@ -211,6 +211,7 @@ class CustomPage extends React.Component {
           </Grid>
         </Section>
 
+        {applicationsOpen &&
         <Section id="cta" className="bg-dark" data-aos="fade-in">
           <Grid container>
             <Grid item xs={12}>
@@ -224,6 +225,7 @@ class CustomPage extends React.Component {
             </Grid>
           </Grid>
         </Section>
+        }
 
       </Layout>
     );

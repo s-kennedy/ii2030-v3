@@ -104,7 +104,7 @@ class CreatePageModal extends React.Component {
 
     let templateFile = 'track.js'
     if (this.state.page.year === 2021 || this.state.page.year === 2022) {
-      templateFile = 'track-2021.js'
+      templateFile = `track-${this.state.page.year}.js`
     }
 
     const trackData = {
