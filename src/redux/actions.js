@@ -83,8 +83,36 @@ export function deleteSidebarContent(sectionIndex) {
   return { type: "DELETE_SIDEBAR_CONTENT", sectionIndex };
 }
 
-export function toggleEditing() {
+export function toggleEditingState() {
   return { type: "TOGGLE_EDITING" };
+}
+
+export function toggleEditing() {
+  return (dispatch, getState) => {
+    const isEditingPage = getState().adminTools.isEditingPage
+    const pageId = getState().page.data.id;
+
+    if (!isEditingPage) {
+      dispatch(fetchPage(pageId))
+      dispatch(
+        showNotification(
+          "You are now in editing mode. You are seeing the latest changes, including unpublished changes.",
+          "success"
+        )
+      );
+    }
+
+    if (isEditingPage) {
+      dispatch(
+        showNotification(
+          "You are now out of editing mode. If you refresh the page you will no longer see unpublished changes.",
+          "success"
+        )
+      )
+    }
+
+    return dispatch(toggleEditingState())
+  };
 }
 
 export function toggleNewPageModal(options) {
@@ -556,6 +584,25 @@ export function fetchPages() {
 
         console.log("Fetched pages", pages)
         dispatch(setPages(pages));
+      })
+      .catch(error => {
+        console.log("Error fetching pages", error)
+      })
+  };
+}
+
+
+export function fetchPage(pageId) {
+  return (dispatch, getState) => {
+    const db = firebase.database();
+
+    db.ref(`pages/${pageId}`)
+      .once('value')
+      .then(snap => {
+        const page = snap.val()
+
+        console.log("Fetched page", page)
+        dispatch(loadPageData(page))
       })
       .catch(error => {
         console.log("Error fetching pages", error)

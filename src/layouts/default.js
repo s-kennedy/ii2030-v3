@@ -100,6 +100,7 @@ class DefaultLayout extends React.Component {
     const defaultMetadata = props.data.site.siteMetadata
     const pageMetadata = props.metadata || {}
     const metaData = { ...defaultMetadata, ...pageMetadata }
+
     return(
       <div style={styles.container} className={`nl-page ${props.className || ""}`}>
         <Helmet>

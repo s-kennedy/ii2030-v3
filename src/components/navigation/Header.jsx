@@ -133,6 +133,7 @@ class TracksDropdown extends React.Component {
     const tracks2019 = this.orderTracks(tracks.filter(t => t.year === 2019))
     const tracks2020 = this.orderTracks(tracks.filter(t => t.year === 2020))
     const tracks2021 = this.orderTracks(tracks.filter(t => t.year === 2021))
+    const tracks2022 = this.orderTracks(tracks.filter(t => t.year === 2022))
 
     return(
       <Fragment>
@@ -164,6 +165,10 @@ class TracksDropdown extends React.Component {
           open={open}
           onClose={this.handleClose}
         >
+          <MenuItem disabled={true} key={"2022-tracks"} style={styles.menuHeader}>2022 Tracks</MenuItem>
+          {
+            tracks2022 && tracks2022.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
+          }
           <MenuItem disabled={true} key={"2021-tracks"} style={styles.menuHeader}>2021 Tracks</MenuItem>
           {
             tracks2021 && tracks2021.map(track => <MenuItem onClick={this.handleClose} key={track.slug} component={Link} to={track.slug} style={styles.menuItem}>{track.title}</MenuItem>)
@@ -220,6 +225,8 @@ class Navigation extends React.Component {
     const tracks2020 = this.orderTracks(tracks.filter(t => t.year === 2020))
     const tracks2021 = this.orderTracks(tracks.filter(t => t.year === 2021))
 
+    const applicationsOpen = process.env.GATSBY_APPLICATIONS_OPEN === "true"
+
     return (
       <div style={styles.menu} id="main-menu">
         <Hidden smDown>
@@ -227,14 +234,16 @@ class Navigation extends React.Component {
             <Grid item style={styles.grow}>
               <div className="menu-left">
                 <Link to={'/'} className={`menu-heading ${selected === '/' ? 'selected' : ""}`}>ii2030</Link>
-                <CurrentTracksDropdown anchorText={"Current Tracks"} tracks={tracks2021} />
+                <Link to={'/rwanda-smart-city-edition'} className={`${selected === '/rwanda-smart-city-edition' ? 'selected' : ""}`}>Rwanda Smart City Edition</Link>
                 <Link to={'/past-events'} className={`${selected === '/past-events' ? 'selected' : ""}`}>Past Editions</Link>
                 <TracksDropdown anchorText={"Tracks"} tracks={tracks} />
               </div>
             </Grid>
-{/*            <Grid item>
-              <Link to="/apply" className="btn red">Apply now!</Link>
-            </Grid>*/}
+            {applicationsOpen &&
+              <Grid item>
+                <Link to="/apply" className="btn red">Apply now!</Link>
+              </Grid>
+            }
           </Grid>
         </Hidden>
 
@@ -299,7 +308,10 @@ class Navigation extends React.Component {
                   </List>
                 </Collapse>
                 <MenuItem onClick={this.handleClose} component={Link} to={"/faq"}>FAQ</MenuItem>
-                <MenuItem onClick={this.handleClose} className="btn blue" component={Link} to={"/apply"}>Apply now!</MenuItem>
+                {
+                  applicationsOpen &&
+                  <MenuItem onClick={this.handleClose} className="btn blue" component={Link} to={"/apply"}>Apply now!</MenuItem>
+                }
               </Menu>
             </Grid>
           </Grid>
