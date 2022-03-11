@@ -36,10 +36,6 @@ const Footer = props => {
                 </ul>
               </Grid>
 
-              {/*<Grid item xs={12} md={4}>
-                <Link to={"/apply"} className="btn red mt-10">Apply now!</Link>
-              </Grid>*/}
-
             </Grid>
           </Grid>
         </Grid>
@@ -61,7 +57,7 @@ export default () => (
             }
           }
         }
-        allTracks(filter: { year: { eq: 2021 } }) {
+        allTracks(filter: { year: { eq: 2022 } }) {
           edges {
             node {
               id
