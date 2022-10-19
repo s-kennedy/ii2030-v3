@@ -18,6 +18,7 @@ import Button from "@material-ui/core/Button";
 import Layout from "../layouts/default.js";
 import Section from "../components/common/Section";
 import { EditableText, EditableParagraph, EditableImageUpload, EditableLink } from "react-easy-editables"
+import PopoutVideo from "../components/common/PopoutVideo"
 import { uploadImage } from "../firebase/operations"
 import Collection from "../components/common/Collection";
 import ParticipantLogo from "../components/common/ParticipantLogo"
@@ -27,6 +28,7 @@ import bgImg1 from "../assets/images/shapes/polygon-lg-white.svg"
 import bgImg2 from "../assets/images/shapes/triangle-orange.svg"
 import bgImg3 from "../assets/images/shapes/circuit-board-white.svg"
 import bgImg4 from "../assets/images/shapes/polygon-red.svg"
+import bgImg5 from "../assets/images/shapes/triangle-blue.svg"
 import defaultImage1 from "../assets/images/head.png"
 import defaultImage2 from "../assets/images/tour.png"
 
@@ -238,21 +240,14 @@ class TrackTemplate extends React.Component {
                   </div>
                 </Grid>
 
-                <Grid item xs={12} md={7} style={{ position: "relative", minHeight: "260px" }}>
-                  <EditableImageUpload
-                      classes="track-icon"
-                      content={ content["track-img-1"] ? content["track-img-1"] : { imageSrc: defaultImage1, title: "Image placeholder" } }
-                      onSave={this.onSave('track-img-1')}
-                      uploadImage={uploadImage}
-                      styles={{
-                        image: {
-                          objectFit: "contain",
-                          height: "100%",
-                          width: "100%",
-                          maxHeight: "450px"
-                        }
-                      }}
+                <Grid item xs={12} md={5}>
+                  <div className="video">
+                    <PopoutVideo
+                      content={content["track-video"]}
+                      onSave={this.onSave('track-video')}
+                      bgImg={bgImg5}
                     />
+                  </div>
                 </Grid>
 
               </Grid>
