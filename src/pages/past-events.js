@@ -94,10 +94,12 @@ class HomePage extends React.Component {
       return node
     })
 
+    console.log("tracks", tracks)
+
     const tracks2017 = tracks.filter(t => t.year === 2017)
     const tracks2019 = tracks.filter(t => t.year === 2019)
     const tracks2020 = tracks.filter(t => t.year === 2020)
-    const tracks2022 = tracks.filter(t => t.year === 2022)
+    const tracksRwanda = tracks.filter(t => t.template === "track-2022-rwanda.js")
 
     const metadata = {
       title: content["landing-title"] ? content["landing-title"]["text"] : "Past Editions",
@@ -178,7 +180,7 @@ class HomePage extends React.Component {
           <Grid container justify="center">
             <Grid item xs={12} md={7}>
               {
-                tracks2022.map(track => {
+                tracksRwanda.map(track => {
                   let content = {}
                   try {
                     content = JSON.parse(track.content)
@@ -505,6 +507,7 @@ export const query = graphql`
           tech
           year
           content
+          template
         }
       }
     }
