@@ -23,7 +23,7 @@
     "gatsby-source-firebase-nl": "^1.0.2",
     "jss": "^9.8.7",
     "lodash": "^4.17.4",
-    "nanoid": "^3.1.25",
+    "nanoid": "^3.1.31",
     "node-sass": "^4.9.2",
     "parallax-js": "^3.1.0",
     "prop-types": "^15.6.2",
