@@ -90,10 +90,12 @@ export function toggleEditingState() {
 export function toggleEditing() {
   return (dispatch, getState) => {
     const isEditingPage = getState().adminTools.isEditingPage
-    const pageId = getState().page.data.id;
+    const pageData = getState().page.data
+    console.log({pageData})
+
+    dispatch(fetchPage(pageData.id, pageData.page_type))
 
     if (!isEditingPage) {
-      dispatch(fetchPage(pageId))
       dispatch(
         showNotification(
           "You are now in editing mode. You are seeing the latest changes, including unpublished changes.",
@@ -592,17 +594,29 @@ export function fetchPages() {
 }
 
 
-export function fetchPage(pageId) {
+export function fetchPage(pageId, pageType="page") {
   return (dispatch, getState) => {
     const db = firebase.database();
 
-    db.ref(`pages/${pageId}`)
+    const foldersByPageType = {
+      "track": "tracks",
+      "page": "pages"
+    }
+
+    const folder = foldersByPageType[pageType]
+
+    db.ref(`${folder}/${pageId}`)
       .once('value')
       .then(snap => {
         const page = snap.val()
 
-        console.log("Fetched page", page)
-        dispatch(loadPageData(page))
+        if (page) {
+          const pageData = {...page, id: pageId}
+          console.log("Loading page", pageData)
+          dispatch(loadPageData(pageData))
+        } else {
+          throw Error(`Failed to fetch page at ref ${folder}/${pageId}`)
+        }
       })
       .catch(error => {
         console.log("Error fetching pages", error)
